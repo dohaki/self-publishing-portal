@@ -1,0 +1,12 @@
+<template name="components_loginMask">
+    <ul class="dapp-account-list">
+        {{#each account in accounts}}
+            <li>
+                <button>
+                    <h3>{{account.name}}</h3>
+                    <span>{{account.address}}</span>
+                </button>
+            </li>
+        {{/each}}
+    </ul>
+</template>
