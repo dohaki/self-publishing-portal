@@ -1,1 +1,1 @@
-# self-publishing-portal
+# Self-Publishing-Portal
