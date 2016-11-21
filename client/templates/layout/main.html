@@ -1,0 +1,22 @@
+<template name="layout_main">
+    <!-- The dynamic page header -->
+    {{> yield region="header"}}
+
+    <div class="dapp-flex-content">
+
+        <!-- sidebar -->
+        {{> yield region="sidebar"}}
+
+        <!-- content -->
+        <main class="dapp-content">
+            {{> yield}}
+        </main>
+
+        <!-- actionbar -->
+        {{> yield region="actionbar"}}
+
+    </div>
+
+    <!-- The dynamic page footer -->
+    {{> yield region="footer"}}
+</template>
