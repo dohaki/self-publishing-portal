@@ -30,3 +30,4 @@ frozeman:persistent-minimongo2
 less
 kadira:flow-router
 kadira:blaze-layout
+materialize:materialize
