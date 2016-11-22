@@ -1,3 +1,21 @@
 <template name="views_login">
-        <div class="dapp-box col-md-1-2">{{> components_loginMask }}</div>
+    <div class="dapp-box login-box">
+        <form name="login">
+            <label>Username</label>
+            <input class="dapp-input">
+            <label for="account">Account</label>
+            <select name="account" id=""></select>
+            <ul class="dapp-account-list">
+                {{#each account in accounts}}
+                <li>
+                    <button>
+                        <h3>{{account.name}}</h3>
+                        <span>{{account.address}}</span>
+                    </button>
+                </li>
+                {{/each}}
+            </ul>
+            <button class="dapp-block-button login-button">Login</button>
+        </form>
+    </div>
 </template>

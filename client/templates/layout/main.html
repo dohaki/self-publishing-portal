@@ -1,22 +1,22 @@
 <template name="layout_main">
     <!-- The dynamic page header -->
-    {{> yield region="header"}}
+    {{> Template.dynamic template=header}}
 
     <div class="dapp-flex-content">
 
         <!-- sidebar -->
-        {{> yield region="sidebar"}}
+        {{> Template.dynamic template=sidebar}}
 
         <!-- content -->
         <main class="dapp-content">
-            {{> yield}}
+            {{> Template.dynamic template=main}}
         </main>
 
         <!-- actionbar -->
-        {{> yield region="actionbar"}}
+        {{> Template.dynamic template=actionbar}}
 
     </div>
 
     <!-- The dynamic page footer -->
-    {{> yield region="footer"}}
+    {{> Template.dynamic template=footer}}
 </template>

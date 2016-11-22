@@ -1,18 +1,11 @@
 <template name="layout_sidebar">
-    <aside class="dapp-aside">
-        <nav>
-            <ul>
-                <li>
-                    <a class="sidebar-item" href="#">
-                        <i class="icon-arrow-down3"></i>
-                        <span>Receive</span>
-                    </a>
-                    <a href="#">
-                        <i class="icon-arrow-up2"></i>
-                        <span>Send</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </aside>
+    <ul id="slide-out" class="side-nav fixed">
+        <li><a href="/">Home</a></li>
+        <li><a href="/campaigns">Campaigns</a></li>
+        <li><a href="/insertions">Insertions</a></li>
+        <li><a href="/contracts">Contracts</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/votings">Votings</a></li>
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 </template>
