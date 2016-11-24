@@ -1,0 +1,35 @@
+<template name="components_campaignCard">
+    <div class="col s12 m6">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{this.name}}</span>
+                <ul class="collection" style="margin-left: auto !important;">
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle">schedule</i>
+                        <span class="title">Deadline</span>
+                        <p>{{this.deadline}}<br>(still 6 days)</p>
+                        <a href="#!" class="secondary-content"><i class="material-icons">done</i></a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle green">attach_money</i>
+                        <span class="title">Goal</span>
+                        <div class="progress">
+                            <div class="determinate" style="width: 60%"></div>
+                        </div>
+                        <p>600/1000</p>
+                    </li>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle red">favorite</i>
+                        <span class="title">Top Backers</span><br>
+                        <div class="chip">Backer 1</div>
+                        <div class="chip">Backer 2</div>
+                        <div class="chip">Backer 3</div>
+                    </li>
+                </ul>
+                <a class="waves-effect waves-teal btn-flat"><i class="material-icons">share</i></a>
+                <a class="waves-effect waves-teal btn-flat"><i class="material-icons">delete</i></a>
+                <a class="waves-effect waves-teal btn-flat right">Details</a>
+            </div>
+        </div>
+    </div>
+</template>

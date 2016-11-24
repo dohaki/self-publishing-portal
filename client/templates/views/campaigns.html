@@ -1,3 +1,19 @@
 <template name="views_campaigns">
-    campaigns
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a class="active" href="#my">My Campaigns</a></li>
+                <li class="tab col s3"><a href="#recent">Recent Campaigns</a></li>
+                <li class="tab col s3"><a href="#all">All Campaigns</a></li>
+            </ul>
+        </div>
+        <div id="my" class="col s12"></div>
+        <div id="recent" class="col s12"></div>
+        <div id="all" class="col s12"></div>
+        <div class="row">
+            {{#each campaign in campaigns}}
+                {{> components_campaignCard campaign}}
+            {{/each}}
+        </div>
+    </div>
 </template>
