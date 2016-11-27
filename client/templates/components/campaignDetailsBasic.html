@@ -1,0 +1,43 @@
+<template name="components_campaignDetailsBasic">
+    <div class="section text-center">
+        <h4>Let's go!</h4>
+        <h5>The first impression is very important: ...</h5>
+    </div>
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="last_name" type="text" length="50">
+                    <label for="last_name">Title</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea" length="100"></textarea>
+                    <label for="textarea1">Description</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select multiple>
+                        <option value="" disabled selected>Choose a category</option>
+                        {{#each category in categories}}
+                            <option value="{{category}}">{{category}}</option>
+                        {{/each}}
+                    </select>
+                    <label>Category</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <input id="duration" type="number">
+                    <label for="duration">Duration in days</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="goal" type="number">
+                    <label for="goal">Goal in ETH</label>
+                </div>
+            </div>
+        </form>
+    </div>
+</template>
