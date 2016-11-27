@@ -1,34 +1,38 @@
 <template name="components_campaignCard">
     <div class="col s12 m6">
         <div class="card">
+            <div class="card-image">
+                <img class="center-cropped" src="/images/{{this.picture}}">
+            </div>
             <div class="card-content">
-                <span class="card-title">{{this.name}}</span>
-                <ul class="collection" style="margin-left: auto !important;">
-                    <li class="collection-item avatar">
-                        <i class="material-icons circle">schedule</i>
-                        <span class="title">Deadline</span>
-                        <p>{{this.deadline}}<br>(still 6 days)</p>
-                        <a href="#!" class="secondary-content"><i class="material-icons">done</i></a>
-                    </li>
-                    <li class="collection-item avatar">
-                        <i class="material-icons circle green">attach_money</i>
-                        <span class="title">Goal</span>
-                        <div class="progress">
-                            <div class="determinate" style="width: 60%"></div>
+                <div class="section" style="padding-top: 0 !important;">
+                    <p class="bold">{{this.name}}</p>
+                    <p>{{this.author}}</p>
+                </div>
+                <p style="height: 150px; overflow: auto;">{{this.description}}</p>
+                <div class="section">
+                    <div class="progress">
+                        <div class="determinate" style="width: 60%"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4">
+                            <p class="bold">{{getPercentage this.reached this.goal}} %</p>
+                            <p>financed</p>
                         </div>
-                        <p>600/1000</p>
-                    </li>
-                    <li class="collection-item avatar">
-                        <i class="material-icons circle red">favorite</i>
-                        <span class="title">Top Backers</span><br>
-                        <div class="chip">Backer 1</div>
-                        <div class="chip">Backer 2</div>
-                        <div class="chip">Backer 3</div>
-                    </li>
-                </ul>
+                        <div class="col s4">
+                            <p class="bold">{{this.reached}} ETH</p>
+                            <p>reached</p>
+                        </div>
+                        <div class="col s4">
+                            <p class="bold">{{getLeftDays this.deadline}}</p>
+                            <p>left</p>
+                        </div>
+                    </div>
+                </div>
                 <a class="waves-effect waves-teal btn-flat"><i class="material-icons">share</i></a>
-                <a class="waves-effect waves-teal btn-flat"><i class="material-icons">delete</i></a>
-                <a class="waves-effect waves-teal btn-flat right">Details</a>
+                <a class="waves-effect waves-teal btn-flat"><i class="material-icons">favorite_border</i></a>
+                <a class="waves-effect waves-teal btn-flat"><i class="material-icons">loyalty</i></a>
+                <a class="js-details waves-effect waves-teal btn-flat right" href="/campaigns/{{this._id}}">Details</a>
             </div>
         </div>
     </div>

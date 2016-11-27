@@ -23,11 +23,19 @@ Template.views_campaigns.onRendered(function () {
     });
 });
 
+Template.views_campaigns.events({
+    'click .js-details'(event) {
+
+    }
+});
+
 Template.views_campaigns.helpers({
    campaigns: [{
+       _id: '123456789',
        name: 'campaign 1',
-       deadline: '28.11.2016',
-       description: 'blablablabla.',
+       author: 'Author author',
+       deadline: '2016-11-28',
+       description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
        goal: '1000',
        reached: '600',
        backers: [{
@@ -39,10 +47,13 @@ Template.views_campaigns.helpers({
        }, {
            name: 'backer 3',
            contributed: '450'
-       }]
+       }],
+       picture: 'alaska.jpg'
    }, {
+       _id: '23456789',
        name: 'campaign 2',
-       deadline: '28.11.2016',
+       author: 'campaign 2',
+       deadline: '2016-12-28',
        description: 'blablablabla.',
        goal: '1000',
        reached: '600',
@@ -55,10 +66,13 @@ Template.views_campaigns.helpers({
        }, {
            name: 'backer 3',
            contributed: '450'
-       }]
+       }],
+       picture: 'book.png'
    }, {
+       _id: '3456789',
        name: 'campaign 3',
-       deadline: '28.11.2016',
+       author: 'campaign 3',
+       deadline: '2016-12-01',
        description: 'blablablabla.',
        goal: '1000',
        reached: '600',
@@ -71,6 +85,7 @@ Template.views_campaigns.helpers({
        }, {
            name: 'backer 3',
            contributed: '450'
-       }]
+       }],
+       picture: 'ufo.jpg'
    }]
 });
