@@ -3,7 +3,7 @@
         <h5>Here you can define the rewards your backers get</h5>
     </div>
     {{#each reward in rewards}}
-        {{> components_rewardCard reward data=@index}}
+        {{> components_rewardCard reward}}
     {{/each}}
     <a class="js-add-reward waves-effect waves-light btn add-button">
         <i class="material-icons">add_circle_outline</i>add reward

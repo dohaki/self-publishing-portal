@@ -1,5 +1,5 @@
 import {Template} from 'meteor/templating';
-import {ReactiveVar} from 'meteor/reactive-var';
+import {Session} from 'meteor/session'
 
 import './campaignCreateRewards.html';
 
@@ -12,12 +12,12 @@ const defaultReward = {
 };
 
 Template.components_campaignCreateRewards.onCreated(function () {
-    this.rewards = new ReactiveVar([defaultReward]);
+    Session.setDefault('rewards', [defaultReward]);
 });
 
 Template.components_campaignCreateRewards.helpers({
     rewards: function () {
-        return Template.instance().rewards.get();
+        return Session.get('rewards');
     }
 });
 
@@ -32,8 +32,8 @@ Template.components_campaignCreateRewards.events({
     },
     // fügt eine neue leere Belohnung hinzu
     'click .js-add-reward'() {
-        let rewards = Template.instance().rewards.get();
+        let rewards = Session.get('rewards');
         rewards.push(defaultReward);
-        Template.instance().rewards.set(rewards);
+        Session.set('rewards', rewards);
     }
 });

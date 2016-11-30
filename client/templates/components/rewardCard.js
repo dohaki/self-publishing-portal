@@ -1,5 +1,5 @@
 import {Template} from 'meteor/templating';
-import {ReactiveVar} from 'meteor/reactive-var';
+import {Session} from 'meteor/session'
 
 import './rewardCard.html';
 
@@ -13,21 +13,21 @@ Template.components_rewardCard.onRendered(function () {
     });
 });
 
-Template.components_rewardCard.helpers({
-    categories: [
-        'Science fiction',
-        'Satire',
-        'Drama',
-        'Action and Adventure',
-        'Romance',
-        'Mystery',
-        'Horror',
-        'Self help'
-    ]
-});
+Template.components_rewardCard.helpers({});
 
 Template.components_rewardCard.events({
-    'click .js-next'() {
-        $('ul.tabs').tabs('select_tab', 'rewards');
+    // entfernt eine Belohnung
+    'click .js-remove-reward'() {
+        let rewards = Session.get('rewards');
+        let removeReward = this;
+        let index = rewards.findIndex(function (reward) {
+            return (reward.title === removeReward.title)
+                && (reward.description === removeReward.description)
+                && (reward.contribution === removeReward.contribution)
+                && (reward.estimatedShipment === removeReward.estimatedShipment)
+                && (reward.restrictedReward === removeReward.restrictedReward)
+        });
+        rewards.splice(index, 1);
+        Session.set('rewards', rewards);
     }
 });
