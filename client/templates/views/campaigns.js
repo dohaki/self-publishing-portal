@@ -24,8 +24,8 @@ Template.views_campaigns.onRendered(function () {
 });
 
 Template.views_campaigns.events({
-    'click .js-details'(event) {
-
+    'click .js-start-campaign'(event) {
+        FlowRouter.go('/campaigns/create');
     }
 });
 
