@@ -1,13 +1,13 @@
 import {Template} from 'meteor/templating';
 import {ReactiveVar} from 'meteor/reactive-var'
 
-import './campaignDetailsBasic.html';
+import './campaignCreateBasic.html';
 
-Template.components_campaignDetailsBasic.onCreated(function () {
+Template.components_campaignCreateBasic.onCreated(function () {
    this.duration = new ReactiveVar(30);
 });
 
-Template.components_campaignDetailsBasic.helpers({
+Template.components_campaignCreateBasic.helpers({
     duration: function () {
         return Template.instance().duration.get()
     },
@@ -23,5 +23,5 @@ Template.components_campaignDetailsBasic.helpers({
     ]
 });
 
-Template.components_campaignDetailsBasic.events({
+Template.components_campaignCreateBasic.events({
 });
