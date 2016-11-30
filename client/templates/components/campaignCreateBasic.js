@@ -1,16 +1,12 @@
 import {Template} from 'meteor/templating';
-import {ReactiveVar} from 'meteor/reactive-var'
+import {ReactiveVar} from 'meteor/reactive-var';
 
 import './campaignCreateBasic.html';
 
 Template.components_campaignCreateBasic.onCreated(function () {
-   this.duration = new ReactiveVar(30);
 });
 
 Template.components_campaignCreateBasic.helpers({
-    duration: function () {
-        return Template.instance().duration.get()
-    },
     categories: [
         'Science fiction',
         'Satire',
@@ -24,4 +20,7 @@ Template.components_campaignCreateBasic.helpers({
 });
 
 Template.components_campaignCreateBasic.events({
+    'click .js-next'() {
+        $('ul.tabs').tabs('select_tab', 'rewards');
+    }
 });

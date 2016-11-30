@@ -1,20 +1,21 @@
 <template name="components_campaignCreateBasic">
     <div class="section text-center">
         <h4>Let's go!</h4>
-        <h5>The first impression is very important: ...</h5>
+        <h5>The first impression is very important:</h5>
+        <h5>Give a quick overview of your campaign</h5>
     </div>
     <div class="row">
         <form class="col s12">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="last_name" type="text" length="50">
-                    <label for="last_name">Title</label>
+                    <input id="title" type="text" length="50">
+                    <label for="title">Title</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="textarea1" class="materialize-textarea" length="100"></textarea>
-                    <label for="textarea1">Description</label>
+                    <textarea id="description" class="materialize-textarea" length="100"></textarea>
+                    <label for="description">Description</label>
                 </div>
             </div>
             <div class="row">
@@ -37,6 +38,9 @@
                     <input id="goal" type="number">
                     <label for="goal">Goal in ETH</label>
                 </div>
+            </div>
+            <div class="row">
+                <a class="js-next waves-effect waves-light btn right"><i class="material-icons right">navigate_next</i>next</a>
             </div>
         </form>
     </div>
