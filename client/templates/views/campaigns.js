@@ -4,7 +4,6 @@ import './campaigns.html';
 
 // Home routes
 FlowRouter.route('/campaigns', {
-
     action: function () {
         BlazeLayout.render('layout_main', {
             header: 'layout_header',
@@ -16,10 +15,7 @@ FlowRouter.route('/campaigns', {
 
 Template.views_campaigns.onRendered(function () {
     $(document).ready(function(){
-        $('.carousel').carousel({
-            dist: 0,
-            indicators: true
-        });
+        $('ul.tabs').tabs();
     });
 });
 
