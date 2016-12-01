@@ -1,5 +1,14 @@
 <template name="layout_sidebar">
     <ul id="slide-out" class="side-nav fixed">
+        <li>
+            <div class="userView center">
+                <div class="background"></div>
+                <a><i class="material-icons large">account_circle</i></a>
+                <a><span class="name">John Doe</span></a>
+                <p class="no-margin">{{dapp_formatBalance account.balance '0,000' 'ether'}} ETH</p>
+                <a class="no-overflow"><span class="email">{{account.address}}</span></a>
+            </div>
+        </li>
         <li><a href="/">Home</a></li>
         <li><a href="/campaigns">Campaigns</a></li>
         <li><a href="/insertions">Insertions</a></li>
