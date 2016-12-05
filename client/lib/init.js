@@ -12,7 +12,7 @@ FlowRouter.triggers.enter([checkValidAccount], {except: ['login']});
  * @param redirect
  * @param stop
  */
-function checkValidAccount () {
+function checkValidAccount() {
     if (EthAccounts.find().fetch().length === 0) {
         FlowRouter.go('/error'); // falls kein Ethereum Account vorliegt, auf Hinweis-Seite (MIST, Metamask)
     } else {
@@ -21,6 +21,11 @@ function checkValidAccount () {
                 console.error('ERROR in checkValidAccount');
             } else if (!result[0]) {
                 FlowRouter.go('/login');
+            } else {
+                let user = Users.findOne({userName: result[0], role: result[1], userAddress: account});
+                if (!user) {
+                    Users.insert({userName: result[0], role: result[1], userAddress: account});
+                }
             }
         });
     }
