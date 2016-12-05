@@ -1,3 +1,5 @@
+import {Session} from 'meteor/session';
+
 const abiArray = [{
     "constant": false,
     "inputs": [{"name": "userName", "type": "string"}, {"name": "role", "type": "string"}],
@@ -12,7 +14,14 @@ const abiArray = [{
     "outputs": [],
     "payable": false,
     "type": "function"
-}, {"inputs": [], "type": "constructor"}, {
+}, {
+    "constant": true,
+    "inputs": [{"name": "", "type": "address"}],
+    "name": "users",
+    "outputs": [{"name": "userName", "type": "string"}, {"name": "role", "type": "string"}],
+    "payable": false,
+    "type": "function"
+}, {"inputs": [], "payable": false, "type": "constructor"}, {
     "anonymous": false,
     "inputs": [{"indexed": false, "name": "userAddress", "type": "address"}, {
         "indexed": false,
@@ -22,7 +31,8 @@ const abiArray = [{
     "name": "JoinSuccess",
     "type": "event"
 }];
-const address = "0x755318f74E5F6191ebc5095606B22C9BE38C8139";
+
+const address = "0x41e72ab3f8f277ea0e3ffd9a606e2f9c7f4d13fe";
 
 UserRegisterContract = web3.eth.contract(abiArray).at(address);
 
@@ -32,5 +42,7 @@ UserRegisterContract.JoinSuccess().watch(function (error, result) {
     } else {
         console.log('JOIN SUCCESS');
         console.log(result);
+        Session.set('mining', false);
+        FlowRouter.go('/');
     }
 });

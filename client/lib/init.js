@@ -1,9 +1,10 @@
+account = web3.eth.accounts[0];
+
 // initialize Ethereum Accounts
 EthAccounts.init();
 
 // Global routes trigggers
 FlowRouter.triggers.enter([checkValidAccount], {except: ['login']});
-//FlowRouter.triggers.enter([checkIfLoggedIn], {only: ['login']});
 
 /**
  * Überprüft, ob ein gültiger Ethereum-Account vorhanden ist
@@ -11,14 +12,26 @@ FlowRouter.triggers.enter([checkValidAccount], {except: ['login']});
  * @param redirect
  * @param stop
  */
-function checkValidAccount (context, redirect, stop) {
+function checkValidAccount () {
     if (EthAccounts.find().fetch().length === 0) {
-        redirect('/login');
+        FlowRouter.go('/error'); // falls kein Ethereum Account vorliegt, auf Hinweis-Seite (MIST, Metamask)
+    } else {
+        UserRegisterContract.users(account, function (error, result) {
+            if (error) {
+                console.error('ERROR in checkValidAccount');
+            } else if (!result[0]) {
+                FlowRouter.go('/login');
+            }
+        });
     }
 }
 
-// function checkIfLoggedIn (context, redirect, stop) {
-//     if (EthAccounts.find().fetch().length !== 0) { //TODO nur wenn es keinen Account gibt, weiterleiten zu home
-//         redirect('/');
-//     }
-// }
+/**
+ * Überprüfe, ob der Ethereum-Account sich ändert jede Sekunde
+ */
+setInterval(function () {
+    if (web3.eth.accounts[0] !== account) {
+        account = web3.eth.accounts[0];
+        checkValidAccount();
+    }
+}, 1000);

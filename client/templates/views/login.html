@@ -16,15 +16,30 @@
                             <select id="role">
                                 <option value="" disabled selected>Choose a role</option>
                                 {{#each role in roles}}
-                                    <option value="">{{role}}</option>
+                                    <option value="{{role}}">{{role}}</option>
                                 {{/each}}
                             </select>
                             <label>Role</label>
                         </div>
                     </div>
                     <div class="card-action">
-                        <a class="js-create waves-effect waves-light btn">Create</a>
-                    </div>
+                        {{#if mining}}
+                            <div class="preloader-wrapper small active">
+                                <div class="spinner-layer spinner-green-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div><div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div><div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                                </div>
+                            </div>
+                            <span class="white-text">Creating account... This may take a while.</span>
+                        {{else}}
+                            <a class="js-create waves-effect waves-light btn">Create</a>
+                        {{/if}}
+                        </div>
                 </div>
             </div>
         </div>
