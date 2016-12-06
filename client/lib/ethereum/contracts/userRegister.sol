@@ -20,14 +20,13 @@ contract UserRegister is mortal {
 
     struct User {
         string userName;
-        string role;
     }
 
     address [] internal userIndex;
 
     mapping(address => User) public users;
 
-    event JoinSuccess(address userAddress, string role, string userName);
+    event JoinSuccess(address userAddress, string userName);
 
     modifier isUnique(string name) {
         for (uint i = 0; i < userIndex.length; i++) {
@@ -51,10 +50,10 @@ contract UserRegister is mortal {
 		return true;
 	}
 
-    function join(string userName, string role) isUnique(userName) {
+    function join(string userName) isUnique(userName) {
         userIndex.push(msg.sender);
-        users[msg.sender] = User(userName, role);
-        JoinSuccess(msg.sender, role, userName);
+        users[msg.sender] = User(userName);
+        JoinSuccess(msg.sender, userName);
     }
 
 }

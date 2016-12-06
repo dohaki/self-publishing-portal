@@ -18,13 +18,13 @@ function checkValidAccount() {
     } else {
         UserRegisterContract.users(account, function (error, result) {
             if (error) {
-                console.error('ERROR in checkValidAccount');
-            } else if (!result[0]) {
+                console.error('init.js - checkValidAccount');
+            } else if (!result) {
                 FlowRouter.go('/login');
             } else {
-                let user = Users.findOne({userName: result[0], role: result[1], userAddress: account});
+                let user = Users.findOne({userName: result, userAddress: account});
                 if (!user) {
-                    Users.insert({userName: result[0], role: result[1], userAddress: account});
+                    Users.insert({userName: result, userAddress: account});
                 }
             }
         });
@@ -34,9 +34,9 @@ function checkValidAccount() {
 /**
  * Überprüfe, ob der Ethereum-Account sich ändert jede Sekunde
  */
-setInterval(function () {
-    if (web3.eth.accounts[0] !== account) {
-        account = web3.eth.accounts[0];
-        checkValidAccount();
-    }
-}, 1000);
+// setInterval(function () {
+//     if (web3.eth.accounts[0] !== account) {
+//         account = web3.eth.accounts[0];
+//         checkValidAccount();
+//     }
+// }, 1000);

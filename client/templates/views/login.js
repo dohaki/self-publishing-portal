@@ -9,8 +9,8 @@ FlowRouter.route('/login', {
     triggersEnter: [function () {
         UserRegisterContract.users(account, function (error, result) {
             if (error) {
-                console.error('ERROR in checkValidAccount');
-            } else if (result[0]) {
+                console.error('login.js - triggersEnter');
+            } else if (result) {
                 FlowRouter.go('/');
             }
         });
@@ -31,7 +31,6 @@ Template.views_login.onRendered(function () {
 });
 
 Template.views_login.helpers({
-    roles: ['Author', 'Provider', 'Reader'],
     mining: function () {
         return Session.get('mining');
     }
@@ -40,14 +39,15 @@ Template.views_login.helpers({
 Template.views_login.events({
     'click .js-create'(event) {
         const username = $('#username').val();
-        const role = $('#role').val();
-        UserRegisterContract.join(username, role, function (error, result) {
+        UserRegisterContract.join(username, function (error, result) {
             if (error) {
-                console.error('ERROR in login.js');
+                console.error('login.js - click .js-create - ' + error);
             } else {
-                console.log('SUCCESS');
-                console.log(result);
-                Session.set('mining', true);
+                console.log('creating user on blockchain...');
+                console.log('transaction# ' + result);
+                EthereumHelper.pendingTransaction(result, function () {
+                   FlowRouter.go('/');
+                });
             }
         });
     }
