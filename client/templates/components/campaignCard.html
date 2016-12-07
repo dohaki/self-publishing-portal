@@ -2,25 +2,25 @@
     <div class="col s12 m6 l4">
         <div class="card">
             <div class="card-image">
-                <img class="center-cropped" src="/images/{{this.picture}}">
+                <img class="center-cropped" src="/images/default.png">
             </div>
             <div class="card-content">
                 <div class="section" style="padding-top: 0 !important;">
-                    <p class="bold">{{this.name}}</p>
-                    <p>{{this.author}}</p>
+                    <p class="bold">{{this.title}}</p>
+                    <p>{{this.beneficiary}}</p>
                 </div>
                 <p style="height: 150px; overflow: auto;">{{this.description}}</p>
                 <div class="section">
                     <div class="progress">
-                        <div class="determinate" style="width: 60%"></div>
+                        <div class="determinate" style="width: {{getPercentage this.amountRaised this.fundingGoal}}%"></div>
                     </div>
                     <div class="row">
                         <div class="col s4">
-                            <p class="bold">{{getPercentage this.reached this.goal}} %</p>
+                            <p class="bold">{{getPercentage this.amountRaised this.fundingGoal}} %</p>
                             <p>financed</p>
                         </div>
                         <div class="col s4">
-                            <p class="bold">{{this.reached}} ETH</p>
+                            <p class="bold">{{this.amountRaised}} ETH</p>
                             <p>reached</p>
                         </div>
                         <div class="col s4">

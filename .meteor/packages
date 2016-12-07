@@ -26,10 +26,10 @@ ethereum:elements
 ethereum:accounts
 ethereum:blocks
 frozeman:template-var
-frozeman:persistent-minimongo2
 less
 kadira:flow-router
 kadira:blaze-layout
 materialize:materialize
 session
 froala:editor
+frozeman:persistent-minimongo

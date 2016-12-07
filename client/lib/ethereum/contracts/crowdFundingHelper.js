@@ -99,6 +99,33 @@ const address = "0x37e35ca76907bfc0c37595e74189bc22ed99f3a5";
 
 CrowdFundingContract = web3.eth.contract(abiArray).at(address);
 
+/**
+ * Initiale GET-Methode um alle Kampagnen auf der Blockchain zu holen
+ */
+CrowdFundingContract.campaignCounter(function (error, result) {
+    if (error) console.error(error);
+    else {
+        const counter = result.c[0];
+        for (let i = 1; i <= counter; i++) {
+            CrowdFundingContract.campaigns(i, function (error, result) {
+                Campaigns.upsert({_id: result[0].c[0]}, {
+                    _id: result[0].c[0],
+                    title: result[1],
+                    description: result[2],
+                    category: result[3],
+                    beneficiary: result[4],
+                    fundingGoal: result[5].c[0],
+                    amountRaised: result[6].c[0],
+                    deadline: new Date(result[7].c[0] * 1000),
+                    fundingGoalReached: result[8],
+                    campaignClosed: result[9],
+                    numOfBackers: result[10].c[0]
+                });
+            });
+        }
+    }
+});
+
 CrowdFundingContract.CampaignStarted().watch(function (error, result) {
     if (error) {
         console.error('CampaignStarted event');

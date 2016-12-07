@@ -28,7 +28,8 @@ Template.components_campaignCreateBasic.events({
         const description = $('#description').val();
         const category = $('#category').val();
         const goal = $('#goal').val();
-        const duration = $('#duration').val();
+        // rechne die Dauer in Tagen in Minuten um
+        const duration = $('#duration').val() * 24 * 60;
         CrowdFundingContract.startCampaign(title, description, category, goal, duration, function (error, result) {
             if (error) console.error(error);
             else {
