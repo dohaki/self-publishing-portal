@@ -81,8 +81,8 @@
       <file leaf-file-name="main.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/templates/layout/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="65" lean-forward="false" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="65" />
+            <state relative-caret-position="570">
+              <caret line="38" column="10" lean-forward="true" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -591,7 +591,7 @@
       <workItem from="1480926846045" duration="30480000" />
       <workItem from="1481097194363" duration="62000" />
       <workItem from="1481097815638" duration="1003000" />
-      <workItem from="1481101078425" duration="9879000" />
+      <workItem from="1481101078425" duration="9937000" />
     </task>
     <task id="LOCAL-00001" summary="README Anpassung">
       <created>1479746796849</created>
@@ -747,11 +747,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481110849284</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Anpassungen an loading screen">
+      <created>1481111110861</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1481111110861</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164267000" />
+    <option name="totallyTimeSpent" value="164325000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -798,7 +805,8 @@
     <MESSAGE value="usernamen werden in sidebar angezeigt" />
     <MESSAGE value="login anpassungen" />
     <MESSAGE value="campaign creation + loading screen bei transaction mining" />
-    <option name="LAST_COMMIT_MESSAGE" value="campaign creation + loading screen bei transaction mining" />
+    <MESSAGE value="Anpassungen an loading screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Anpassungen an loading screen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1162,8 +1170,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/layout/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="65" lean-forward="false" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="65" />
+        <state relative-caret-position="570">
+          <caret line="38" column="10" lean-forward="true" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
           <folding />
         </state>
       </provider>
