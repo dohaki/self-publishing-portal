@@ -20,7 +20,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <select multiple>
+                    <select id="category">
                         <option value="" disabled selected>Choose a category</option>
                         {{#each category in categories}}
                             <option value="{{category}}">{{category}}</option>
@@ -40,6 +40,7 @@
                 </div>
             </div>
             <div class="row">
+                <a class="js-start waves-effect waves-light btn right"><i class="material-icons right"></i>start</a>
                 <a class="js-next waves-effect waves-light btn right"><i class="material-icons right">navigate_next</i>next</a>
             </div>
         </form>

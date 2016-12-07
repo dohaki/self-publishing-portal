@@ -43,6 +43,17 @@ header, main, footer {
   overflow: hidden;
 }
 
+.loading {
+  position: absolute;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}
+
 // WORKAROUND - START
 @font-face {
   font-family: "Roboto";

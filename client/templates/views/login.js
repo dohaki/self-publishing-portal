@@ -41,10 +41,8 @@ Template.views_login.events({
         const username = $('#username').val();
         UserRegisterContract.join(username, function (error, result) {
             if (error) {
-                console.error('login.js - click .js-create - ' + error);
+                console.error(error);
             } else {
-                console.log('creating user on blockchain...');
-                console.log('transaction# ' + result);
                 EthereumHelper.pendingTransaction(result, function () {
                    FlowRouter.go('/');
                 });

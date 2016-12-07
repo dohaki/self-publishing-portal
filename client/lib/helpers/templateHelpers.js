@@ -1,4 +1,5 @@
 import {Template} from 'meteor/templating';
+import {Session} from 'meteor/session';
 
 /**
  * Berechnet prozentualen Anteil
@@ -21,4 +22,8 @@ Template.registerHelper('getLeftDays', function (deadline) {
     } else {
         return Math.round(differenceInHours) + ' hours';
     }
+});
+
+Template.registerHelper('mining', function () {
+   return Session.get('mining');
 });

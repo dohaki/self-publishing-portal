@@ -22,5 +22,20 @@ Template.components_campaignCreateBasic.helpers({
 Template.components_campaignCreateBasic.events({
     'click .js-next'() {
         $('ul.tabs').tabs('select_tab', 'rewards');
+    },
+    'click .js-start'() {
+        const title = $('#title').val();
+        const description = $('#description').val();
+        const category = $('#category').val();
+        const goal = $('#goal').val();
+        const duration = $('#duration').val();
+        CrowdFundingContract.startCampaign(title, description, category, goal, duration, function (error, result) {
+            if (error) console.error(error);
+            else {
+                EthereumHelper.pendingTransaction(result, function () {
+                    FlowRouter.go('/campaigns');
+                });
+            }
+        });
     }
 });

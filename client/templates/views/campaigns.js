@@ -4,6 +4,14 @@ import './campaigns.html';
 
 // Home routes
 FlowRouter.route('/campaigns', {
+    triggersEnter: [function () {
+        CrowdFundingContract.campaignCounter(function (error, result) {
+           if (error) console.error(error);
+           else {
+               console.log(result);
+           }
+        });
+    }],
     action: function () {
         BlazeLayout.render('layout_main', {
             header: 'layout_header',
