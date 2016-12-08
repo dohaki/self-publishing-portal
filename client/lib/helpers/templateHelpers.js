@@ -27,3 +27,8 @@ Template.registerHelper('getLeftDays', function (deadline) {
 Template.registerHelper('mining', function () {
    return Session.get('mining');
 });
+
+Template.registerHelper('getUserNameByAddress', function (address) {
+    let user = Users.findOne({userAddress: address});
+    return user.userName;
+});

@@ -1,0 +1,35 @@
+<template name="views_campaignDetails">
+    <div class="row">
+        <div class="col s1"></div>
+        <div class="col s10 text-center">
+            <h4 class="row">{{campaign.title}}</h4>
+            <div class="row">
+                <div class="chip">
+                    {{campaign.category}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s8">
+                    <img class="scale" src="/images/default.png" alt="">
+                </div>
+                <div class="col s4">
+                    <h3 class="bold no-margin">{{campaign.numOfBackers}}</h3>
+                    <p class="no-margin">Backers</p>
+                    <p></p>
+                    <h3 class="bold no-margin">{{campaign.amountRaised}} ETH</h3>
+                    <p class="no-margin">of goal {{campaign.fundingGoal}} ETH</p>
+                    <p></p>
+                    <h3 class="bold no-margin">{{getLeftDays campaign.deadline}}</h3>
+                    <p class="no-margin">left</p>
+                    <p></p>
+                    <a class="waves-effect waves-light btn">Contribute</a>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="row">
+                <h5>{{campaign.description}}</h5>
+            </div>
+        </div>
+        <div class="col s1"></div>
+    </div>
+</template>
