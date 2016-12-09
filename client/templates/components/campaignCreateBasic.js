@@ -3,7 +3,8 @@ import {ReactiveVar} from 'meteor/reactive-var';
 
 import './campaignCreateBasic.html';
 
-Template.components_campaignCreateBasic.onCreated(function () {
+Template.components_campaignCreateBasic.onRendered(function () {
+    $('div#froala-editor').froalaEditor({});
 });
 
 Template.components_campaignCreateBasic.helpers({
@@ -21,7 +22,7 @@ Template.components_campaignCreateBasic.helpers({
 
 Template.components_campaignCreateBasic.events({
     'click .js-next'() {
-        $('ul.tabs').tabs('select_tab', 'rewards');
+        $('ul.tabs').tabs('select_tab', 'background');
     },
     'click .js-start'() {
         const title = $('#title').val();
@@ -30,7 +31,8 @@ Template.components_campaignCreateBasic.events({
         const goal = $('#goal').val();
         // rechne die Dauer in Tagen in Minuten um
         const duration = $('#duration').val() * 24 * 60;
-        CrowdFundingContract.startCampaign(title, description, category, goal, duration, function (error, result) {
+        const html = $('div#froala-editor').froalaEditor('html.get');
+        CrowdFundingContract.startCampaign(title, description, category, goal, duration, html, function (error, result) {
             if (error) console.error(error);
             else {
                 EthereumHelper.pendingTransaction(result, function () {

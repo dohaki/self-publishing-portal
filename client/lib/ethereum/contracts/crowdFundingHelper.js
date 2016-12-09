@@ -36,7 +36,10 @@ const abiArray = [{
     "inputs": [{"name": "title", "type": "string"}, {"name": "description", "type": "string"}, {
         "name": "category",
         "type": "string"
-    }, {"name": "fundingGoal", "type": "uint256"}, {"name": "duration", "type": "uint256"}],
+    }, {"name": "fundingGoal", "type": "uint256"}, {"name": "duration", "type": "uint256"}, {
+        "name": "html",
+        "type": "string"
+    }],
     "name": "startCampaign",
     "outputs": [],
     "payable": false,
@@ -53,6 +56,13 @@ const abiArray = [{
     "inputs": [{"name": "_id", "type": "uint256"}],
     "name": "contribute",
     "outputs": [],
+    "payable": false,
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{"name": "", "type": "uint256"}],
+    "name": "campaignHtml",
+    "outputs": [{"name": "", "type": "string"}],
     "payable": false,
     "type": "function"
 }, {
@@ -95,7 +105,7 @@ const abiArray = [{
     "type": "event"
 }];
 
-const address = "0x37e35ca76907bfc0c37595e74189bc22ed99f3a5";
+const address = "0x253a0fb430265864f1cb7fd14168546088c238b5";
 
 CrowdFundingContract = web3.eth.contract(abiArray).at(address);
 
@@ -104,7 +114,7 @@ CrowdFundingContract = web3.eth.contract(abiArray).at(address);
  * und aktualisiert diese in der lokalen DB
  * @param index
  */
-function upsertCampaign (index) {
+function upsertCampaign(index) {
     CrowdFundingContract.campaigns(index, function (error, result) {
         Campaigns.upsert({_id: result[0].c[0]}, {
             _id: result[0].c[0],
@@ -118,6 +128,16 @@ function upsertCampaign (index) {
             fundingGoalReached: result[8],
             campaignClosed: result[9],
             numOfBackers: result[10].c[0]
+        }, function (error, upsertedCampaign) {
+            if (error) console.error(error);
+            else {
+                CrowdFundingContract.campaignHtml(index, function (error, result) {
+                    if (error) console.error(error);
+                    else {
+                        Campaigns.update({_id: index}, {$set: {html: result}});
+                    }
+                });
+            }
         });
     });
 }

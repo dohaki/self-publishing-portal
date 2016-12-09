@@ -1,4 +1,5 @@
 import {Template} from 'meteor/templating';
+import {Session} from 'meteor/session';
 
 import './campaignCreate.html';
 
@@ -10,6 +11,10 @@ FlowRouter.route('/campaigns/create', {
             sidebar: 'layout_sidebar'
         });
     }
+});
+
+Template.views_campaignCreate.onCreated(function () {
+    Session.set('isFormValid', false);
 });
 
 Template.views_campaignCreate.onRendered(function () {

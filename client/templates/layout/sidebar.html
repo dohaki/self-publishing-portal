@@ -5,8 +5,8 @@
                 <div class="background"></div>
                 <a><i class="material-icons large">account_circle</i></a>
                 <a><span class="name">{{user.role}} {{user.userName}}</span></a>
-                <p class="no-margin">{{dapp_formatBalance account.balance '0,000' 'ether'}} ETH</p>
-                <a class="no-overflow"><span class="email">{{account.address}}</span></a>
+                <p class="no-margin">{{dapp_formatBalance account.balance '0.000' 'ether'}} ETH</p>
+                <span class="email truncate">{{account.address}}</span>
             </div>
         </li>
         <li><a href="/">Home</a></li>
