@@ -4,13 +4,13 @@
             <div class="card-image">
                 <img class="center-cropped" src="/images/default.png">
             </div>
-            <div class="card-content">
+            <div class="card-content" style="padding-bottom: 0">
                 <div class="section" style="padding-top: 0 !important;">
                     <p class="bold">{{this.title}}</p>
                     <p>{{getUserNameByAddress this.beneficiary}}</p>
                 </div>
-                <p style="height: 150px; overflow: auto;">{{this.description}}</p>
-                <div class="section">
+                <p style="height: 100px; overflow: auto;">{{this.description}}</p>
+                <div class="section" style="padding-bottom: 0">
                     <div class="progress">
                         <div class="determinate" style="width: {{getPercentage this.amountRaised this.fundingGoal}}%"></div>
                     </div>
@@ -33,7 +33,7 @@
             <div class="card-action">
                 <a href=""><i class="material-icons">share</i></a>
                 <a href=""><i class="material-icons">favorite_border</i></a>
-                <a class="js-details" href="/campaigns/{{this._id}}"><i class="material-icons">description</i></a>
+                <a class="js-details right" href="/campaigns/{{this._id}}"><i class="material-icons">description</i></a>
             </div>
         </div>
     </div>

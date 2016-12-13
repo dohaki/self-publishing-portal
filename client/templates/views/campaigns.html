@@ -6,22 +6,57 @@
                 <li class="tab col s3"><a href="#popular">Most Popular</a></li>
                 <li class="tab col s3"><a href="#recent">Most Recent</a></li>
                 <li class="tab col s3"><a href="#categories">Categories</a></li>
-                <li class="tab col s3"><a href="#all">All</a></li>
+                <!--<li class="tab col s3"><a href="#all">All</a></li>-->
             </ul>
         </div>
         <div id="my" class="col s12">
             <div class="section">
-                <a class="js-start-campaign waves-effect waves-teal btn"><i class="material-icons left">play_arrow</i>start new campaign</a>
+                <a class="js-start-campaign waves-effect waves-teal btn"><i class="material-icons left">play_arrow</i>start
+                    new campaign</a>
+            </div>
+            <div class="row">
+                {{#each campaign in myCampaigns}}
+                    {{> components_campaignCard campaign}}
+                {{/each}}
             </div>
         </div>
-        <div id="popular" class="col s12"></div>
-        <div id="recent" class="col s12"></div>
-        <div id="categories" class="col s12"></div>
-        <div id="all" class="col s12"></div>
-        <div class="row">
-            {{#each campaign in campaigns}}
-                {{> components_campaignCard campaign}}
+        <div id="popular" class="col s12">
+            <div class="row">
+                {{#each campaign in mostPopularCampaigns}}
+                    {{> components_campaignCard campaign}}
+                {{/each}}
+            </div>
+        </div>
+        <div id="recent" class="col s12">
+            <div class="row">
+                {{#each campaign in mostRecentCampaigns}}
+                    {{> components_campaignCard campaign}}
+                {{/each}}
+            </div>
+        </div>
+        <div id="categories" class="col s12">
+            <div class="row section" style="margin-bottom: 0">
+                {{#each category in categories}}
+                    <a class="js-select-category waves-effect btn-flat col s4 m3 center-align">{{category.category}}</a>
+                {{/each}}
+            </div>
+            <div class="row section no-padding">
+                {{#each category in selectedCategories}}
+                    <div id="{{category}}" class="chip">
+                        <a>{{category}}</a>
+                        <i class="js-remove-category close material-icons">close</i>
+                    </div>
+                {{/each}}
+            </div>
+            {{#each category in selectedCategories}}
+                <div class="row section">
+                    <h5>{{category}}</h5>
+                    {{#each campaign in getFilteredCampaigns category}}
+                        {{> components_campaignCard campaign}}
+                    {{/each}}
+                </div>
             {{/each}}
         </div>
+        <div id="all" class="col s12"></div>
     </div>
 </template>

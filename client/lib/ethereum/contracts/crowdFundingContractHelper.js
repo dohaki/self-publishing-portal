@@ -1,4 +1,4 @@
-import {upsertCampaign, updateCampaign} from '/client/lib/helpers/campaignCollectionHelper';
+import {upsertCampaign, updateCampaign, getCategory} from '/client/lib/helpers/campaignCollectionHelper';
 import {pendingTransaction} from '/client/lib/helpers/ethereumHelper';
 
 const abiArray = [{
@@ -17,7 +17,7 @@ const abiArray = [{
     }, {"name": "fundingGoalReached", "type": "bool"}, {
         "name": "campaignClosed",
         "type": "bool"
-    }, {"name": "numOfContributions", "type": "uint256"}],
+    }, {"name": "numOfContributions", "type": "uint256"}, {"name": "createdAt", "type": "uint256"}],
     "payable": false,
     "type": "function"
 }, {
@@ -115,7 +115,7 @@ const abiArray = [{
     "type": "event"
 }];
 
-const address = "0x9cfb6bcf8d9f614cede7575f2d3865b64ac69d39";
+const address = "0x03589d9e74dd1c2beb98cf077b2e1924bf8dbf34";
 
 CrowdFundingContract = web3.eth.contract(abiArray).at(address);
 
@@ -146,7 +146,8 @@ export function getCampaignFromContract(index) {
                 _id: new BigNumber(result[0]).toNumber(),
                 title: result[1],
                 description: result[2],
-                category: result[3],
+                category: getCategory(result[3]),
+                subCategory: result[3],
                 beneficiary: result[4],
                 fundingGoal: new BigNumber(result[5]).toNumber(),
                 amountRaised: new BigNumber(result[6]).toNumber(),
@@ -154,6 +155,7 @@ export function getCampaignFromContract(index) {
                 fundingGoalReached: result[8],
                 campaignClosed: result[9],
                 numOfContributions: new BigNumber(result[10]).toNumber(),
+                createdAt: new Date(new BigNumber(result[11]).toNumber() * 1000),
                 contributions: []
             };
             upsertCampaign(campaign._id, campaign, function () {

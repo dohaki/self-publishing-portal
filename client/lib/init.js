@@ -8,9 +8,6 @@ FlowRouter.triggers.enter([checkValidAccount], {except: ['login']});
 
 /**
  * Überprüft, ob ein gültiger Ethereum-Account vorhanden ist
- * @param context
- * @param redirect
- * @param stop
  */
 function checkValidAccount() {
     if (EthAccounts.find().fetch().length === 0) {
@@ -34,9 +31,9 @@ function checkValidAccount() {
 /**
  * Überprüfe, ob der Ethereum-Account sich ändert jede Sekunde
  */
-// setInterval(function () {
-//     if (web3.eth.accounts[0] !== account) {
-//         account = web3.eth.accounts[0];
-//         checkValidAccount();
-//     }
-// }, 1000);
+setInterval(function () {
+    if (web3.eth.accounts[0] !== account) {
+        account = web3.eth.accounts[0];
+        checkValidAccount();
+    }
+}, 1000);

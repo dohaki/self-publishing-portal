@@ -2,17 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bb0ac04-ab6f-4b09-9596-67ba80babd0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/lib/helpers/campaignCollectionHelper.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingHelper.js" afterPath="$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/lib/ethereum/contracts/userRegisterHelper.js" afterPath="$PROJECT_DIR$/client/lib/ethereum/contracts/userRegisterContractHelper.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/lib/helpers/ethereumHelpers.js" afterPath="$PROJECT_DIR$/client/lib/helpers/ethereumHelper.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/lib/helpers/templateHelpers.js" afterPath="$PROJECT_DIR$/client/lib/helpers/templateHelper.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/main.less" afterPath="$PROJECT_DIR$/client/main.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js" afterPath="$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/lib/helpers/campaignCollectionHelper.js" afterPath="$PROJECT_DIR$/client/lib/helpers/campaignCollectionHelper.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/lib/helpers/templateHelper.js" afterPath="$PROJECT_DIR$/client/lib/helpers/templateHelper.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/lib/init.js" afterPath="$PROJECT_DIR$/client/lib/init.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/components/campaignCard.html" afterPath="$PROJECT_DIR$/client/templates/components/campaignCard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/components/campaignCreateBasic.html" afterPath="$PROJECT_DIR$/client/templates/components/campaignCreateBasic.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/components/campaignCreateBasic.js" afterPath="$PROJECT_DIR$/client/templates/components/campaignCreateBasic.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/campaignDetails.html" afterPath="$PROJECT_DIR$/client/templates/views/campaignDetails.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/campaignDetails.js" afterPath="$PROJECT_DIR$/client/templates/views/campaignDetails.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/campaigns.html" afterPath="$PROJECT_DIR$/client/templates/views/campaigns.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/campaigns.js" afterPath="$PROJECT_DIR$/client/templates/views/campaigns.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -33,60 +32,74 @@
     <favorites_list name="Self-Publishing" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="campaignDetails.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/templates/views/campaignDetails.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="38" lean-forward="false" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="campaignDetails.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/templates/views/campaignDetails.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="18" column="55" lean-forward="false" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="campaignCollectionHelper.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/lib/helpers/campaignCollectionHelper.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="campaigns.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="campaignCard.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/templates/components/campaignCard.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="64" lean-forward="false" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="64" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+          <file leaf-file-name="campaigns.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="736">
+                  <caret line="73" column="85" lean-forward="false" selection-start-line="73" selection-start-column="85" selection-end-line="73" selection-end-column="85" />
+                  <folding>
+                    <element signature="e#0#43#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="campaigns.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="156">
+                  <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+                  <folding>
+                    <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#template#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="campaignCard.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/components/campaignCard.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="165">
+                  <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+                  <folding>
+                    <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="campaignCreateBasic.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/templates/components/campaignCreateBasic.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="241">
+                  <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+                  <folding>
+                    <element signature="e#0#43#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="templateHelper.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/lib/helpers/templateHelper.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="405">
+                  <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -117,7 +130,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/index.html" />
         <option value="$PROJECT_DIR$/client/collections.js" />
         <option value="$PROJECT_DIR$/client/index.js" />
         <option value="$PROJECT_DIR$/client/templates/layout/header.html" />
@@ -136,13 +148,11 @@
         <option value="$PROJECT_DIR$/client/templates/components/campaignCreateAuthor.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/client/templates/layout/header.js" />
-        <option value="$PROJECT_DIR$/client/templates/views/campaigns.html" />
         <option value="$PROJECT_DIR$/client/templates/components/campaignCreateRewards.js" />
         <option value="$PROJECT_DIR$/client/templates/layout/sidebar.js" />
         <option value="$PROJECT_DIR$/client/templates/views/login.html" />
         <option value="$PROJECT_DIR$/client/lib/ethereum/contracts/userRegister.sol" />
         <option value="$PROJECT_DIR$/client/lib/ethereum/contracts/userRegisterHelper.js" />
-        <option value="$PROJECT_DIR$/client/lib/init.js" />
         <option value="$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFunding.sol" />
         <option value="$PROJECT_DIR$/client/lib/ethereum/web3Init.js" />
         <option value="$PROJECT_DIR$/client/lib/helpers/ethereumHelpers.js" />
@@ -155,19 +165,22 @@
         <option value="$PROJECT_DIR$/client/templates/views/campaignCreate.js" />
         <option value="$PROJECT_DIR$/client/templates/components/campaignCreateBackground.js" />
         <option value="$PROJECT_DIR$/client/templates/views/campaignCreate.html" />
-        <option value="$PROJECT_DIR$/client/templates/components/campaignCreateBasic.html" />
         <option value="$PROJECT_DIR$/client/main.less" />
         <option value="$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingHelper.js" />
         <option value="$PROJECT_DIR$/client/lib/helpers/crowdFundingCollectionHelpers.js" />
         <option value="$PROJECT_DIR$/client/lib/helpers/crowdFundingCollectionHelper.js" />
-        <option value="$PROJECT_DIR$/client/lib/helpers/campaignCollectionHelper.js" />
-        <option value="$PROJECT_DIR$/client/templates/views/campaigns.js" />
-        <option value="$PROJECT_DIR$/client/templates/views/campaignDetails.html" />
-        <option value="$PROJECT_DIR$/client/templates/components/campaignCreateBasic.js" />
         <option value="$PROJECT_DIR$/client/lib/helpers/ethereumHelper.js" />
         <option value="$PROJECT_DIR$/client/templates/views/campaignDetails.js" />
+        <option value="$PROJECT_DIR$/client/lib/init.js" />
+        <option value="$PROJECT_DIR$/client/templates/components/campaignCreateBasic.html" />
+        <option value="$PROJECT_DIR$/client/lib/helpers/campaignCollectionHelper.js" />
         <option value="$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js" />
+        <option value="$PROJECT_DIR$/client/templates/views/campaignDetails.html" />
+        <option value="$PROJECT_DIR$/client/lib/helpers/templateHelper.js" />
+        <option value="$PROJECT_DIR$/client/templates/components/campaignCreateBasic.js" />
+        <option value="$PROJECT_DIR$/client/templates/views/campaigns.js" />
         <option value="$PROJECT_DIR$/client/templates/components/campaignCard.html" />
+        <option value="$PROJECT_DIR$/client/templates/views/campaigns.html" />
       </list>
     </option>
   </component>
@@ -583,7 +596,7 @@
       <workItem from="1481271200024" duration="17131000" />
       <workItem from="1481378592490" duration="4659000" />
       <workItem from="1481532231743" duration="18602000" />
-      <workItem from="1481561495233" duration="1966000" />
+      <workItem from="1481561495233" duration="15329000" />
     </task>
     <task id="LOCAL-00001" summary="README Anpassung">
       <created>1479746796849</created>
@@ -781,22 +794,29 @@
       <option name="project" value="LOCAL" />
       <updated>1481303857904</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="campaign contribution">
+      <created>1481626613179</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1481626613179</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="217977000" />
+    <option name="totallyTimeSpent" value="231340000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17328326" sideWeight="0.49535963" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15236051" sideWeight="0.49535963" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946634" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14800861" sideWeight="0.5046404" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21459228" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44313306" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32714617" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -826,7 +846,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="README Anpassung" />
     <MESSAGE value="Layout Anpassungen + Materialize + FlowRouter" />
     <MESSAGE value="paykage anpassungen und collapse button sidenav" />
     <MESSAGE value="diverses" />
@@ -851,7 +870,8 @@
     <MESSAGE value="Auslagern von upsert bei Kampagne" />
     <MESSAGE value="Basic Detail-Seite von Campaign" />
     <MESSAGE value="html in campaign integriert" />
-    <option name="LAST_COMMIT_MESSAGE" value="html in campaign integriert" />
+    <MESSAGE value="campaign contribution" />
+    <option name="LAST_COMMIT_MESSAGE" value="campaign contribution" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1048,13 +1068,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="3" lean-forward="true" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/views/campaignCreate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1066,13 +1079,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="21" column="68" lean-forward="false" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/components/campaignCreateBasic.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="15" column="92" lean-forward="false" selection-start-line="15" selection-start-column="92" selection-end-line="15" selection-end-column="92" />
         </state>
       </provider>
     </entry>
@@ -1090,40 +1096,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/helpers/templateHelper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/helpers/crowdFundingCollectionHelper.js" />
     <entry file="file://$PROJECT_DIR$/client/templates/layout/sidebar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/campaignCreate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="54" lean-forward="false" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/components/campaignCreateBasic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1138,34 +1115,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="23" lean-forward="true" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/campaignDetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="38" lean-forward="false" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/campaignDetails.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" column="55" lean-forward="false" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="130" column="48" lean-forward="false" selection-start-line="130" selection-start-column="48" selection-end-line="130" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#92#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1185,27 +1135,111 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/helpers/campaignCollectionHelper.js">
+    <entry file="file://$PROJECT_DIR$/client/templates/views/campaignDetails.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        <state relative-caret-position="184">
+          <caret line="18" column="55" lean-forward="false" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="9" lean-forward="false" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.html">
+    <entry file="file://$PROJECT_DIR$/client/templates/components/campaignCreateBasic.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+        <state relative-caret-position="150">
+          <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/views/campaignCreate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" column="35" lean-forward="true" selection-start-line="20" selection-start-column="35" selection-end-line="21" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2565">
+          <caret line="171" column="7" lean-forward="true" selection-start-line="171" selection-start-column="7" selection-end-line="171" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#105#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/helpers/campaignCollectionHelper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="3" lean-forward="true" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/views/campaignDetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="42" lean-forward="false" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/helpers/templateHelper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/components/campaignCreateBasic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="73" column="85" lean-forward="false" selection-start-line="73" selection-start-column="85" selection-end-line="73" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/components/campaignCard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="64" lean-forward="false" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="64" />
-          <folding />
+        <state relative-caret-position="165">
+          <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

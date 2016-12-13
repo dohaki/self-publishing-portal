@@ -32,3 +32,7 @@ Template.registerHelper('getUserNameByAddress', function (address) {
     let user = Users.findOne({userAddress: address});
     return user.userName;
 });
+
+Template.registerHelper('isSelected', function (item) {
+    return item.selected;
+});

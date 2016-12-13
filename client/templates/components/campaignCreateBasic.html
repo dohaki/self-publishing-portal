@@ -13,19 +13,27 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="description" class="materialize-textarea validate" length="500" required></textarea>
+                <textarea id="description" class="materialize-textarea validate" maxlength="500" required></textarea>
                 <label for="description">Description</label>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12">
-                <select id="category" class="validate" required>
+            <div class="input-field col s12 m6">
+                <select id="category" class="js-category validate" required>
                     <option value="" disabled selected>Choose a category</option>
                     {{#each category in categories}}
-                        <option value="{{category}}">{{category}}</option>
+                        <option value="{{category.category}}">{{category.category}}</option>
                     {{/each}}
                 </select>
                 <label>Category</label>
+            </div>
+            <div class="input-field col s12 m6">
+                <select id="subCategory" class="validate" required>
+                    {{#each category in subCategories}}
+                        <option value="{{category}}">{{category}}</option>
+                    {{/each}}
+                </select>
+                <label>Sub Category</label>
             </div>
         </div>
         <div class="row">
