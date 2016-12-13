@@ -36,3 +36,11 @@ Template.registerHelper('getUserNameByAddress', function (address) {
 Template.registerHelper('isSelected', function (item) {
     return item.selected;
 });
+
+Template.registerHelper('waitingForConfirmation', function () {
+   return Session.get('waitingForConfirmation');
+});
+
+Template.registerHelper('loading', function () {
+    return (Session.get('waitingForConfirmation') || Session.get('mining'));
+});

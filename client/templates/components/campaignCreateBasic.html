@@ -7,22 +7,26 @@
     <form class="row col s12" id="basicForm">
         <div class="row">
             <div class="input-field col s12">
-                <input id="title" class="validate" type="text" minlength="1" maxlength="50" length="50" required>
+                <input id="title" class="validate {{#if waitingForConfirmation}}disabled{{/if}}" type="text"
+                       minlength="1" maxlength="50" length="50" required>
                 <label for="title" data-error="wrong">Title</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="description" class="materialize-textarea validate" maxlength="500" required></textarea>
+                <textarea id="description"
+                          class="materialize-textarea validate {{#if waitingForConfirmation}}disabled{{/if}}"
+                          maxlength="500" required></textarea>
                 <label for="description">Description</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12 m6">
-                <select id="category" class="js-category validate" required>
+                <select id="category" class="js-category validate {{#if waitingForConfirmation}}disabled{{/if}}"
+                        required>
                     <option value="" disabled selected>Choose a category</option>
                     {{#each category in categories}}
-                        <option value="{{category.category}}">{{category.category}}</option>
+                        <option value="{{category.category}}" class="disabled">{{category.category}}</option>
                     {{/each}}
                 </select>
                 <label>Category</label>
@@ -30,7 +34,8 @@
             <div class="input-field col s12 m6">
                 <select id="subCategory" class="validate" required>
                     {{#each category in subCategories}}
-                        <option value="{{category}}">{{category}}</option>
+                        <option value="{{category}}"
+                                class="{{#if waitingForConfirmation}}disabled{{/if}}">{{category}}</option>
                     {{/each}}
                 </select>
                 <label>Sub Category</label>
@@ -38,11 +43,13 @@
         </div>
         <div class="row">
             <div class="input-field col s12 m6">
-                <input id="duration" type="number" min="1" class="validate" required>
+                <input id="duration" type="number" min="1"
+                       class="validate {{#if waitingForConfirmation}}disabled{{/if}}" required>
                 <label for="duration">Duration in days</label>
             </div>
             <div class="input-field col s12 m6">
-                <input id="goal" type="number" min="0.1" step="0.1" class="validate" required>
+                <input id="goal" type="number" min="0.1" step="0.1"
+                       class="validate {{#if waitingForConfirmation}}disabled{{/if}}" required>
                 <label for="goal">Goal in ETH</label>
             </div>
         </div>

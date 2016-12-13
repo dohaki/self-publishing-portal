@@ -1,4 +1,4 @@
-import {upsertCampaign, updateCampaign, getCategory} from '/client/lib/helpers/campaignCollectionHelper';
+import {upsertCampaign, updateCampaign, getCategory, removeMockCampaign} from '/client/lib/helpers/campaignCollectionHelper';
 import {pendingTransaction} from '/client/lib/helpers/ethereumHelper';
 
 const abiArray = [{
@@ -156,15 +156,18 @@ export function getCampaignFromContract(index) {
                 campaignClosed: result[9],
                 numOfContributions: new BigNumber(result[10]).toNumber(),
                 createdAt: new Date(new BigNumber(result[11]).toNumber() * 1000),
-                contributions: []
+                contributions: [],
+                status: 'MINED'
             };
-            upsertCampaign(campaign._id, campaign, function () {
-                CrowdFundingContract.campaignHtml(index, function (error, result) {
-                    if (error) console.error(error);
-                    else updateCampaign(index, {$set: {html: result}}, function () {
-                        for (let i = 0; i < campaign.numOfContributions; i++) {
-                            getContributionsFromContract(index, i);
-                        }
+            removeMockCampaign(campaign, function () {
+                upsertCampaign(campaign._id, campaign, function () {
+                    CrowdFundingContract.campaignHtml(index, function (error, result) {
+                        if (error) console.error(error);
+                        else updateCampaign(index, {$set: {html: result}}, function () {
+                            for (let i = 0; i < campaign.numOfContributions; i++) {
+                                getContributionsFromContract(index, i);
+                            }
+                        });
                     });
                 });
             });

@@ -53,14 +53,19 @@ header, main, footer {
 }
 
 .loading {
-  position: absolute;
-  z-index: 2;
+  position: fixed;
+  z-index: 1000;
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center; /* align horizontal */
   align-items: center; /* align vertical */
+  padding-left: 0;
+}
+
+.disabled {
+  pointer-events: none;
 }
 
 // WORKAROUND - START

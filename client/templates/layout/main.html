@@ -1,4 +1,30 @@
 <template name="layout_main">
+    <!-- loading -->
+    {{#if loading}}
+        <div class="loading">
+            <div class="text-center">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                {{#if mining}}
+                    <p class="white-text">Please wait for transaction to be mined...</p>
+                    <p class="white-text">This may take some minutes.</p>
+                {{else}}
+                    <p class="white-text">Waiting for transaction to be accepted...</p>
+                {{/if}}
+            </div>
+        </div>
+    {{/if}}
     <!-- The dynamic page header -->
     {{> Template.dynamic template=header}}
 
@@ -7,31 +33,10 @@
         <!-- sidebar -->
         {{> Template.dynamic template=sidebar}}
 
-        <!-- loading -->
-        {{#if mining}}
-        <main class="loading">
-            <div class="text-center">
-                <div class="preloader-wrapper big active">
-                    <div class="spinner-layer spinner-blue-only">
-                        <div class="circle-clipper left">
-                            <div class="circle"></div>
-                        </div><div class="gap-patch">
-                        <div class="circle"></div>
-                    </div><div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                    </div>
-                </div>
-                <p class="white-text">Please wait for transaction to be mined...</p>
-                <p class="white-text">This may take some minutes.</p>
-            </div>
-        </main>
-        {{else}}
         <!-- content -->
         <main class="dapp-content">
             {{> Template.dynamic template=main}}
         </main>
-        {{/if}}
 
         <!-- actionbar -->
         {{> Template.dynamic template=actionbar}}
