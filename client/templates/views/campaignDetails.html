@@ -16,13 +16,31 @@
                     <h3 class="bold no-margin">{{campaign.numOfBackers}}</h3>
                     <p class="no-margin">Backers</p>
                     <p></p>
-                    <h3 class="bold no-margin">{{campaign.amountRaised}} ETH</h3>
-                    <p class="no-margin">of goal {{campaign.fundingGoal}} ETH</p>
+                    <h3 class="bold no-margin">{{dapp_formatBalance campaign.amountRaised}} ETH</h3>
+                    <p class="no-margin">of goal {{dapp_formatBalance campaign.fundingGoal}} ETH</p>
                     <p></p>
                     <h3 class="bold no-margin">{{getLeftDays campaign.deadline}}</h3>
                     <p class="no-margin">left</p>
                     <p></p>
-                    <a class="waves-effect waves-light btn">Contribute</a>
+                    <a class="modal-trigger waves-effect waves-light btn" href="#contributeModal">Contribute</a>
+                    <!-- Modal Structure -->
+                    <div id="contributeModal" class="modal">
+                        <div class="modal-content">
+                            <h4>Enter your contribution</h4>
+                            <div class="row">
+                                <div class="col s4"></div>
+                                <div class="input-field col s4">
+                                    <i class="material-icons prefix large-font">attach_money</i>
+                                    <input id="contribution" type="number" class="validate bold text-center large-font" step="0.1" min="0.1" max="{{dapp_formatBalance maxContribution}}">
+                                </div>
+                                <div class="col s4"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="js-contribute modal-close waves-effect waves-green btn right">Contribute</a>
+                            <a class="modal-action modal-close waves-effect waves-green btn-flat right">Cancel</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="divider"></div>

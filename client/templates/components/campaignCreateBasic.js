@@ -1,6 +1,8 @@
 import {Template} from 'meteor/templating';
 import {ReactiveVar} from 'meteor/reactive-var';
 
+import {pendingTransaction} from '/client/lib/helpers/ethereumHelper';
+
 import './campaignCreateBasic.html';
 
 Template.components_campaignCreateBasic.onRendered(function () {
@@ -28,14 +30,13 @@ Template.components_campaignCreateBasic.events({
         const title = $('#title').val();
         const description = $('#description').val();
         const category = $('#category').val();
-        const goal = $('#goal').val();
-        // rechne die Dauer in Tagen in Minuten um
-        const duration = $('#duration').val() * 24 * 60;
+        const goal = web3.toWei($('#goal').val(), 'ether'); // wandle ether in wei um
+        const duration = $('#duration').val() * 24 * 60; // rechne die Dauer in Tagen in Minuten um
         const html = $('div#froala-editor').froalaEditor('html.get');
         CrowdFundingContract.startCampaign(title, description, category, goal, duration, html, function (error, result) {
             if (error) console.error(error);
             else {
-                EthereumHelper.pendingTransaction(result, function () {
+                pendingTransaction(result, function () {
                     FlowRouter.go('/campaigns');
                 });
             }

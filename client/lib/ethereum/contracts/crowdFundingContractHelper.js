@@ -1,3 +1,6 @@
+import {upsertCampaign, updateCampaign} from '/client/lib/helpers/campaignCollectionHelper';
+import {pendingTransaction} from '/client/lib/helpers/ethereumHelper';
+
 const abiArray = [{
     "constant": true,
     "inputs": [{"name": "", "type": "uint256"}],
@@ -14,7 +17,7 @@ const abiArray = [{
     }, {"name": "fundingGoalReached", "type": "bool"}, {
         "name": "campaignClosed",
         "type": "bool"
-    }, {"name": "numOfBackers", "type": "uint256"}],
+    }, {"name": "numOfContributions", "type": "uint256"}],
     "payable": false,
     "type": "function"
 }, {
@@ -29,6 +32,13 @@ const abiArray = [{
     "inputs": [{"name": "_id", "type": "uint256"}],
     "name": "safeWithdrawal",
     "outputs": [],
+    "payable": false,
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{"name": "", "type": "uint256"}, {"name": "", "type": "uint256"}],
+    "name": "contributions",
+    "outputs": [{"name": "contributor", "type": "address"}, {"name": "amount", "type": "uint256"}],
     "payable": false,
     "type": "function"
 }, {
@@ -56,7 +66,7 @@ const abiArray = [{
     "inputs": [{"name": "_id", "type": "uint256"}],
     "name": "contribute",
     "outputs": [],
-    "payable": false,
+    "payable": true,
     "type": "function"
 }, {
     "constant": true,
@@ -105,66 +115,108 @@ const abiArray = [{
     "type": "event"
 }];
 
-const address = "0x253a0fb430265864f1cb7fd14168546088c238b5";
+const address = "0x9cfb6bcf8d9f614cede7575f2d3865b64ac69d39";
 
 CrowdFundingContract = web3.eth.contract(abiArray).at(address);
+
+export function getContributionsFromContract(campaignId, contributionId) {
+    CrowdFundingContract.contributions(campaignId, contributionId, function (error, result) {
+        if (error) console.error(error);
+        else {
+            let contribution = {
+                contributor: result[0],
+                amount: new BigNumber(result[1]).toNumber()
+            };
+            let changes = {$push: {contributions: contribution}};
+            updateCampaign(campaignId, changes);
+        }
+    });
+}
 
 /**
  * Holt von der Blockchain über den index die zugehörige Kampagne
  * und aktualisiert diese in der lokalen DB
  * @param index
  */
-function upsertCampaign(index) {
+export function getCampaignFromContract(index) {
     CrowdFundingContract.campaigns(index, function (error, result) {
-        Campaigns.upsert({_id: result[0].c[0]}, {
-            _id: result[0].c[0],
-            title: result[1],
-            description: result[2],
-            category: result[3],
-            beneficiary: result[4],
-            fundingGoal: result[5].c[0],
-            amountRaised: result[6].c[0],
-            deadline: new Date(result[7].c[0] * 1000),
-            fundingGoalReached: result[8],
-            campaignClosed: result[9],
-            numOfBackers: result[10].c[0]
-        }, function (error, upsertedCampaign) {
-            if (error) console.error(error);
-            else {
+        if (error) console.error(error);
+        else {
+            let campaign = {
+                _id: new BigNumber(result[0]).toNumber(),
+                title: result[1],
+                description: result[2],
+                category: result[3],
+                beneficiary: result[4],
+                fundingGoal: new BigNumber(result[5]).toNumber(),
+                amountRaised: new BigNumber(result[6]).toNumber(),
+                deadline: new Date(new BigNumber(result[7]).toNumber() * 1000),
+                fundingGoalReached: result[8],
+                campaignClosed: result[9],
+                numOfContributions: new BigNumber(result[10]).toNumber(),
+                contributions: []
+            };
+            upsertCampaign(campaign._id, campaign, function () {
                 CrowdFundingContract.campaignHtml(index, function (error, result) {
                     if (error) console.error(error);
-                    else {
-                        Campaigns.update({_id: index}, {$set: {html: result}});
-                    }
+                    else updateCampaign(index, {$set: {html: result}}, function () {
+                        for (let i = 0; i < campaign.numOfContributions; i++) {
+                            getContributionsFromContract(index, i);
+                        }
+                    });
                 });
-            }
-        });
+            });
+        }
     });
 }
 
 /**
- * Initiale GET-Methode um alle Kampagnen auf der Blockchain zu holen
+ * GET-Methode um alle Kampagnen auf der Blockchain zu holen
  */
-CrowdFundingContract.campaignCounter(function (error, result) {
-    if (error) console.error(error);
-    else {
-        const counter = result.c[0];
-        for (let i = 1; i <= counter; i++) {
-            upsertCampaign(i);
+export function getAllCampaignsFromContract() {
+    CrowdFundingContract.campaignCounter(function (error, result) {
+        if (error) console.error(error);
+        else {
+            const counter = new BigNumber(result).toNumber();
+            for (let i = 1; i <= counter; i++) {
+                getCampaignFromContract(i);
+            }
         }
-    }
-});
+    });
+}
+
+export function contributeToContract(campaignId, amount, cb) {
+    CrowdFundingContract.contribute(campaignId, {value: web3.toWei(amount, 'ether')}, function (error, result) {
+        if (error) console.error(error);
+        else {
+            pendingTransaction(result, function () {
+                if (cb) cb();
+            });
+        }
+    });
+}
 
 /**
  * Sobald eine neue Kampagne erstellt wurde, füge diese auch in der lokalen DB ein
  */
 CrowdFundingContract.CampaignStarted().watch(function (error, result) {
     if (error) {
-        console.error('CampaignStarted event');
         console.error(error);
     } else {
         console.log('event CampaignStarted fired!');
         console.log(result);
-        upsertCampaign(result.args._id.c[0]);
+        getCampaignFromContract(result.args._id.c[0]);
+    }
+});
+
+/**
+ * Sobald eine neue Kampagne erstellt wurde, füge diese auch in der lokalen DB ein
+ */
+CrowdFundingContract.FundTransfer().watch(function (error, result) {
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('event FundTransfer fired!');
+        console.log(result);
     }
 });
