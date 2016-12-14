@@ -1,40 +1,54 @@
 <template name="components_campaignCard">
     <div class="col s12 m6 l4">
         <div class="card">
-            <div class="card-image">
-                <img class="center-cropped" src="/images/default.png">
-            </div>
+            <!--<div class="card-image">-->
+            <!--<img class="center-cropped" src="/images/default.png">-->
+            <!--</div>-->
             <div class="card-content" style="padding-bottom: 0">
                 <div class="section" style="padding-top: 0 !important;">
-                    <p class="bold">{{this.title}}</p>
+                    <p class="bold truncate">{{this.title}}</p>
                     <p>{{getUserNameByAddress this.beneficiary}}</p>
                 </div>
                 <p style="height: 100px; overflow: auto;">{{this.description}}</p>
-                <div class="section" style="padding-bottom: 0">
-                    <div class="progress">
-                        <div class="determinate" style="width: {{getPercentage this.amountRaised this.fundingGoal}}%"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col s4">
-                            <p class="bold">{{getPercentage this.amountRaised this.fundingGoal}} %</p>
-                            <p>financed</p>
+                {{#if isPending this}}
+                    <div class="section">
+                        <div class="progress">
+                            <div class="indeterminate"></div>
                         </div>
-                        <div class="col s4">
-                            <p class="bold">{{dapp_formatBalance this.amountRaised}} ETH</p>
-                            <p>reached</p>
-                        </div>
-                        <div class="col s4">
-                            <p class="bold">{{getLeftDays this.deadline}}</p>
-                            <p>left</p>
+                        <div class="row text-center">
+                            <div class="col">Waiting for transaction to get mined...</div>
                         </div>
                     </div>
-                </div>
+                {{else}}
+                    <div class="section" style="padding-bottom: 0">
+                        <div class="progress">
+                            <div class="determinate"
+                                 style="width: {{getPercentage this.amountRaised this.fundingGoal}}%"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col s4">
+                                <p class="bold">{{getPercentage this.amountRaised this.fundingGoal}} %</p>
+                                <p>financed</p>
+                            </div>
+                            <div class="col s4">
+                                <p class="bold">{{dapp_formatBalance this.amountRaised}} ETH</p>
+                                <p>reached</p>
+                            </div>
+                            <div class="col s4">
+                                <p class="bold">{{getLeftDays this.deadline}}</p>
+                                <p>left</p>
+                            </div>
+                        </div>
+                    </div>
+                {{/if}}
             </div>
+            {{#unless isPending this}}
             <div class="card-action">
-                <a href=""><i class="material-icons">share</i></a>
-                <a href=""><i class="material-icons">favorite_border</i></a>
-                <a class="js-details right" href="/campaigns/{{this._id}}"><i class="material-icons">description</i></a>
+                    <a href=""><i class="material-icons">share</i></a>
+                    <a href=""><i class="material-icons">favorite_border</i></a>
+                    <a class="js-details right" href="/campaigns/{{this._id}}"><i class="material-icons">description</i></a>
             </div>
+            {{/unless}}
         </div>
     </div>
 </template>

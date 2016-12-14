@@ -44,3 +44,11 @@ Template.registerHelper('waitingForConfirmation', function () {
 Template.registerHelper('loading', function () {
     return (Session.get('waitingForConfirmation') || Session.get('mining'));
 });
+
+Template.registerHelper('isArrayEmpty', function (array) {
+    return (array.length === 0);
+});
+
+Template.registerHelper('isPending', function (object) {
+    return (object.status === 'PENDING');
+});

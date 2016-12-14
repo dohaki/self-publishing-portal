@@ -9,16 +9,44 @@
                 <!--<li class="tab col s3"><a href="#all">All</a></li>-->
             </ul>
         </div>
-        <div id="my" class="col s12">
-            <div class="section">
-                <a class="js-start-campaign waves-effect waves-teal btn"><i class="material-icons left">play_arrow</i>start
+    <div id="my" class="col s12">
+        <div class="row section no-margin">
+            <div class="col">
+                <a class="js-start-campaign waves-effect waves-teal btn"><i
+                        class="material-icons left">play_arrow</i>start
                     new campaign</a>
             </div>
-            <div class="row">
-                {{#each campaign in myCampaigns}}
+        </div>
+        {{#unless isArrayEmpty pendingCampaigns}}
+            <div class="row no-margin">
+                <h5 class="col bold">Pending Campaigns</h5>
+            </div>
+            <div class="slick-carousel">
+                {{#each campaign in pendingCampaigns}}
                     {{> components_campaignCard campaign}}
                 {{/each}}
             </div>
+        {{/unless}}
+        {{#unless isArrayEmpty myLiveCampaigns}}
+            <div class="row no-margin">
+                <h5 class="col bold">My Live Campaigns</h5>
+            </div>
+            <div class="slick-carousel">
+                {{#each campaign in myLiveCampaigns}}
+                    {{> components_campaignCard campaign}}
+                {{/each}}
+            </div>
+        {{/unless}}
+        {{#unless isArrayEmpty contributedCampaigns}}
+            <div class="row no-margin">
+                <h5 class="col bold">Contributed Campaigns</h5>
+            </div>
+            <div class="slick-carousel">
+                {{#each campaign in contributedCampaigns}}
+                    {{> components_campaignCard campaign}}
+                {{/each}}
+            </div>
+        {{/unless}}
         </div>
         <div id="popular" class="col s12">
             <div class="row">

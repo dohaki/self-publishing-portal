@@ -156,19 +156,32 @@ export function getCampaignFromContract(index) {
                 campaignClosed: result[9],
                 numOfContributions: new BigNumber(result[10]).toNumber(),
                 createdAt: new Date(new BigNumber(result[11]).toNumber() * 1000),
-                contributions: [],
                 status: 'MINED'
             };
+            const existingCampaign = Campaigns.findOne({_id: campaign._id});
+            if (!existingCampaign || !existingCampaign.contributions) campaign.contributions = [];
+            else {
+                campaign.contributions = existingCampaign.contributions;
+                campaign.html = existingCampaign.html;
+            }
             removeMockCampaign(campaign, function () {
                 upsertCampaign(campaign._id, campaign, function () {
-                    CrowdFundingContract.campaignHtml(index, function (error, result) {
-                        if (error) console.error(error);
-                        else updateCampaign(index, {$set: {html: result}}, function () {
-                            for (let i = 0; i < campaign.numOfContributions; i++) {
-                                getContributionsFromContract(index, i);
+                    if (!existingCampaign) {
+                        CrowdFundingContract.campaignHtml(index, function (error, result) {
+                            if (error) console.error(error);
+                            else {
+                                updateCampaign(index, {$set: {html: result}}, function () {
+                                    for (let i = 0; i < campaign.numOfContributions; i++) {
+                                        getContributionsFromContract(index, i);
+                                    }
+                                });
                             }
                         });
-                    });
+                    } else {
+                        for (let i = existingCampaign.contributions.length; i < campaign.numOfContributions; i++) {
+                            getContributionsFromContract(index, i);
+                        }
+                    }
                 });
             });
         }

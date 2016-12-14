@@ -26,13 +26,55 @@ Template.views_campaigns.onCreated(function () {
 });
 
 Template.views_campaigns.onRendered(function () {
-    $(document).ready(function () {
-        $('ul.tabs').tabs();
-        $('.carousel').carousel({
-            dist: 0,
-            indicators: true
-        });
-    });
+    $('ul.tabs').tabs();
+    // $('.slick-carousel').slick({
+    //     infinite: true,
+    //     dots: true,
+    //     slidesToShow: 4,
+    //     slidesToScroll: 4,
+    //     arrows: true,
+    //     responsive: [
+    //         {
+    //             breakpoint: 1400,
+    //             settings: {
+    //                 slidesToShow: 3,
+    //                 slidesToScroll: 3,
+    //                 infinite: true,
+    //                 dots: true
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 1100,
+    //             settings: {
+    //                 slidesToShow: 2,
+    //                 slidesToScroll: 2,
+    //                 infinite: true,
+    //                 dots: true
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 992,
+    //             settings: {
+    //                 slidesToShow: 3,
+    //                 slidesToScroll: 3
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 780,
+    //             settings: {
+    //                 slidesToShow: 2,
+    //                 slidesToScroll: 2
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 580,
+    //             settings: {
+    //                 slidesToShow: 1,
+    //                 slidesToScroll: 1
+    //             }
+    //         }
+    //     ]
+    // });
 });
 
 Template.views_campaigns.events({
@@ -55,8 +97,23 @@ Template.views_campaigns.events({
 });
 
 Template.views_campaigns.helpers({
-    myCampaigns: function () {
-        return Campaigns.find({beneficiary: account}).fetch();
+    myLiveCampaigns: function () {
+        return Campaigns.find({
+            beneficiary: account,
+            status: 'MINED'
+        }, {sort: {createdAt: -1}}).fetch();
+    },
+    pendingCampaigns: function () {
+        return Campaigns.find({beneficiary: account, status: 'PENDING'}).fetch();
+    },
+    contributedCampaigns: function () {
+        return Campaigns.find({
+            contributions: {
+                $elemMatch: {
+                    contributor: account
+                }
+            }
+        }).fetch();
     },
     mostPopularCampaigns: function () {
         return Campaigns.find({}, {sort: {numOfContributions: -1}}).fetch();
