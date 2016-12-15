@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bb0ac04-ab6f-4b09-9596-67ba80babd0d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/lib/helpers/transactionCollectionHelper.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/components/transactionCard.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/lib/collections.js" afterPath="$PROJECT_DIR$/client/lib/collections.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js" afterPath="$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/lib/helpers/campaignCollectionHelper.js" afterPath="$PROJECT_DIR$/client/lib/helpers/campaignCollectionHelper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/lib/helpers/ethereumHelper.js" afterPath="$PROJECT_DIR$/client/lib/helpers/ethereumHelper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/components/campaignCreateBasic.js" afterPath="$PROJECT_DIR$/client/templates/components/campaignCreateBasic.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/campaignDetails.js" afterPath="$PROJECT_DIR$/client/templates/views/campaignDetails.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/campaigns.html" afterPath="$PROJECT_DIR$/client/templates/views/campaigns.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/campaigns.js" afterPath="$PROJECT_DIR$/client/templates/views/campaigns.js" />
     </list>
@@ -48,8 +41,8 @@
       <file leaf-file-name="campaigns.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+            <state relative-caret-position="519">
+              <caret line="79" column="60" lean-forward="false" selection-start-line="79" selection-start-column="60" selection-end-line="79" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -65,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="campaigns.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="campaigns.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="63" column="27" lean-forward="false" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
+            <state relative-caret-position="589">
+              <caret line="75" column="52" lean-forward="false" selection-start-line="75" selection-start-column="52" selection-end-line="75" selection-end-column="52" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -107,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crowdFundingContractHelper.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="crowdFundingContractHelper.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="279" column="28" lean-forward="false" selection-start-line="279" selection-start-column="28" selection-end-line="279" selection-end-column="28" />
+            <state relative-caret-position="756">
+              <caret line="293" column="64" lean-forward="false" selection-start-line="293" selection-start-column="64" selection-end-line="293" selection-end-column="64" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -197,10 +190,10 @@
         <option value="$PROJECT_DIR$/client/templates/components/campaignCreateBasic.js" />
         <option value="$PROJECT_DIR$/client/lib/helpers/campaignCollectionHelper.js" />
         <option value="$PROJECT_DIR$/client/templates/components/transactionCard.html" />
-        <option value="$PROJECT_DIR$/client/templates/views/campaigns.html" />
         <option value="$PROJECT_DIR$/client/lib/helpers/ethereumHelper.js" />
-        <option value="$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js" />
         <option value="$PROJECT_DIR$/client/templates/views/campaigns.js" />
+        <option value="$PROJECT_DIR$/client/templates/views/campaigns.html" />
+        <option value="$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js" />
       </list>
     </option>
   </component>
@@ -619,7 +612,7 @@
       <workItem from="1481561495233" duration="27365000" />
       <workItem from="1481713946339" duration="23671000" />
       <workItem from="1481793272130" duration="28000" />
-      <workItem from="1481793341723" duration="12343000" />
+      <workItem from="1481793341723" duration="12732000" />
     </task>
     <task id="LOCAL-00001" summary="README Anpassung">
       <created>1479746796849</created>
@@ -852,11 +845,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481804791455</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Refactoring pending transactions">
+      <created>1481808630802</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1481808630802</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="279418000" />
+    <option name="totallyTimeSpent" value="279807000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -897,7 +897,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="campaign detail/create ansichten" />
     <MESSAGE value="campaign detail/create refactoring" />
     <MESSAGE value="campaign rewards seite" />
     <MESSAGE value="campaign rewards create/delete &#10;Achtung: nur Frontend" />
@@ -922,7 +921,8 @@
     <MESSAGE value="mock campaigns" />
     <MESSAGE value="slick carousel" />
     <MESSAGE value="Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
+    <MESSAGE value="Refactoring pending transactions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring pending transactions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1207,14 +1207,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/components/transactionCard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1265,22 +1257,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js">
+    <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="279" column="28" lean-forward="false" selection-start-line="279" selection-start-column="28" selection-end-line="279" selection-end-column="28" />
+        <state relative-caret-position="589">
+          <caret line="75" column="52" lean-forward="false" selection-start-line="75" selection-start-column="52" selection-end-line="75" selection-end-column="52" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.js">
+    <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="63" column="27" lean-forward="false" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
+        <state relative-caret-position="519">
+          <caret line="79" column="60" lean-forward="false" selection-start-line="79" selection-start-column="60" selection-end-line="79" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="293" column="64" lean-forward="false" selection-start-line="293" selection-start-column="64" selection-end-line="293" selection-end-column="64" />
           <folding>
-            <element signature="e#0#43#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

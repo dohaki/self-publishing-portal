@@ -77,11 +77,15 @@
                 {{/each}}
             </div>
             {{#each category in selectedCategories}}
-                <div class="row section">
-                    <h5>{{category}}</h5>
-                    {{#each campaign in getFilteredCampaigns category}}
-                        {{> components_campaignCard campaign}}
-                    {{/each}}
+                <div class="row section no-margin no-padding">
+                    <div class="row no-margin">
+                        <h5 class="col bold">{{category}}</h5>
+                    </div>
+                    <div class="slick-carousel">
+                        {{#each campaign in getFilteredCampaigns category}}
+                            {{> components_campaignCard campaign}}
+                        {{/each}}
+                    </div>
                 </div>
             {{/each}}
         </div>

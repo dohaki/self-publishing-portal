@@ -70,10 +70,10 @@ Template.views_campaigns.helpers({
         }).fetch();
     },
     mostPopularCampaigns: function () {
-        return Campaigns.find({}, {sort: {numOfContributions: -1}}).fetch();
+        return Campaigns.find({campaignClosed: false}, {sort: {numOfContributions: -1}}).fetch();
     },
     mostRecentCampaigns: function () {
-        return Campaigns.find({}, {sort: {createdAt: -1}}).fetch();
+        return Campaigns.find({campaignClosed: false}, {sort: {createdAt: -1}}).fetch();
     },
     categories: function () {
         return Template.instance().categories.get();

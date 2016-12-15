@@ -278,6 +278,7 @@ CrowdFundingContract.CampaignStarted().watch(function (error, result) {
     } else {
         console.log('event CampaignStarted fired!');
         console.log(result);
+        getCampaignFromContract(new BigNumber(result.args._id));
     }
 });
 
@@ -290,5 +291,6 @@ CrowdFundingContract.FundTransfer().watch(function (error, result) {
     } else {
         console.log('event FundTransfer fired!');
         console.log(result);
+        getCampaignFromContract(new BigNumber(result.args._id));
     }
 });
