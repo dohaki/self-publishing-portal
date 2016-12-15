@@ -16,16 +16,41 @@
                     <img class="scale" src="/images/default.png" alt="">
                 </div>
                 <div class="col s4">
-                    <h3 class="bold no-margin">{{campaign.numOfBackers}}</h3>
-                    <p class="no-margin">Backers</p>
+                    <h3 class="bold no-margin">{{campaign.numOfContributions}}</h3>
+                    <p class="no-margin">Contributions</p>
                     <p></p>
                     <h3 class="bold no-margin">{{dapp_formatBalance campaign.amountRaised}} ETH</h3>
                     <p class="no-margin">of goal {{dapp_formatBalance campaign.fundingGoal}} ETH</p>
                     <p></p>
-                    <h3 class="bold no-margin">{{getLeftDays campaign.deadline}}</h3>
-                    <p class="no-margin">left</p>
-                    <p></p>
-                    <a class="modal-trigger waves-effect waves-light btn" href="#contributeModal">Contribute</a>
+                    {{#if afterDeadline campaign}}
+                        <h3 class="bold no-margin">Deadline reached</h3>
+                        {{#if (campaign.goalReached)}}
+                            <p class="no-margin">Goal reached!</p>
+                        {{else}}
+                            <p class="no-margin">Goal not reached</p>
+                        {{/if}}
+                        <p></p>
+                        {{#if (campaign.campaignClosed)}}
+                            {{#if (campaign.fundingGoalReached)}}
+                                {{#if isBeneficiary campaign}}
+                                    <a class="js-safe-withdrawal waves-effect waves-light btn" href="">get funds</a>
+                                {{/if}}
+                            {{else}}
+                                {{#if isContributor campaign}}
+                                    <a class="js-safe-withdrawal waves-effect waves-light btn" href="">get contribution back</a>
+                                {{else}}
+                                    <a class="js-archive waves-effect waves-light btn" href="">archive</a>
+                                {{/if}}
+                            {{/if}}
+                        {{else}}
+                            <a class="js-check-goal-reached waves-effect waves-light btn" href="">Check goal reached</a>
+                        {{/if}}
+                    {{else}}
+                        <h3 class="bold no-margin">{{getLeftDays campaign.deadline}}</h3>
+                        <p class="no-margin">left</p>
+                        <p></p>
+                        <a class="modal-trigger waves-effect waves-light btn" href="#contributeModal">Contribute</a>
+                    {{/if}}
                     <!-- Modal Structure -->
                     <div id="contributeModal" class="modal">
                         <div class="modal-content">

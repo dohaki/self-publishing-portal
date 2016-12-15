@@ -4,6 +4,7 @@ import {Session} from 'meteor/session';
 
 import {pendingTransaction} from '/client/lib/helpers/ethereumHelper';
 import {campaignCategories, getCategory, insertMockCampaign} from '/client/lib/helpers/campaignCollectionHelper';
+import {startCampaign} from '/client/lib/ethereum/contracts/crowdFundingContractHelper';
 
 import './campaignCreateBasic.html';
 
@@ -27,35 +28,25 @@ Template.components_campaignCreateBasic.events({
         $('ul.tabs').tabs('select_tab', 'background');
     },
     'click .js-start'() {
-        Session.set('waitingForConfirmation', true);
         const title = $('#title').val();
         const description = $('#description').val();
         const category = $('#subCategory').val();
         const goal = web3.toWei($('#goal').val(), 'ether');
         const duration = $('#duration').val() * 24 * 60;
         const html = $('div#froala-editor').froalaEditor('html.get');
-        CrowdFundingContract.startCampaign(title, description, category, goal, duration, html, function (error, result) {
-            Session.set('waitingForConfirmation', false);
-            if (error) {
-                console.error(error);
-                Materialize.toast('An error occured', 3000);
-            }
-            else {
-                pendingTransaction(result, function () {
-                    let campaign = {
-                        beneficiary: account,
-                        title: title,
-                        description: description,
-                        category: getCategory(category),
-                        subCategory: category,
-                        fundingGoal: new BigNumber(web3.toWei(goal, 'ether')), // wandle ether in wei um
-                        amountRaised: 0,
-                        status: 'PENDING'
-                    };
-                    insertMockCampaign(campaign);
-                    FlowRouter.go('/campaigns');
-                });
-            }
+        startCampaign(title, description, category, goal, duration, html, () => {
+            let campaign = {
+                beneficiary: account,
+                title: title,
+                description: description,
+                category: getCategory(category),
+                subCategory: category,
+                fundingGoal: new BigNumber(web3.toWei(goal, 'ether')), // wandle ether in wei um
+                amountRaised: 0,
+                status: 'PENDING'
+            };
+            insertMockCampaign(campaign);
+            FlowRouter.go('/campaigns');
         });
     },
     'change .js-category'() {

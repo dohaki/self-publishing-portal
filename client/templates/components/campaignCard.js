@@ -48,3 +48,9 @@ Template.components_campaignCard.onRendered(function () {
         ]
     });
 });
+
+Template.components_campaignCard.helpers({
+    afterDeadline: (deadline) => {
+        return Date.now() >= deadline;
+    }
+});

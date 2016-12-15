@@ -1,8 +1,6 @@
 import {Session} from 'meteor/session';
 
-import {getAllCampaignsFromContract} from '/client/lib/ethereum/contracts/crowdFundingContractHelper';
-
-export function pendingTransaction (txHash, cb) {
+export function pendingTransaction (txHash, get, cb) {
     const maxAttempts = 600;
     let counter = 0;
     console.log('transaction hash: ' + txHash);
@@ -13,14 +11,13 @@ export function pendingTransaction (txHash, cb) {
             if (error) {
                 console.error(error);
             } else if (result && counter < maxAttempts) {
-                Materialize.toast('Successfully mined transaction!', 3000, 'rounded');
-                getAllCampaignsFromContract();
+                console.log('successfully mined transaction: ' + txHash);
+                if (get) get();
             } else if (!result && counter < maxAttempts) {
                 setTimeout(function () {
                     getTx();
                 }, 1000);
             } else {
-                Materialize.toast('Transaction could not be mined.', 3000, 'rounded');
                 console.log('transaction ' + txHash + ' could not be mined after ' + maxAttempts + ' attempts.')
             }
         });

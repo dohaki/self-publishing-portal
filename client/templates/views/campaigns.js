@@ -27,54 +27,6 @@ Template.views_campaigns.onCreated(function () {
 
 Template.views_campaigns.onRendered(function () {
     $('ul.tabs').tabs();
-    // $('.slick-carousel').slick({
-    //     infinite: true,
-    //     dots: true,
-    //     slidesToShow: 4,
-    //     slidesToScroll: 4,
-    //     arrows: true,
-    //     responsive: [
-    //         {
-    //             breakpoint: 1400,
-    //             settings: {
-    //                 slidesToShow: 3,
-    //                 slidesToScroll: 3,
-    //                 infinite: true,
-    //                 dots: true
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 1100,
-    //             settings: {
-    //                 slidesToShow: 2,
-    //                 slidesToScroll: 2,
-    //                 infinite: true,
-    //                 dots: true
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 992,
-    //             settings: {
-    //                 slidesToShow: 3,
-    //                 slidesToScroll: 3
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 780,
-    //             settings: {
-    //                 slidesToShow: 2,
-    //                 slidesToScroll: 2
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 580,
-    //             settings: {
-    //                 slidesToShow: 1,
-    //                 slidesToScroll: 1
-    //             }
-    //         }
-    //     ]
-    // });
 });
 
 Template.views_campaigns.events({
@@ -100,7 +52,8 @@ Template.views_campaigns.helpers({
     myLiveCampaigns: function () {
         return Campaigns.find({
             beneficiary: account,
-            status: 'MINED'
+            status: 'MINED',
+            archive: false
         }, {sort: {createdAt: -1}}).fetch();
     },
     pendingCampaigns: function () {

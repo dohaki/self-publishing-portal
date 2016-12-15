@@ -1,7 +1,7 @@
 import {Template} from 'meteor/templating';
 import {Session} from 'meteor/session';
 
-import {contributeToContract} from '/client/lib/ethereum/contracts/crowdFundingContractHelper';
+import {contributeToContract, checkGoalReached} from '/client/lib/ethereum/contracts/crowdFundingContractHelper';
 
 import './campaignDetails.html';
 
@@ -42,15 +42,38 @@ Template.views_campaignDetails.helpers({
     },
     maxContribution: function () {
         return EthAccounts.find().fetch()[0].balance;
+    },
+    afterDeadline: function (campaign) {
+        return Date.now() >= new Date(campaign.deadline);
+    },
+    isBeneficiary: (campaign) => {
+        return campaign.beneficiary === account;
+    },
+    isContributor: (campaign) => {
+        let contributions = campaign.contributions.map((contribution) => {
+            return contribution.contributor;
+        });
+        return (contributions.indexOf(account) !== -1);
     }
 });
 
 Template.views_campaignDetails.events({
     'click .js-contribute' () {
-        let amount = $('#contribution').val();
-        let id = parseInt(Session.get('campaignId'));
-        contributeToContract(id, amount, function () {
+        const amount = $('#contribution').val();
+        const id = parseInt(Session.get('campaignId'));
+        contributeToContract(id, amount, () => {
            console.log('***');
         });
+    },
+    'click .js-check-goal-reached' () {
+        const id = parseInt(Session.get('campaignId'));
+        checkGoalReached(id, () => {
+           console.log('#########');
+        });
+    },
+    'click .js-archive' () {
+        const id = parseInt(Session.get('campaignId'));
+        Campaigns.update({_id: id}, {$set: {archive: true}});
+        FlowRouter.go('/campaigns');
     }
 });

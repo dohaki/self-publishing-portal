@@ -1,4 +1,11 @@
-import {upsertCampaign, updateCampaign, getCategory, removeMockCampaign} from '/client/lib/helpers/campaignCollectionHelper';
+import {Session} from 'meteor/session';
+
+import {
+    upsertCampaign,
+    updateCampaign,
+    getCategory,
+    removeMockCampaign
+} from '/client/lib/helpers/campaignCollectionHelper';
 import {pendingTransaction} from '/client/lib/helpers/ethereumHelper';
 
 const abiArray = [{
@@ -163,6 +170,8 @@ export function getCampaignFromContract(index) {
             else {
                 campaign.contributions = existingCampaign.contributions;
                 campaign.html = existingCampaign.html;
+                if (existingCampaign.archive) campaign.archive = true;
+                else campaign.archive = false;
             }
             removeMockCampaign(campaign, function () {
                 upsertCampaign(campaign._id, campaign, function () {
@@ -203,11 +212,47 @@ export function getAllCampaignsFromContract() {
     });
 }
 
+export function startCampaign(title, description, category, goal, duration, html, cb) {
+    Session.set('waitingForConfirmation', true);
+    CrowdFundingContract.startCampaign(title, description, category, goal, duration, html, function (error, result) {
+        Session.set('waitingForConfirmation', false);
+        if (error) {
+            console.error(error);
+            Materialize.toast('You have to accept the transaction', 3000);
+        } else {
+            pendingTransaction(result, getAllCampaignsFromContract(), () => {
+                if (cb) cb();
+            });
+        }
+    });
+}
+
 export function contributeToContract(campaignId, amount, cb) {
+    Session.set('waitingForConfirmation', true);
     CrowdFundingContract.contribute(campaignId, {value: web3.toWei(amount, 'ether')}, function (error, result) {
-        if (error) console.error(error);
+        Session.set('waitingForConfirmation', false);
+        if (error) {
+            console.error(error);
+            Materialize.toast('You have to accept the transaction', 3000);
+        }
         else {
-            pendingTransaction(result, function () {
+            pendingTransaction(result, getAllCampaignsFromContract(), () => {
+                if (cb) cb();
+            });
+        }
+    });
+}
+
+export function checkGoalReached(campaignId, cb) {
+    Session.set('waitingForConfirmation', true);
+    CrowdFundingContract.checkGoalReached(campaignId, function (error, result) {
+        Session.set('waitingForConfirmation', true);
+        if (error) {
+            console.error(error);
+            Materialize.toast('You have to accept the transaction', 3000);
+        }
+        else {
+            pendingTransaction(result, getAllCampaignsFromContract(),() => {
                 if (cb) cb();
             });
         }
