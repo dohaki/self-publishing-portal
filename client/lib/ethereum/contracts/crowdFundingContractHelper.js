@@ -3,8 +3,7 @@ import {Session} from 'meteor/session';
 import {
     upsertCampaign,
     updateCampaign,
-    getCategory,
-    removeMockCampaign
+    getCategory
 } from '/client/lib/helpers/campaignCollectionHelper';
 import {pendingTransaction} from '/client/lib/helpers/ethereumHelper';
 
@@ -173,25 +172,23 @@ export function getCampaignFromContract(index) {
                 if (existingCampaign.archive) campaign.archive = true;
                 else campaign.archive = false;
             }
-            removeMockCampaign(campaign, function () {
-                upsertCampaign(campaign._id, campaign, function () {
-                    if (!existingCampaign) {
-                        CrowdFundingContract.campaignHtml(index, function (error, result) {
-                            if (error) console.error(error);
-                            else {
-                                updateCampaign(index, {$set: {html: result}}, function () {
-                                    for (let i = 0; i < campaign.numOfContributions; i++) {
-                                        getContributionsFromContract(index, i);
-                                    }
-                                });
-                            }
-                        });
-                    } else {
-                        for (let i = existingCampaign.contributions.length; i < campaign.numOfContributions; i++) {
-                            getContributionsFromContract(index, i);
+            upsertCampaign(campaign._id, campaign, function () {
+                if (!existingCampaign) {
+                    CrowdFundingContract.campaignHtml(index, function (error, result) {
+                        if (error) console.error(error);
+                        else {
+                            updateCampaign(index, {$set: {html: result}}, function () {
+                                for (let i = 0; i < campaign.numOfContributions; i++) {
+                                    getContributionsFromContract(index, i);
+                                }
+                            });
                         }
+                    });
+                } else {
+                    for (let i = existingCampaign.contributions.length; i < campaign.numOfContributions; i++) {
+                        getContributionsFromContract(index, i);
                     }
-                });
+                }
             });
         }
     });
@@ -220,7 +217,12 @@ export function startCampaign(title, description, category, goal, duration, html
             console.error(error);
             Materialize.toast('You have to accept the transaction', 3000);
         } else {
-            pendingTransaction(result, getAllCampaignsFromContract(), () => {
+            const startCampaignTx = {
+                type: 'Campaigns',
+                title: 'New campaign started',
+                description: 'You started a new campaign with the title: ' + title
+            };
+            pendingTransaction(result, startCampaignTx, () => {
                 if (cb) cb();
             });
         }
@@ -234,9 +236,13 @@ export function contributeToContract(campaignId, amount, cb) {
         if (error) {
             console.error(error);
             Materialize.toast('You have to accept the transaction', 3000);
-        }
-        else {
-            pendingTransaction(result, getAllCampaignsFromContract(), () => {
+        } else {
+            const contributeToCampaignTx = {
+                type: 'Campaigns',
+                title: 'Contribution',
+                description: 'You contributed ' + amount + ' ETH'
+            };
+            pendingTransaction(result, contributeToCampaignTx, () => {
                 if (cb) cb();
             });
         }
@@ -250,9 +256,13 @@ export function checkGoalReached(campaignId, cb) {
         if (error) {
             console.error(error);
             Materialize.toast('You have to accept the transaction', 3000);
-        }
-        else {
-            pendingTransaction(result, getAllCampaignsFromContract(),() => {
+        } else {
+            const checkGoalReachedTx = {
+                type: 'Campaigns',
+                title: 'Check goal reached',
+                description: 'You checked if funding goal is reached.'
+            };
+            pendingTransaction(result, checkGoalReachedTx, () => {
                 if (cb) cb();
             });
         }
@@ -268,7 +278,6 @@ CrowdFundingContract.CampaignStarted().watch(function (error, result) {
     } else {
         console.log('event CampaignStarted fired!');
         console.log(result);
-        getCampaignFromContract(result.args._id.c[0]);
     }
 });
 

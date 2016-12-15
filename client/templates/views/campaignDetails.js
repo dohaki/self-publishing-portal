@@ -62,7 +62,7 @@ Template.views_campaignDetails.events({
         const amount = $('#contribution').val();
         const id = parseInt(Session.get('campaignId'));
         contributeToContract(id, amount, () => {
-           console.log('***');
+           let mockTransaction = {}
         });
     },
     'click .js-check-goal-reached' () {

@@ -1,0 +1,20 @@
+<template name="components_transactionCard">
+    <div class="col s12 m6 l4">
+        <div class="card">
+            <div class="card-content" style="padding-bottom: 0">
+                <div class="section" style="padding-top: 0 !important;">
+                    <p class="bold truncate">{{this.title}}</p>
+                </div>
+                <p style="height: 100px; overflow: auto;">{{this.description}}</p>
+                <div class="section">
+                    <div class="progress">
+                        <div class="indeterminate"></div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col">Waiting for transaction to get mined...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

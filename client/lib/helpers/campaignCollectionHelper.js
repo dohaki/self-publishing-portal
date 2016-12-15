@@ -34,25 +34,6 @@ export function getCategory(subCategory) {
     }
 }
 
-export function insertMockCampaign(campaign) {
-    Campaigns.insert(campaign);
-}
-
-export function removeMockCampaign(campaign, cb) {
-    Campaigns.remove({
-        beneficiary: campaign.beneficiary,
-        title: campaign.title,
-        description: campaign.description,
-        category: campaign.category,
-        subCategory: campaign.subCategory,
-        amountRaised: 0,
-        status: 'PENDING'
-    }, function (error) {
-        if (error) console.error(error);
-        if (cb) cb();
-    });
-}
-
 export function upsertCampaign(campaignId, campaign, cb) {
     Campaigns.upsert({_id: campaignId}, campaign, function (error) {
         if (error) console.error(error);

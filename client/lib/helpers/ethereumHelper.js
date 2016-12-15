@@ -1,6 +1,10 @@
 import {Session} from 'meteor/session';
 
-export function pendingTransaction (txHash, get, cb) {
+import {insertPendingTransaction, removePendingTransaction, failedTransaction} from '/client/lib/helpers/transactionCollectionHelper';
+import {getAllCampaignsFromContract} from '/client/lib/ethereum/contracts/crowdFundingContractHelper';
+
+export function pendingTransaction (txHash, txData, cb) {
+    insertPendingTransaction(txHash, txData);
     const maxAttempts = 600;
     let counter = 0;
     console.log('transaction hash: ' + txHash);
@@ -12,13 +16,15 @@ export function pendingTransaction (txHash, get, cb) {
                 console.error(error);
             } else if (result && counter < maxAttempts) {
                 console.log('successfully mined transaction: ' + txHash);
-                if (get) get();
+                removePendingTransaction(txHash);
+                if (txData.type === 'Campaigns') getAllCampaignsFromContract();
             } else if (!result && counter < maxAttempts) {
                 setTimeout(function () {
                     getTx();
                 }, 1000);
             } else {
-                console.log('transaction ' + txHash + ' could not be mined after ' + maxAttempts + ' attempts.')
+                console.log('transaction ' + txHash + ' could not be mined after ' + maxAttempts + ' attempts.');
+                failedTransaction(txHash);
             }
         });
     };

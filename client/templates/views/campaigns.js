@@ -49,6 +49,9 @@ Template.views_campaigns.events({
 });
 
 Template.views_campaigns.helpers({
+    pendingTransactions: function () {
+        return Transactions.find({status: 'PENDING'}).fetch();
+    },
     myLiveCampaigns: function () {
         return Campaigns.find({
             beneficiary: account,
@@ -56,11 +59,9 @@ Template.views_campaigns.helpers({
             archive: false
         }, {sort: {createdAt: -1}}).fetch();
     },
-    pendingCampaigns: function () {
-        return Campaigns.find({beneficiary: account, status: 'PENDING'}).fetch();
-    },
     contributedCampaigns: function () {
         return Campaigns.find({
+            archive: false,
             contributions: {
                 $elemMatch: {
                     contributor: account
