@@ -54,6 +54,15 @@ Template.views_campaignDetails.helpers({
             return contribution.contributor;
         });
         return (contributions.indexOf(account) !== -1);
+    },
+    myContribution: (campaign) => {
+        let totalContribution = 0;
+        campaign.contributions.map((contribution) => {
+            if (contribution.contributor === account) {
+                totalContribution += contribution.amount;
+            }
+        });
+        return web3.fromWei(totalContribution, 'ether');
     }
 });
 
@@ -62,18 +71,21 @@ Template.views_campaignDetails.events({
         const amount = $('#contribution').val();
         const id = parseInt(Session.get('campaignId'));
         contributeToContract(id, amount, () => {
-           let mockTransaction = {}
+           Materialize.toast('Thank you for your contribution!', 3000);
+           FlowRouter.go('/campaigns');
         });
     },
     'click .js-check-goal-reached' () {
         const id = parseInt(Session.get('campaignId'));
         checkGoalReached(id, () => {
-           console.log('#########');
+            Materialize.toast('Checking if goal reached...!', 3000);
+            FlowRouter.go('/campaigns');
         });
     },
     'click .js-archive' () {
         const id = parseInt(Session.get('campaignId'));
         Campaigns.update({_id: id}, {$set: {archive: true}});
+        Materialize.toast('Campaign archived.', 3000);
         FlowRouter.go('/campaigns');
     }
 });

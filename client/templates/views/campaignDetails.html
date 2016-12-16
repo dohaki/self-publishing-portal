@@ -22,6 +22,11 @@
                     <h3 class="bold no-margin">{{dapp_formatBalance campaign.amountRaised}} ETH</h3>
                     <p class="no-margin">of goal {{dapp_formatBalance campaign.fundingGoal}} ETH</p>
                     <p></p>
+                    {{#if isContributor campaign}}
+                        <h3 class="bold no-margin">{{myContribution campaign}} ETH</h3>
+                        <p class="no-margin">contributed by you</p>
+                        <p></p>
+                    {{/if}}
                     {{#if afterDeadline campaign}}
                         <h3 class="bold no-margin">Deadline reached</h3>
                         {{#if (campaign.goalReached)}}
@@ -50,8 +55,12 @@
                         <p class="no-margin">left</p>
                         <p></p>
                         <a class="modal-trigger waves-effect waves-light btn" href="#contributeModal">Contribute</a>
+                        {{#if isBeneficiary campaign}}
+                            <p></p>
+                            <a class="modal-trigger waves-effect waves-light btn" href="#contributionsModal">See contributions</a>
+                        {{/if}}
                     {{/if}}
-                    <!-- Modal Structure -->
+                    <!-- Contribute Modal-->
                     <div id="contributeModal" class="modal">
                         <div class="modal-content">
                             <h4>Enter your contribution</h4>
@@ -67,6 +76,20 @@
                         <div class="modal-footer">
                             <a class="js-contribute modal-close waves-effect waves-green btn right">Contribute</a>
                             <a class="modal-action modal-close waves-effect waves-green btn-flat right">Cancel</a>
+                        </div>
+                    </div>
+                    <!-- See contributions modal-->
+                    <div id="contributionsModal" class="modal">
+                        <div class="modal-content">
+                            <h4>Contributions</h4>
+                            {{#each contribution in (campaign.contributions)}}
+                                <div class="col s6">
+                                    <p>{{getUserNameByAddress (contribution.contributor)}} - {{dapp_formatBalance (contribution.amount)}} ETH</p>
+                                </div>
+                            {{/each}}
+                        </div>
+                        <div class="modal-footer">
+                            <a class="modal-action modal-close waves-effect waves-green btn-flat right">close</a>
                         </div>
                     </div>
                 </div>
