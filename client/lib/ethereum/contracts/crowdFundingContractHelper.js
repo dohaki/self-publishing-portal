@@ -171,6 +171,7 @@ export function getCampaignFromContract(index) {
                 campaign.html = existingCampaign.html;
                 if (existingCampaign.archive) campaign.archive = true;
                 else campaign.archive = false;
+                if (campaign.campaignClosed) campaign.contributions = [];
             }
             upsertCampaign(campaign._id, campaign, function () {
                 if (!existingCampaign) {
@@ -184,8 +185,13 @@ export function getCampaignFromContract(index) {
                             });
                         }
                     });
-                } else {
+                } else if (!campaign.campaignClosed) {
                     for (let i = existingCampaign.contributions.length; i < campaign.numOfContributions; i++) {
+                        getContributionsFromContract(index, i);
+                    }
+                } else {
+                    console.log(campaign);
+                    for (let i = 0; i < campaign.numOfContributions; i++) {
                         getContributionsFromContract(index, i);
                     }
                 }
@@ -252,7 +258,7 @@ export function contributeToContract(campaignId, amount, cb) {
 export function checkGoalReached(campaignId, cb) {
     Session.set('waitingForConfirmation', true);
     CrowdFundingContract.checkGoalReached(campaignId, function (error, result) {
-        Session.set('waitingForConfirmation', true);
+        Session.set('waitingForConfirmation', false);
         if (error) {
             console.error(error);
             Materialize.toast('You have to accept the transaction', 3000);
@@ -263,6 +269,26 @@ export function checkGoalReached(campaignId, cb) {
                 description: 'You checked if funding goal is reached.'
             };
             pendingTransaction(result, checkGoalReachedTx, () => {
+                if (cb) cb();
+            });
+        }
+    });
+}
+
+export function safeWithdrawal(campaignId, cb) {
+    Session.set('waitingForConfirmation', true);
+    CrowdFundingContract.safeWithdrawal(campaignId, function (error, result) {
+        Session.set('waitingForConfirmation', false);
+        if (error) {
+            console.error(error);
+            Materialize.toast('You have to accept the transaction', 3000);
+        } else {
+            const safeWithdrawalTx = {
+                type: 'Campaigns',
+                title: 'Get contributions back',
+                description: 'You requested to get your contributions back.'
+            };
+            pendingTransaction(result, safeWithdrawalTx, () => {
                 if (cb) cb();
             });
         }

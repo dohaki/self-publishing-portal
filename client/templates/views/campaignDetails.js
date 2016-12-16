@@ -1,7 +1,7 @@
 import {Template} from 'meteor/templating';
 import {Session} from 'meteor/session';
 
-import {contributeToContract, checkGoalReached} from '/client/lib/ethereum/contracts/crowdFundingContractHelper';
+import {contributeToContract, checkGoalReached, safeWithdrawal} from '/client/lib/ethereum/contracts/crowdFundingContractHelper';
 
 import './campaignDetails.html';
 
@@ -78,7 +78,7 @@ Template.views_campaignDetails.events({
     'click .js-check-goal-reached' () {
         const id = parseInt(Session.get('campaignId'));
         checkGoalReached(id, () => {
-            Materialize.toast('Checking if goal reached...!', 3000);
+            Materialize.toast('Checking if goal reached...', 3000);
             FlowRouter.go('/campaigns');
         });
     },
@@ -87,5 +87,23 @@ Template.views_campaignDetails.events({
         Campaigns.update({_id: id}, {$set: {archive: true}});
         Materialize.toast('Campaign archived.', 3000);
         FlowRouter.go('/campaigns');
+    },
+    'click .js-safe-withdrawal' () {
+        const id = parseInt(Session.get('campaignId'));
+        const campaign = Campaigns.findOne({_id: id});
+        let totalContribution = 0;
+        campaign.contributions.map((contribution) => {
+            if (contribution.contributor === account) {
+                totalContribution += contribution.amount;
+            }
+        });
+        if (totalContribution === 0) {
+            Materialize.toast('You already got your contribution back', 3000);
+        } else {
+            safeWithdrawal(id, () => {
+                Materialize.toast('Get contribution back', 3000);
+                FlowRouter.go('/campaigns');
+            });
+        }
     }
 });
