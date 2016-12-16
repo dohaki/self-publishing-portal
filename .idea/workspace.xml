@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0bb0ac04-ab6f-4b09-9596-67ba80babd0d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/lib/helpers/templateHelper.js" afterPath="$PROJECT_DIR$/client/lib/helpers/templateHelper.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/main.less" afterPath="$PROJECT_DIR$/client/main.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/campaigns.html" afterPath="$PROJECT_DIR$/client/templates/views/campaigns.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,11 +27,21 @@
     <splitter split-orientation="horizontal" split-proportion="0.3803648">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="campaignDetails.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="campaignDetails.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/templates/views/campaignDetails.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="261">
-                  <caret line="25" column="76" lean-forward="false" selection-start-line="25" selection-start-column="76" selection-end-line="25" selection-end-column="76" />
+                <state relative-caret-position="366">
+                  <caret line="32" column="58" lean-forward="false" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="campaignCard.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/templates/components/campaignCard.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="546">
+                  <caret line="43" column="18" lean-forward="true" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
@@ -52,7 +63,27 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="templateHelper.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="campaigns.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="360">
+                  <caret line="24" column="63" lean-forward="false" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="main.less" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/main.less">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="529">
+                  <caret line="84" column="25" lean-forward="false" selection-start-line="84" selection-start-column="25" selection-end-line="84" selection-end-column="25" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="templateHelper.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/lib/helpers/templateHelper.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="375">
@@ -129,7 +160,6 @@
         <option value="$PROJECT_DIR$/client/lib/init.js" />
         <option value="$PROJECT_DIR$/client/templates/layout/main.html" />
         <option value="$PROJECT_DIR$/client/templates/components/campaignCreateBasic.html" />
-        <option value="$PROJECT_DIR$/client/main.less" />
         <option value="$PROJECT_DIR$/client/templates/components/carouselItem.html" />
         <option value="$PROJECT_DIR$/client/templates/components/slick-carousel.html" />
         <option value="$PROJECT_DIR$/client/templates/components/campaignCard.js" />
@@ -141,11 +171,12 @@
         <option value="$PROJECT_DIR$/client/templates/components/transactionCard.html" />
         <option value="$PROJECT_DIR$/client/lib/helpers/ethereumHelper.js" />
         <option value="$PROJECT_DIR$/client/templates/views/campaigns.js" />
-        <option value="$PROJECT_DIR$/client/templates/views/campaigns.html" />
         <option value="$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js" />
         <option value="$PROJECT_DIR$/client/templates/views/campaignDetails.html" />
         <option value="$PROJECT_DIR$/client/templates/views/campaignDetails.js" />
         <option value="$PROJECT_DIR$/client/lib/helpers/templateHelper.js" />
+        <option value="$PROJECT_DIR$/client/main.less" />
+        <option value="$PROJECT_DIR$/client/templates/views/campaigns.html" />
       </list>
     </option>
   </component>
@@ -565,7 +596,7 @@
       <workItem from="1481713946339" duration="23671000" />
       <workItem from="1481793272130" duration="28000" />
       <workItem from="1481793341723" duration="13359000" />
-      <workItem from="1481882841267" duration="3692000" />
+      <workItem from="1481882841267" duration="4934000" />
     </task>
     <task id="LOCAL-00001" summary="README Anpassung">
       <created>1479746796849</created>
@@ -819,11 +850,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481885914366</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="getLeftDays Anpassungen">
+      <created>1481886547502</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1481886547502</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="284126000" />
+    <option name="totallyTimeSpent" value="285368000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -864,7 +902,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="campaign rewards create/delete &#10;Achtung: nur Frontend" />
     <MESSAGE value="campaign background tab" />
     <MESSAGE value="campaign author tab" />
     <MESSAGE value=".idea von remote repo entfernt" />
@@ -889,7 +926,8 @@
     <MESSAGE value="Refactoring pending transactions" />
     <MESSAGE value="carousel in categories inserted" />
     <MESSAGE value="contributions werden angezeigt" />
-    <option name="LAST_COMMIT_MESSAGE" value="contributions werden angezeigt" />
+    <MESSAGE value="getLeftDays Anpassungen" />
+    <option name="LAST_COMMIT_MESSAGE" value="getLeftDays Anpassungen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1107,13 +1145,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/main.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="71" column="14" lean-forward="false" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/components/carouselItem.html" />
     <entry file="file://$PROJECT_DIR$/client/templates/components/slickCarousel.html" />
     <entry file="file://$PROJECT_DIR$/client/templates/views/campaignCreate.html">
@@ -1127,13 +1158,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="35" column="31" lean-forward="true" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/components/campaignCard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="18" lean-forward="true" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -1163,14 +1187,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1185">
-          <caret line="79" column="60" lean-forward="false" selection-start-line="79" selection-start-column="60" selection-end-line="79" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1216,14 +1232,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/campaignDetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="25" column="76" lean-forward="false" selection-start-line="25" selection-start-column="76" selection-end-line="25" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/views/campaignDetails.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -1238,6 +1246,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="26" column="72" lean-forward="false" selection-start-line="26" selection-start-column="72" selection-end-line="26" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/views/campaignDetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="32" column="58" lean-forward="false" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/components/campaignCard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="43" column="18" lean-forward="true" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/main.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="84" column="25" lean-forward="false" selection-start-line="84" selection-start-column="25" selection-end-line="84" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="63" lean-forward="false" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
           <folding />
         </state>
       </provider>
