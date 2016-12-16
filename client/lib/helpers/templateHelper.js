@@ -16,11 +16,15 @@ Template.registerHelper('getPercentage', function (numerator, denominator) {
  */
 Template.registerHelper('getLeftDays', function (deadline) {
     let deadlineDate = new Date(deadline);
-    let differenceInHours = Math.floor((deadlineDate - Date.now()) / (1000 * 60 * 60));
-    if (differenceInHours > 24) {
-        return Math.round(differenceInHours / 24) + ' days';
+    let differenceInSeconds = Math.floor((deadlineDate - Date.now()) / 1000);
+    if (differenceInSeconds < 60) {
+        return Math.round(differenceInSeconds) + ' sec';
+    } else if (differenceInSeconds < 60 * 60) {
+        return Math.round(differenceInSeconds / 60) + ' min';
+    } else if (differenceInSeconds < 60 * 60 * 24) {
+        return Math.round(differenceInSeconds / (60 * 60)) + ' h';
     } else {
-        return Math.round(differenceInHours) + ' hours';
+        return Math.round(differenceInSeconds / (60 * 60 * 24)) + ' days';
     }
 });
 
