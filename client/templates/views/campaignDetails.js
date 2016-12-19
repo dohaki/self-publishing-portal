@@ -88,7 +88,13 @@ Template.views_campaignDetails.events({
         Materialize.toast('Campaign archived.', 3000);
         FlowRouter.go('/campaigns');
     },
-    'click .js-safe-withdrawal' () {
+    'click .js-get-funds' () {
+        safeWithdrawal(id, 'FUNDS', () => {
+            Materialize.toast('Get contribution back', 3000);
+            FlowRouter.go('/campaigns');
+        });
+    },
+    'click .js-get-contribution-back' () {
         const id = parseInt(Session.get('campaignId'));
         const campaign = Campaigns.findOne({_id: id});
         let totalContribution = 0;
@@ -100,7 +106,7 @@ Template.views_campaignDetails.events({
         if (totalContribution === 0) {
             Materialize.toast('You already got your contribution back', 3000);
         } else {
-            safeWithdrawal(id, () => {
+            safeWithdrawal(id, 'CONTRIBUTION', () => {
                 Materialize.toast('Get contribution back', 3000);
                 FlowRouter.go('/campaigns');
             });

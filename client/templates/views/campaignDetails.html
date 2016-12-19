@@ -29,7 +29,7 @@
                     {{/if}}
                     {{#if afterDeadline campaign}}
                         <h3 class="bold no-margin">Deadline reached</h3>
-                        {{#if (campaign.goalReached)}}
+                        {{#if (campaign.fundingGoalReached)}}
                             <p class="no-margin">Goal reached!</p>
                         {{else}}
                             <p class="no-margin">Goal not reached</p>
@@ -38,13 +38,19 @@
                         {{#if (campaign.campaignClosed)}}
                             {{#if (campaign.fundingGoalReached)}}
                                 {{#if isBeneficiary campaign}}
-                                    <a class="js-safe-withdrawal waves-effect waves-light btn" href="">get funds</a>
+                                    {{#if (campaign.fundsReleased)}}
+                                        <a class="js-archive waves-effect waves-light btn" href="">archive</a>
+                                    {{else}}
+                                        <a class="js-get-funds waves-effect waves-light btn" href="">get funds</a>
+                                    {{/if}}
                                 {{/if}}
                             {{else}}
                                 {{#if isContributor campaign}}
-                                    <a class="js-safe-withdrawal waves-effect waves-light btn" href="">get contribution back</a>
-                                    <p></p>
-                                    <a class="js-archive waves-effect waves-light btn" href="">archive</a>
+                                    {{#if (campaign.fundsReleased)}}
+                                        <a class="js-archive waves-effect waves-light btn" href="">archive</a>
+                                    {{else}}
+                                        <a class="js-get-contribution-back waves-effect waves-light btn" href="">get contribution back</a>
+                                    {{/if}}
                                 {{/if}}
                             {{/if}}
                         {{else}}

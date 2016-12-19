@@ -30,6 +30,16 @@ Template.registerHelper('getLeftDays', function (deadline) {
     }
 });
 
+Template.registerHelper('isOver', function (deadline) {
+    let deadlineDate = new Date(deadline);
+    let differenceInSeconds = Math.floor((deadlineDate - Date.now()) / 1000);
+    if (differenceInSeconds < 0) {
+        return true;
+    } else {
+        return false;
+    }
+});
+
 Template.registerHelper('mining', function () {
    return Session.get('mining');
 });

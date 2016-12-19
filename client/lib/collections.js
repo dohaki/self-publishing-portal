@@ -6,5 +6,11 @@ UsersPersistent = new PersistentMinimongo(Users);
 Campaigns = new Mongo.Collection('campaigns', {connection: null});
 CampaignsPersistent = new PersistentMinimongo(Campaigns);
 
+
+Campaigns.find({}).observeChanges({
+    changed: (id, campaign) => {
+    }
+});
+
 Transactions = new Mongo.Collection('transactions', {connection: null});
 TransactionsPersistent = new PersistentMinimongo(Transactions);

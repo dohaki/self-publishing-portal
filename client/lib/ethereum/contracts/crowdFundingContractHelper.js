@@ -172,6 +172,8 @@ export function getCampaignFromContract(index) {
                 if (existingCampaign.archive) campaign.archive = true;
                 else campaign.archive = false;
                 if (campaign.campaignClosed) campaign.contributions = [];
+                if (campaign.fundsReleased) campaign.fundsReleased = true;
+                else campaign.fundsReleased = false;
             }
             upsertCampaign(campaign._id, campaign, function () {
                 if (!existingCampaign) {
@@ -190,7 +192,6 @@ export function getCampaignFromContract(index) {
                         getContributionsFromContract(index, i);
                     }
                 } else {
-                    console.log(campaign);
                     for (let i = 0; i < campaign.numOfContributions; i++) {
                         getContributionsFromContract(index, i);
                     }
@@ -275,7 +276,7 @@ export function checkGoalReached(campaignId, cb) {
     });
 }
 
-export function safeWithdrawal(campaignId, cb) {
+export function safeWithdrawal(campaignId, fundsOrContribution, cb) {
     Session.set('waitingForConfirmation', true);
     CrowdFundingContract.safeWithdrawal(campaignId, function (error, result) {
         Session.set('waitingForConfirmation', false);
@@ -283,11 +284,20 @@ export function safeWithdrawal(campaignId, cb) {
             console.error(error);
             Materialize.toast('You have to accept the transaction', 3000);
         } else {
-            const safeWithdrawalTx = {
-                type: 'Campaigns',
-                title: 'Get contributions back',
-                description: 'You requested to get your contributions back.'
-            };
+            let safeWithdrawalTx;
+            if (fundsOrContribution === 'CONTRIBUTION') {
+                safeWithdrawalTx = {
+                    type: 'Campaigns',
+                    title: 'Get contributions back',
+                    description: 'You requested to get your contributions back.'
+                };
+            } else {
+                safeWithdrawalTx = {
+                    type: 'Campaigns',
+                    title: 'Get funds',
+                    description: 'You requested to release your raised funds.'
+                };
+            }
             pendingTransaction(result, safeWithdrawalTx, () => {
                 if (cb) cb();
             });
@@ -316,6 +326,23 @@ CrowdFundingContract.FundTransfer().watch(function (error, result) {
         console.error(error);
     } else {
         console.log('event FundTransfer fired!');
+        console.log(result);
+        if (account === result.backer) {
+            const id = new BigNumber(result.args._id);
+            Campaigns.update({_id: id}, {$set: {fundsReleased: true}});
+        }
+        getCampaignFromContract(new BigNumber(result.args._id));
+    }
+});
+
+/**
+ * Sobald eine neue Kampagne erstellt wurde, füge diese auch in der lokalen DB ein
+ */
+CrowdFundingContract.GoalReached().watch(function (error, result) {
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('event GoalReached fired!');
         console.log(result);
         getCampaignFromContract(new BigNumber(result.args._id));
     }
