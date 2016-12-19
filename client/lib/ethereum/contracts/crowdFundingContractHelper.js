@@ -121,7 +121,7 @@ const abiArray = [{
     "type": "event"
 }];
 
-const address = "0x03589d9e74dd1c2beb98cf077b2e1924bf8dbf34";
+const address = "0xb5e88430c67b1d3598560a64208d94b217d084ac";
 
 CrowdFundingContract = web3.eth.contract(abiArray).at(address);
 
@@ -298,6 +298,7 @@ export function safeWithdrawal(campaignId, fundsOrContribution, cb) {
                     description: 'You requested to release your raised funds.'
                 };
             }
+            Campaigns.update({_id: id}, {$set: {fundsReleased: true}});
             pendingTransaction(result, safeWithdrawalTx, () => {
                 if (cb) cb();
             });
@@ -327,10 +328,6 @@ CrowdFundingContract.FundTransfer().watch(function (error, result) {
     } else {
         console.log('event FundTransfer fired!');
         console.log(result);
-        if (account === result.backer) {
-            const id = new BigNumber(result.args._id);
-            Campaigns.update({_id: id}, {$set: {fundsReleased: true}});
-        }
         getCampaignFromContract(new BigNumber(result.args._id));
     }
 });

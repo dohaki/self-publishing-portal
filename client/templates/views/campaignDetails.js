@@ -89,6 +89,7 @@ Template.views_campaignDetails.events({
         FlowRouter.go('/campaigns');
     },
     'click .js-get-funds' () {
+        const id = parseInt(Session.get('campaignId'));
         safeWithdrawal(id, 'FUNDS', () => {
             Materialize.toast('Get contribution back', 3000);
             FlowRouter.go('/campaigns');
