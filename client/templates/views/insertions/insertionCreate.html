@@ -4,11 +4,11 @@
             <p>What kind of insertion do you want to create?</p>
             <p>
                 <input class="js-choose-provider with-gap" name="insertionType" type="radio" id="provider"/>
-                <label for="provider">I want other people to hire me through my insertion.</label>
+                <label for="provider">I want other people to hire me.</label>
             </p>
             <p>
                 <input class="js-choose-project with-gap" name="insertionType" type="radio" id="project"/>
-                <label for="project">I want to publish a project where ...</label>
+                <label for="project">I want to publish a project.</label>
             </p>
         </div>
         <!-- create provider insertion -->
@@ -17,7 +17,7 @@
         {{/if}}
         <!-- create project insertion -->
         {{#if isStringEqual insertionType 'project'}}
-            project
+            {{> components_projectInsertionForm}}
         {{/if}}
     </div>
 </template>

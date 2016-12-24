@@ -1,4 +1,4 @@
-<template name="components_providerInsertionForm">
+<template name="components_projectInsertionForm">
     <form class="col s12">
         <div class="row">
             <div class="input-field col s12">
@@ -13,13 +13,11 @@
             </div>
         </div>
         <div class="row">
-            <p class="col s12">Please enter your skills:</p>
-            <div class="input-field col s12">
-                <div type="text" id="skills" class="chips"></div>
+            <div class="input-field col s6">
+                <input id="budget" type="number" class="validate">
+                <label for="budget">Budget (ETH)</label>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s6">
                 <input id="hourlyRate" type="number" class="validate">
                 <label for="hourlyRate">Hourly rate (ETH/h)</label>
             </div>
