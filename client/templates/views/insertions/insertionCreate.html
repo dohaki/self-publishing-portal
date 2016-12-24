@@ -1,0 +1,23 @@
+<template name="views_insertionCreate">
+    <div class="row">
+        <div class="col s12">
+            <p>What kind of insertion do you want to create?</p>
+            <p>
+                <input class="js-choose-provider with-gap" name="insertionType" type="radio" id="provider"/>
+                <label for="provider">I want other people to hire me through my insertion.</label>
+            </p>
+            <p>
+                <input class="js-choose-project with-gap" name="insertionType" type="radio" id="project"/>
+                <label for="project">I want to publish a project where ...</label>
+            </p>
+        </div>
+        <!-- create provider insertion -->
+        {{#if isStringEqual insertionType 'provider'}}
+            {{> components_providerInsertionForm}}
+        {{/if}}
+        <!-- create project insertion -->
+        {{#if isStringEqual insertionType 'project'}}
+            project
+        {{/if}}
+    </div>
+</template>

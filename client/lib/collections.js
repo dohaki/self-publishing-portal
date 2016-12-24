@@ -14,3 +14,6 @@ Campaigns.find({}).observeChanges({
 
 Transactions = new Mongo.Collection('transactions', {connection: null});
 TransactionsPersistent = new PersistentMinimongo(Transactions);
+
+Insertions = new Mongo.Collection('insertions', {connection: null});
+InsertionsPersistent = new PersistentMinimongo(Insertions);

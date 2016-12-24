@@ -1,0 +1,54 @@
+<template name="views_insertions">
+    <div class="row">
+        <div class="col s12 no-padding">
+            <ul class="tabs">
+                <li class="tab col s3">
+                    <a class="active" href="#my">
+                        <i class="material-icons vertical-align">face</i>
+                        <span class="vertical-align">My Insertions</span>
+                    </a>
+                </li>
+                <li class="tab col s3">
+                    <a href="#projects">
+                        <i class="material-icons vertical-align">whatshot</i>
+                        <span class="vertical-align">Projects</span>
+                    </a>
+                </li>
+                <li class="tab col s3">
+                    <a href="#provider">
+                        <i class="material-icons vertical-align">whatshot</i>
+                        <span class="vertical-align">Provider</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="my" class="col s12">
+            <div class="row section no-margin">
+                <div class="col">
+                    <a class="js-create-insertion waves-effect waves-teal btn"><i
+                            class="material-icons left">play_arrow</i>create
+                        new insertion</a>
+                </div>
+            </div>
+            <div class="row">
+                {{#each campaign in mostRecentCampaigns}}
+                    {{> components_campaignCard campaign}}
+                {{/each}}
+            </div>
+        </div>
+        <div id="projects" class="col s12">
+            <div class="row">
+                {{#each campaign in mostRecentCampaigns}}
+                    {{> components_campaignCard campaign}}
+                {{/each}}
+            </div>
+        </div>
+        <div id="provider" class="col s12">
+            <div class="row">
+                {{#each campaign in mostRecentCampaigns}}
+                    {{> components_campaignCard campaign}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>

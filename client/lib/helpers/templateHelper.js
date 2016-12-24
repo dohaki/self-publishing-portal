@@ -72,3 +72,7 @@ Template.registerHelper('isPending', function (object) {
 Template.registerHelper('isTrue', function (boolean1, boolean2) {
     return (boolean1 && boolean2);
 });
+
+Template.registerHelper('isStringEqual', function (string1, string2) {
+    return (string1 === string2);
+});
