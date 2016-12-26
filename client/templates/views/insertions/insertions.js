@@ -1,6 +1,8 @@
 import {Template} from 'meteor/templating';
 import {ReactiveVar} from 'meteor/reactive-var';
 
+import {getAllInsertionFromContract} from '/client/lib/ethereum/contracts/insertionRegisterContractHelper';
+
 import './insertions.html';
 
 // Home routes
@@ -20,6 +22,8 @@ Template.views_insertions.onCreated(() => {
 
 Template.views_insertions.onRendered(() => {
     $('ul.tabs').tabs();
+    getAllInsertionFromContract();
+
 });
 
 Template.views_insertions.events({
@@ -29,5 +33,10 @@ Template.views_insertions.events({
 });
 
 Template.views_insertions.helpers({
-
+    pendingTransactions: function () {
+        return Transactions.find({status: 'PENDING'}).fetch();
+    },
+    myLiveInsertions: function () {
+        return Insertions.find().fetch();
+    }
 });

@@ -1,0 +1,38 @@
+<template name="components_insertionCard">
+    <div class="col s12 m6 l4">
+        <div class="card">
+            <!--<div class="card-image">-->
+            <!--<img class="center-cropped" src="/images/default.png">-->
+            <!--</div>-->
+            <div class="card-content" style="padding-bottom: 0">
+                <div class="section" style="padding-top: 0 !important;">
+                    <p class="bold truncate">{{this.title}}</p>
+                    <p>{{getUserNameByAddress this.owner}}</p>
+                </div>
+                <p style="height: 100px; overflow: auto;">{{this.description}}</p>
+                <div class="section" style="padding-bottom: 0">
+                    <div class="row">
+                        {{#each skill in this.skills}}
+                            <div class="chip">{{skill}}</div>
+                        {{/each}}
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <p class="bold">{{dapp_formatBalance this.budget}} ETH</p>
+                            <p>budget</p>
+                        </div>
+                        <div class="col s6">
+                            <p class="bold">{{dapp_formatBalance this.hourlyRate}} ETH/h</p>
+                            <p>hourly rate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-action">
+                <a href=""><i class="material-icons">share</i></a>
+                <a href=""><i class="material-icons">favorite_border</i></a>
+                <a class="js-details right" href="/campaigns/{{this._id}}"><i class="material-icons">description</i></a>
+            </div>
+        </div>
+    </div>
+</template>

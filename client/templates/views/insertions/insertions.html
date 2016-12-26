@@ -30,11 +30,26 @@
                         new insertion</a>
                 </div>
             </div>
-            <div class="row">
-                {{#each campaign in mostRecentCampaigns}}
-                    {{> components_campaignCard campaign}}
-                {{/each}}
-            </div>
+            {{#unless isArrayEmpty pendingTransactions}}
+                <div class="row no-margin">
+                    <h5 class="col bold">Pending Transactions</h5>
+                </div>
+                <div class="slick-carousel">
+                    {{#each transaction in pendingTransactions}}
+                        {{> components_transactionCard transaction}}
+                    {{/each}}
+                </div>
+            {{/unless}}
+            {{#unless isArrayEmpty myLiveInsertions}}
+                <div class="row no-margin">
+                    <h5 class="col bold">My Live Insertions</h5>
+                </div>
+                <div class="slick-carousel">
+                    {{#each insertion in myLiveInsertions}}
+                        {{> components_insertionCard insertion}}
+                    {{/each}}
+                </div>
+            {{/unless}}
         </div>
         <div id="projects" class="col s12">
             <div class="row">
