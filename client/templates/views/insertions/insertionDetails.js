@@ -1,7 +1,7 @@
 import {Template} from 'meteor/templating';
 import {Session} from 'meteor/session';
 
-import {bidToProject} from '/client/lib/ethereum/contracts/insertionRegisterContractHelper';
+import {bidToProject, deactivateInsertion} from '/client/lib/ethereum/contracts/insertionRegisterContractHelper';
 
 import './insertionDetails.html';
 
@@ -59,5 +59,11 @@ Template.views_insertionDetails.events({
         const id = parseInt(Session.get('insertionId'));
         const insertion = Insertions.findOne({_id: id});
         if (insertion.owner === account) Materialize.toast('You can not hire yourself!', 3000);
+    },
+    'click .js-deactivate' () {
+        const id = parseInt(Session.get('insertionId'));
+        deactivateInsertion(id, () => {
+           FlowRouter.go('/insertions');
+        });
     }
 });

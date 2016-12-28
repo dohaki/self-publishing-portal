@@ -202,6 +202,26 @@ export function bidToProject(projectId, amount, cb) {
     });
 }
 
+export function deactivateInsertion(insertionId, cb) {
+    Session.set('waitingForConfirmation', true);
+    InsertionRegisterContract.deactivateInsertion(insertionId, (error, result) => {
+       Session.set('waitingForConfirmation', false);
+       if (error) {
+           console.error(error);
+           Materialize.toast('You have to accept the transaction', 3000);
+       } else {
+           const deactivationTx = {
+               type: 'Insertions',
+               title: 'Deactivation of insertion',
+               description: 'You deactivated an insertion.'
+           }
+           pendingTransaction(result, deactivationTx, () => {
+              if (cb) cb();
+           });
+       }
+    });
+}
+
 /**
  * Sobald eine neue Kampagne erstellt wurde, füge diese auch in der lokalen DB ein
  */
