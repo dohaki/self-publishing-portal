@@ -16,14 +16,10 @@ Template.components_providerInsertionForm.events({
         const title = $('#title').val();
         const description = $('#description').val();
         const skills = $('.chips').material_chip('data');
-        const hourlyRate = $('#hourlyRate').val();
+        const hourlyRate = web3.toWei($('#hourlyRate').val(), 'ether');
         for (let i = 0; i < skills.length; i++) {
             skillsString += skills[i].tag + '#';
         }
-        console.log(title);
-        console.log(description);
-        console.log(skills);
-        console.log(hourlyRate);
         publishInsertion(title, description, skillsString, false, hourlyRate, 0, () => {
             FlowRouter.go('/insertions');
         });

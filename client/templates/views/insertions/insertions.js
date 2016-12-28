@@ -33,10 +33,16 @@ Template.views_insertions.events({
 });
 
 Template.views_insertions.helpers({
-    pendingTransactions: function () {
+    pendingTransactions: () => {
         return Transactions.find({status: 'PENDING', type: 'Insertions'}).fetch();
     },
-    myLiveInsertions: function () {
-        return Insertions.find({}).fetch();
+    myLiveInsertions: () => {
+        return Insertions.find({owner: account, isActive: true}).fetch();
+    },
+    projectInsertions: () => {
+        return Insertions.find({isActive: true, isProject: true}).fetch();
+    },
+    providerInsertions: () => {
+        return Insertions.find({isActive: true, isProject: false}).fetch();
     }
 });

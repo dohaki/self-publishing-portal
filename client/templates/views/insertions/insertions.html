@@ -52,16 +52,22 @@
             {{/unless}}
         </div>
         <div id="projects" class="col s12">
-            <div class="row">
-                {{#each campaign in mostRecentCampaigns}}
-                    {{> components_campaignCard campaign}}
+            <div class="row no-margin">
+                <h5 class="col bold">Project Insertions</h5>
+            </div>
+            <div class="slick-carousel">
+                {{#each insertion in projectInsertions}}
+                    {{> components_insertionCard insertion}}
                 {{/each}}
             </div>
         </div>
         <div id="provider" class="col s12">
-            <div class="row">
-                {{#each campaign in mostRecentCampaigns}}
-                    {{> components_campaignCard campaign}}
+            <div class="row no-margin">
+                <h5 class="col bold">Provider Insertions</h5>
+            </div>
+            <div class="slick-carousel">
+                {{#each insertion in providerInsertions}}
+                    {{> components_insertionCard insertion}}
                 {{/each}}
             </div>
         </div>

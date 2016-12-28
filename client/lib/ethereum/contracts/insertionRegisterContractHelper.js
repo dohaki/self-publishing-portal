@@ -129,6 +129,7 @@ export function getInsertionFromContract(insertionId) {
                 hourlyRate: new BigNumber(result[6]).toNumber(),
                 budget: new BigNumber(result[7]).toNumber(),
                 numOfBids: new BigNumber(result[8]).toNumber(),
+                isActive: result[9],
                 bids: []
             }
             upsertInsertion(insertionId, insertion, () => {

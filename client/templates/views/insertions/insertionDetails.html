@@ -21,6 +21,8 @@
                     {{else}}
                         <h4 class="bold no-margin">{{dapp_formatBalance insertion.hourlyRate}} ETH/h</h4>
                         <p class="no-margin">Hourly rate</p>
+                        <p></p>
+                        <a class="js-hire waves-effect waves-light btn" href="">Hire</a>
                     {{/if}}
                 </div>
             </div>
@@ -43,20 +45,23 @@
                     <a class="modal-action modal-close waves-effect waves-green btn-flat right">Cancel</a>
                 </div>
             </div>
-            <div class="divider"></div>
-            <div class="row">
-                <p class="col s12">Bids</p>
-                <ul class="collection">
-                    {{#each bid in (insertion.bids)}}
-                        <li class="collection-item">
-                            {{getUserNameByAddress bid.bidder}}'s bid: <span class="bold">{{dapp_formatBalance bid.amount}} ETH</span>
-                            {{#if isOwner insertion}}
-                                <a class="js-hire waves-effect waves-green btn-flat right">Hire</a>
-                            {{/if}}
-                        </li>
-                    {{/each}}
-                </ul>
-            </div>
+            {{# if isProject insertion}}
+                <div class="divider"></div>
+                <div class="row">
+                    <p class="col s12">Bids</p>
+                    <ul class="collection">
+                        {{#each bid in (insertion.bids)}}
+                            <li class="collection-item">
+                                {{getUserNameByAddress bid.bidder}}'s bid: <span class="bold">{{dapp_formatBalance
+                                    bid.amount}} ETH</span>
+                                {{#if isOwner insertion}}
+                                    <a class="js-hire waves-effect waves-green btn-flat right">Hire</a>
+                                {{/if}}
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            {{/if}}
         </div>
         <div class="col s1"></div>
     </div>

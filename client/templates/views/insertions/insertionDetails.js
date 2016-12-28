@@ -54,5 +54,10 @@ Template.views_insertionDetails.events({
         bidToProject(id, bidAmount, () => {
             FlowRouter.go('/insertions');
         });
+    },
+    'click .js-hire' () {
+        const id = parseInt(Session.get('insertionId'));
+        const insertion = Insertions.findOne({_id: id});
+        if (insertion.owner === account) Materialize.toast('You can not hire yourself!', 3000);
     }
 });
