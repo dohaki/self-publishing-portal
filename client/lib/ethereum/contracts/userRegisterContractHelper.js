@@ -36,6 +36,17 @@ const address = "0xfa65e6da80e8690b0ec039c476a3c8d63dc26fa1";
 
 UserRegisterContract = web3.eth.contract(abiArray).at(address);
 
+export function getUserNameByAddressFromContract(address) {
+    UserRegisterContract.users(address, (error, result) => {
+       if (error)
+           console.error(error);
+       else {
+           Users.upsert({userAddress: address}, {userAddress: address, userName: result});
+           return result;
+       }
+    });
+}
+
 UserRegisterContract.JoinSuccess().watch(function (error, result) {
     if (error) {
         console.error('userRegisterHelper.js - JoinSuccess event');

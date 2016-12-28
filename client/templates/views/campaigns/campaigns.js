@@ -50,7 +50,7 @@ Template.views_campaigns.events({
 
 Template.views_campaigns.helpers({
     pendingTransactions: function () {
-        return Transactions.find({status: 'PENDING'}).fetch();
+        return Transactions.find({status: 'PENDING', type: 'Campaigns'}).fetch();
     },
     myLiveCampaigns: function () {
         return Campaigns.find({

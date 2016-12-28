@@ -17,11 +17,10 @@ Template.components_projectInsertionForm.events({
         const description = $('#description').val();
         const skills = $('.chips').material_chip('data');
         const budget = web3.toWei($('#budget').val(), 'ether');
-        const hourlyRate = web3.toWei($('#hourlyRate').val(), 'ether');
         for (let i = 0; i < skills.length; i++) {
             skillsString += skills[i].tag + '#';
         }
-        publishInsertion(title, description, skillsString, true, hourlyRate, budget, () => {
+        publishInsertion(title, description, skillsString, true, 0, budget, () => {
            FlowRouter.go('/insertions');
         });
     }

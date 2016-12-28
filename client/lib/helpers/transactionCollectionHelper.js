@@ -4,7 +4,8 @@ export function insertPendingTransaction (txHash, txData) {
         title: txData.title,
         description: txData.description,
         createdAt: Date.now(),
-        status: 'PENDING'
+        status: 'PENDING',
+        type: txData.type
     });
 }
 

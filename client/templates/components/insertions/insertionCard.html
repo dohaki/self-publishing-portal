@@ -17,21 +17,29 @@
                         {{/each}}
                     </div>
                     <div class="row">
-                        <div class="col s6">
-                            <p class="bold">{{dapp_formatBalance this.budget}} ETH</p>
-                            <p>budget</p>
-                        </div>
-                        <div class="col s6">
-                            <p class="bold">{{dapp_formatBalance this.hourlyRate}} ETH/h</p>
-                            <p>hourly rate</p>
-                        </div>
+                        {{#if (this.isProject)}}
+                            <div class="col s6">
+                                <p>Budget:</p>
+                            </div>
+                            <div class="col s6">
+                                <p class="bold">{{dapp_formatBalance this.budget}} ETH</p>
+                            </div>
+                        {{else}}
+                            <div class="col s6">
+                                <p>Rate:</p>
+                            </div>
+                            <div class="col s6">
+                                <p class="bold">{{dapp_formatBalance this.hourlyRate}} ETH/h</p>
+                            </div>
+                        {{/if}}
                     </div>
                 </div>
             </div>
             <div class="card-action">
                 <a href=""><i class="material-icons">share</i></a>
                 <a href=""><i class="material-icons">favorite_border</i></a>
-                <a class="js-details right" href="/campaigns/{{this._id}}"><i class="material-icons">description</i></a>
+                <a class="js-details right" href="/insertions/{{this._id}}"><i
+                        class="material-icons">description</i></a>
             </div>
         </div>
     </div>

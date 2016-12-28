@@ -1,0 +1,63 @@
+<template name="views_insertionDetails">
+    <div class="row">
+        <div class="col s1"></div>
+        <div class="col s10 text-center">
+            <h4 class="row">{{insertion.title}}</h4>
+            <div class="row">
+                {{#each skill in (insertion.skills)}}
+                    <div class="chip">{{skill}}</div>
+                {{/each}}
+            </div>
+            <div class="row">
+                <div class="col s8">
+                    <p style="text-align: justify">{{insertion.description}}</p>
+                </div>
+                <div class="col s4">
+                    {{#if isProject insertion}}
+                        <h4 class="bold no-margin">{{dapp_formatBalance insertion.budget}} ETH</h4>
+                        <p class="no-margin">Budget</p>
+                        <p></p>
+                        <a class="modal-trigger waves-effect waves-light btn" href="#bidModal">bid</a>
+                    {{else}}
+                        <h4 class="bold no-margin">{{dapp_formatBalance insertion.hourlyRate}} ETH/h</h4>
+                        <p class="no-margin">Hourly rate</p>
+                    {{/if}}
+                </div>
+            </div>
+            <!-- Bid Modal-->
+            <div id="bidModal" class="modal">
+                <div class="modal-content">
+                    <h4>Enter your bid</h4>
+                    <div class="row">
+                        <div class="col s4"></div>
+                        <div class="input-field col s4">
+                            <i class="material-icons prefix large-font">attach_money</i>
+                            <input id="bid" type="number" class="validate bold text-center large-font" step="0.1"
+                                   min="0.1" max="{{dapp_formatBalance maxContribution}}">
+                        </div>
+                        <div class="col s4"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="js-bid modal-close waves-effect waves-green btn right">Bid</a>
+                    <a class="modal-action modal-close waves-effect waves-green btn-flat right">Cancel</a>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="row">
+                <p class="col s12">Bids</p>
+                <ul class="collection">
+                    {{#each bid in (insertion.bids)}}
+                        <li class="collection-item">
+                            {{getUserNameByAddress bid.bidder}}'s bid: <span class="bold">{{dapp_formatBalance bid.amount}} ETH</span>
+                            {{#if isOwner insertion}}
+                                <a class="js-hire waves-effect waves-green btn-flat right">Hire</a>
+                            {{/if}}
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div class="col s1"></div>
+    </div>
+</template>

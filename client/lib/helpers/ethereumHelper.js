@@ -2,6 +2,7 @@ import {Session} from 'meteor/session';
 
 import {insertPendingTransaction, removePendingTransaction, failedTransaction} from '/client/lib/helpers/transactionCollectionHelper';
 import {getAllCampaignsFromContract} from '/client/lib/ethereum/contracts/crowdFundingContractHelper';
+import {getAllInsertionFromContract} from '/client/lib/ethereum/contracts/insertionRegisterContractHelper';
 
 export function pendingTransaction (txHash, txData, cb) {
     insertPendingTransaction(txHash, txData);
@@ -18,6 +19,7 @@ export function pendingTransaction (txHash, txData, cb) {
                 console.log('successfully mined transaction: ' + txHash);
                 removePendingTransaction(txHash);
                 if (txData.type === 'Campaigns') getAllCampaignsFromContract();
+                if (txData.type === 'Insertions') getAllInsertionFromContract();
             } else if (!result && counter < maxAttempts) {
                 setTimeout(function () {
                     getTx();

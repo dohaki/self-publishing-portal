@@ -34,9 +34,9 @@ Template.views_insertions.events({
 
 Template.views_insertions.helpers({
     pendingTransactions: function () {
-        return Transactions.find({status: 'PENDING'}).fetch();
+        return Transactions.find({status: 'PENDING', type: 'Insertions'}).fetch();
     },
     myLiveInsertions: function () {
-        return Insertions.find().fetch();
+        return Insertions.find({}).fetch();
     }
 });

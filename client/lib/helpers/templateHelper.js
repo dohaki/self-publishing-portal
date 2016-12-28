@@ -1,6 +1,8 @@
 import {Template} from 'meteor/templating';
 import {Session} from 'meteor/session';
 
+import {getUserNameByAddressFromContract} from '/client/lib/ethereum/contracts/userRegisterContractHelper';
+
 /**
  * Berechnet prozentualen Anteil
  * @param numerator - Zähler
@@ -45,8 +47,9 @@ Template.registerHelper('mining', function () {
 });
 
 Template.registerHelper('getUserNameByAddress', function (address) {
-    let user = Users.findOne({userAddress: address});
-    return user.userName;
+    const user = Users.findOne({userAddress: address});
+    if (!user) return getUserNameByAddressFromContract(address);
+    else return user.userName;
 });
 
 Template.registerHelper('isSelected', function (item) {
