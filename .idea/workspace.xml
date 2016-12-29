@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bb0ac04-ab6f-4b09-9596-67ba80babd0d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/lib/ethereum/contracts/insertionRegisterContract.sol" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/layout/sidebar.html" afterPath="$PROJECT_DIR$/client/templates/layout/sidebar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/layout/sidebar.js" afterPath="$PROJECT_DIR$/client/templates/layout/sidebar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.html" afterPath="$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.js" afterPath="$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,12 +27,12 @@
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="sidebar.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/client/templates/layout/sidebar.html">
+        <leaf>
+          <file leaf-file-name="insertionDetails.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="16" column="66" lean-forward="false" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
+                <state relative-caret-position="411">
+                  <caret line="49" column="22" lean-forward="true" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
                   <folding />
                 </state>
               </provider>
@@ -41,14 +42,22 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="sidebar.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/client/templates/layout/sidebar.js">
+          <file leaf-file-name="insertionDetails.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="14" column="3" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-                  <folding>
-                    <element signature="e#0#43#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="676">
+                  <caret line="65" column="44" lean-forward="false" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/templates/views/home.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -90,7 +99,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/templates/layout/main.html" />
         <option value="$PROJECT_DIR$/client/templates/components/campaignCreateBasic.html" />
         <option value="$PROJECT_DIR$/client/templates/components/carouselItem.html" />
         <option value="$PROJECT_DIR$/client/templates/components/slick-carousel.html" />
@@ -133,14 +141,15 @@
         <option value="$PROJECT_DIR$/client/templates/components/insertions/providerInsertionForm.html" />
         <option value="$PROJECT_DIR$/client/templates/components/insertions/providerInsertionForm.js" />
         <option value="$PROJECT_DIR$/client/lib/ethereum/contracts/insertionRegisterContractHelper.js" />
-        <option value="$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.js" />
-        <option value="$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.html" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/client/templates/views/login.html" />
         <option value="$PROJECT_DIR$/client/templates/views/login.js" />
         <option value="$PROJECT_DIR$/client/lib/ethereum/contracts/userRegisterContractHelper.js" />
         <option value="$PROJECT_DIR$/client/templates/layout/sidebar.js" />
         <option value="$PROJECT_DIR$/client/templates/layout/sidebar.html" />
+        <option value="$PROJECT_DIR$/client/lib/ethereum/contracts/insertionRegisterContract.sol" />
+        <option value="$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.html" />
+        <option value="$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.js" />
       </list>
     </option>
   </component>
@@ -245,6 +254,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Self-Publishing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Self-Publishing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="insertions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -533,14 +568,7 @@
       <workItem from="1482752389570" duration="9399000" />
       <workItem from="1482840395753" duration="8592000" />
       <workItem from="1482920570374" duration="10584000" />
-      <workItem from="1483008208962" duration="3347000" />
-    </task>
-    <task id="LOCAL-00002" summary="Layout Anpassungen + Materialize + FlowRouter">
-      <created>1479827420221</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1479827420221</updated>
+      <workItem from="1483008208962" duration="3985000" />
     </task>
     <task id="LOCAL-00003" summary="paykage anpassungen und collapse button sidenav">
       <created>1479841588543</created>
@@ -878,15 +906,22 @@
       <option name="project" value="LOCAL" />
       <updated>1483010923294</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Sidebar Icons hinzugefügt">
+      <created>1483011569538</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1483011569538</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="347025000" />
+    <option name="totallyTimeSpent" value="347663000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16899142" sideWeight="0.49535963" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -924,7 +959,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Campaigns werden persistent lokal gespeichert" />
     <MESSAGE value="Auslagern von upsert bei Kampagne" />
     <MESSAGE value="Basic Detail-Seite von Campaign" />
     <MESSAGE value="html in campaign integriert" />
@@ -949,7 +983,8 @@
     <MESSAGE value="deactivation of insertion." />
     <MESSAGE value="Anleitung für die Einrichtung der Anwendung eingefügt" />
     <MESSAGE value="Login Anpassungen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login Anpassungen" />
+    <MESSAGE value="Sidebar Icons hinzugefügt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sidebar Icons hinzugefügt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -958,8 +993,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/templates/components/carouselItem.html" />
-    <entry file="file://$PROJECT_DIR$/client/templates/components/slickCarousel.html" />
     <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns/campaignCreate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -1193,24 +1226,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="29" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="739">
-          <caret line="65" column="40" lean-forward="false" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/ethereum/contracts/insertionRegisterContractHelper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="36" column="22" lean-forward="true" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1291,6 +1313,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/layout/sidebar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="66" lean-forward="false" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/layout/sidebar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1301,10 +1331,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/layout/sidebar.html">
+    <entry file="file://$PROJECT_DIR$/client/lib/ethereum/contracts/insertionRegisterContract.sol">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="66" lean-forward="false" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
+        <state relative-caret-position="739">
+          <caret line="65" column="1" lean-forward="false" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="49" column="22" lean-forward="true" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="676">
+          <caret line="65" column="44" lean-forward="false" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/views/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

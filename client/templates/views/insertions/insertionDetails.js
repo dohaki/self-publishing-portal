@@ -49,16 +49,21 @@ Template.views_insertionDetails.helpers({
 
 Template.views_insertionDetails.events({
     'click .js-bid' () {
-        const bidAmount = web3.toWei($('#bid').val(), 'ether');
         const id = parseInt(Session.get('insertionId'));
-        bidToProject(id, bidAmount, () => {
-            FlowRouter.go('/insertions');
-        });
+        const bidAmount = web3.toWei($('#bid').val(), 'ether');
+        const insertion = Insertions.findOne({_id: id});
+        if (insertion.owner === account) {
+            Materialize.toast('You can not bid for your own project!', 3000);
+        } else {
+            bidToProject(id, bidAmount, () => {
+                FlowRouter.go('/insertions');
+            });
+        }
     },
     'click .js-hire' () {
         const id = parseInt(Session.get('insertionId'));
         const insertion = Insertions.findOne({_id: id});
-        if (insertion.owner === account) Materialize.toast('You can not hire yourself!', 3000);
+        if (insertion.owner === account && !insertion.isProject) Materialize.toast('You can not hire yourself!', 3000);
     },
     'click .js-deactivate' () {
         const id = parseInt(Session.get('insertionId'));
