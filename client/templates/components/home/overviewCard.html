@@ -1,0 +1,31 @@
+<template name="components_overviewCard">
+    <div class="col s12 m6 l4">
+        <div class="card">
+            <div class="card-content" style="padding-bottom: 0">
+                <div class="section" style="padding-top: 0 !important;">
+                    <p class="bold truncate">Overview</p>
+                </div>
+                <div class="section">
+                    <div class="collection">
+                        <a href="#!" class="collection-item">
+                            <span class="new badge">{{newMessages}}</span>
+                            Messages
+                        </a>
+                        <a href="/campaigns" class="collection-item">
+                            <span class="badge">{{liveCampaigns}}</span>
+                            Your live campaigns
+                        </a>
+                        <a href="/insertions" class="collection-item">
+                            <span class="badge">{{activeInsertions}}</span>
+                            Your active insertions
+                        </a>
+                        <a href="/contracts" class="collection-item">
+                            <span class="badge">{{activeContracts}}</span>
+                            Your active contracts
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

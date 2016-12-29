@@ -1,7 +1,10 @@
 <template name="views_home">
-    <div class="row-fluid">
-        <div class="col-md-6">
-            {{> components_component1 }}
+    <div class="row text-center">
+        <h4>Welcome {{user.userName}}!</h4>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            {{> components_overviewCard}}
         </div>
     </div>
 </template>

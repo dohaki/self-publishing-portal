@@ -4,7 +4,7 @@
             <div class="userView center">
                 <div class="background"></div>
                 <a><i class="material-icons large">account_circle</i></a>
-                <a><span class="name">{{user.userName}}</span></a>
+                <a><span class="name">{{getUserNameByAddress account.address}}</span></a>
                 <p class="no-margin">{{dapp_formatBalance account.balance '0.000' 'ether'}} ETH</p>
                 <span class="email truncate">{{account.address}}</span>
             </div>
