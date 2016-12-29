@@ -16,7 +16,6 @@ FlowRouter.route('/', {
 });
 
 Template.views_home.onRendered(() => {
-    console.log(FlowRouter.getRouteName());
 });
 
 Template.views_home.helpers({

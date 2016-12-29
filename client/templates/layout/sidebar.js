@@ -3,7 +3,6 @@ import {Template} from 'meteor/templating';
 import './sidebar.html';
 
 Template.layout_sidebar.onRendered(() => {
-    console.log(FlowRouter.getRouteName());
 });
 
 Template.layout_sidebar.helpers({
