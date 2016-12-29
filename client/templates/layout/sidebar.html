@@ -9,11 +9,11 @@
                 <span class="email truncate">{{account.address}}</span>
             </div>
         </li>
-        <li><a href="/"><i class="material-icons left">home</i>Home</a></li>
-        <li><a href="/campaigns"><i class="material-icons left">apps</i>Campaigns</a></li>
-        <li><a href="/insertions"><i class="material-icons left">assignments</i>Insertions</a></li>
-        <li><a href="/contracts"><i class="material-icons left">insert_drive_file</i>Contracts</a></li>
-        <li><a href="/shop"><i class="material-icons left">shop</i>Shop</a></li>
-        <li><a href="/votings"><i class="material-icons left">poll</i>Votings</a></li>
+        <li class="{{#if isActive 'home'}}active{{/if}}"><a href="/"><i class="material-icons left">home</i>Home</a></li>
+        <li class="{{#if isActive 'campaigns'}}active{{/if}}"><a href="/campaigns"><i class="material-icons left">apps</i>Campaigns</a></li>
+        <li class="{{#if isActive 'insertions'}}active{{/if}}"><a href="/insertions"><i class="material-icons left">assignments</i>Insertions</a></li>
+        <li class="{{#if isActive 'contracts'}}active{{/if}}"><a href="/contracts"><i class="material-icons left">insert_drive_file</i>Contracts</a></li>
+        <li class="{{#if isActive 'shop'}}active{{/if}}"><a href="/shop"><i class="material-icons left">shop</i>Shop</a></li>
+        <li class="{{#if isActive 'votings'}}active{{/if}}"><a href="/votings"><i class="material-icons left">poll</i>Votings</a></li>
     </ul>
 </template>

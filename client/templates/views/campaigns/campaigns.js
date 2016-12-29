@@ -8,6 +8,7 @@ import './campaigns.html';
 
 // Home routes
 FlowRouter.route('/campaigns', {
+    name: 'campaigns',
     triggersEnter: [function () {
         getAllCampaignsFromContract();
     }],

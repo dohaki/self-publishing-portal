@@ -7,6 +7,7 @@ import './insertions.html';
 
 // Home routes
 FlowRouter.route('/insertions', {
+    name: 'insertions',
     action: function () {
         BlazeLayout.render('layout_main', {
             header: 'layout_header',

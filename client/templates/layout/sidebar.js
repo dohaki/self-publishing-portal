@@ -2,7 +2,8 @@ import {Template} from 'meteor/templating';
 
 import './sidebar.html';
 
-Template.layout_sidebar.onRendered(function () {
+Template.layout_sidebar.onRendered(() => {
+    console.log(FlowRouter.getRouteName());
 });
 
 Template.layout_sidebar.helpers({
@@ -11,6 +12,9 @@ Template.layout_sidebar.helpers({
     },
     account: () => {
         return EthAccounts.find().fetch()[0];
+    },
+    isActive: (route) => {
+        return (FlowRouter.getRouteName() === route);
     }
 });
 

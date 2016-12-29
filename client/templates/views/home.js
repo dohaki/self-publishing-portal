@@ -5,6 +5,7 @@ import './home.html';
 
 // Home routes
 FlowRouter.route('/', {
+    name: 'home',
     action: function () {
         BlazeLayout.render('layout_main', {
             header: 'layout_header',
@@ -15,7 +16,7 @@ FlowRouter.route('/', {
 });
 
 Template.views_home.onRendered(() => {
-
+    console.log(FlowRouter.getRouteName());
 });
 
 Template.views_home.helpers({

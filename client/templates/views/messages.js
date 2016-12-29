@@ -5,7 +5,7 @@ import './messages.html';
 
 // Routes
 FlowRouter.route('/messages', {
-    name: 'login',
+    name: 'messages',
     triggersEnter: [function () {
     }],
     action: function () {
