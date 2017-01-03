@@ -5,18 +5,6 @@ import {getAllInsertionFromContract} from '/client/lib/ethereum/contracts/insert
 
 import './insertions.html';
 
-// Home routes
-FlowRouter.route('/insertions', {
-    name: 'insertions',
-    action: function () {
-        BlazeLayout.render('layout_main', {
-            header: 'layout_header',
-            main: 'views_insertions',
-            sidebar: 'layout_sidebar'
-        });
-    }
-});
-
 Template.views_insertions.onCreated(() => {
 
 });

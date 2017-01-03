@@ -6,21 +6,6 @@ import {campaignCategories} from '/client/lib/helpers/campaignCollectionHelper';
 
 import './campaigns.html';
 
-// Home routes
-FlowRouter.route('/campaigns', {
-    name: 'campaigns',
-    triggersEnter: [function () {
-        getAllCampaignsFromContract();
-    }],
-    action: function () {
-        BlazeLayout.render('layout_main', {
-            header: 'layout_header',
-            main: 'views_campaigns',
-            sidebar: 'layout_sidebar'
-        });
-    }
-});
-
 Template.views_campaigns.onCreated(function () {
     this.categories = new ReactiveVar(campaignCategories);
     this.selectedCategories = new ReactiveVar([]);

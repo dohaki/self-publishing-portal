@@ -5,17 +5,6 @@ import {bidToProject, deactivateInsertion} from '/client/lib/ethereum/contracts/
 
 import './insertionDetails.html';
 
-FlowRouter.route('/insertions/:id', {
-    action: function (params, queryParams) {
-        Session.set('insertionId', params.id);
-        BlazeLayout.render('layout_main', {
-            header: 'layout_header',
-            main: 'views_insertionDetails',
-            sidebar: 'layout_sidebar'
-        });
-    }
-});
-
 Template.views_insertionDetails.onRendered(function () {
     $('.modal-trigger').leanModal({
         dismissible: true, // Modal can be dismissed by clicking outside of the modal

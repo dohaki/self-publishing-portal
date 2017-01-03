@@ -3,6 +3,7 @@ import {Template} from 'meteor/templating';
 import './sidebar.html';
 
 Template.layout_sidebar.onRendered(() => {
+    console.log(FlowRouter.current().route);
 });
 
 Template.layout_sidebar.helpers({
@@ -13,7 +14,8 @@ Template.layout_sidebar.helpers({
         return EthAccounts.find().fetch()[0];
     },
     isActive: (route) => {
-        return (FlowRouter.getRouteName() === route);
+        FlowRouter.watchPathChange();
+        return (FlowRouter.current().route.group.name === route);
     }
 });
 

@@ -5,17 +5,6 @@ import {contributeToContract, checkGoalReached, safeWithdrawal} from '/client/li
 
 import './campaignDetails.html';
 
-FlowRouter.route('/campaigns/:id', {
-    action: function (params, queryParams) {
-        Session.set('campaignId', params.id)
-        BlazeLayout.render('layout_main', {
-            header: 'layout_header',
-            main: 'views_campaignDetails',
-            sidebar: 'layout_sidebar'
-        });
-    }
-});
-
 Template.views_campaignDetails.onRendered(function () {
     $(document).ready(function () {
         $('select').material_select();

@@ -3,18 +3,6 @@ import {ReactiveVar} from 'meteor/reactive-var';
 
 import './contracts.html';
 
-// contracts routes
-FlowRouter.route('/contracts', {
-    name: 'contracts',
-    action: function () {
-        BlazeLayout.render('layout_main', {
-            header: 'layout_header',
-            main: 'views_contracts',
-            sidebar: 'layout_sidebar'
-        });
-    }
-});
-
 Template.views_contracts.onCreated(() => {
 });
 

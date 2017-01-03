@@ -3,16 +3,6 @@ import {Session} from 'meteor/session';
 
 import './campaignCreate.html';
 
-FlowRouter.route('/campaigns/create', {
-    action: function (params, queryParams) {
-        BlazeLayout.render('layout_main', {
-            header: 'layout_header',
-            main: 'views_campaignCreate',
-            sidebar: 'layout_sidebar'
-        });
-    }
-});
-
 Template.views_campaignCreate.onCreated(function () {
     Session.set('isFormValid', false);
 });
