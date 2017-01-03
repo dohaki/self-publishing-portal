@@ -3,6 +3,7 @@
         <div class="col s1"></div>
         <div class="col s10 text-center">
             <h4 class="row">{{insertion.title}}</h4>
+            <h5 class="row">{{getUserNameByAddress insertion.owner}}</h5>
             <div class="row">
                 {{#each skill in (insertion.skills)}}
                     <div class="chip">{{skill}}</div>
