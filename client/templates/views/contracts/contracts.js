@@ -22,6 +22,10 @@ Template.views_contracts.onRendered(() => {
 });
 
 Template.views_contracts.events({
+    'click .js-create-contract' () {
+        Session.set('hiredBid');
+        FlowRouter.go('/contracts/create');
+    }
 });
 
 Template.views_contracts.helpers({

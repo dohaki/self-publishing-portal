@@ -23,7 +23,7 @@
                         <h4 class="bold no-margin">{{dapp_formatBalance insertion.hourlyRate}} ETH/h</h4>
                         <p class="no-margin">Hourly rate</p>
                         <p></p>
-                        <a class="js-hire waves-effect waves-light btn" href="">Hire</a>
+                        <a class="js-hire-provider waves-effect waves-light btn" href="">Hire</a>
                     {{/if}}
                     <!--{{#if isOwner insertion}}-->
                         <!--<p></p>-->
@@ -60,7 +60,7 @@
                                 {{getUserNameByAddress bid.bidder}}'s bid: <span class="bold">{{dapp_formatBalance
                                     bid.amount}} ETH</span>
                                 {{#if isOwner insertion}}
-                                    <a class="js-hire waves-effect waves-green btn-flat right">Hire</a>
+                                    <a class="js-hire-project waves-effect waves-green btn-flat right" data-amount="{{bid.amount}}" data-bidder="{{bid.bidder}}">Hire</a>
                                 {{/if}}
                             </li>
                         {{/each}}
