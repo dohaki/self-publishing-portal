@@ -1,0 +1,78 @@
+<template name="components_campaignCreateBasic">
+    <div class="section text-center">
+        <h4>Let's go!</h4>
+        <h5>The first impression is very important:</h5>
+        <h5>Give a quick overview of your campaign</h5>
+    </div>
+    <form class="row col s12" id="basicForm">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="title" class="validate {{#if waitingForConfirmation}}disabled{{/if}}" type="text"
+                       minlength="1" maxlength="50" length="50" required>
+                <label for="title" data-error="wrong">Title</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="description"
+                          class="materialize-textarea validate {{#if waitingForConfirmation}}disabled{{/if}}"
+                          maxlength="500" required></textarea>
+                <label for="description">Description</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <select id="category" class="js-category validate {{#if waitingForConfirmation}}disabled{{/if}}"
+                        required>
+                    <option value="" disabled selected>Choose a category</option>
+                    {{#each category in categories}}
+                        <option value="{{category.category}}" class="disabled">{{category.category}}</option>
+                    {{/each}}
+                </select>
+                <label>Category</label>
+            </div>
+            <div class="input-field col s12 m6">
+                <select id="subCategory" class="validate" required>
+                    {{#each category in subCategories}}
+                        <option value="{{category}}"
+                                class="{{#if waitingForConfirmation}}disabled{{/if}}">{{category}}</option>
+                    {{/each}}
+                </select>
+                <label>Sub Category</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input id="duration" type="number" min="1"
+                       class="validate {{#if waitingForConfirmation}}disabled{{/if}}" required>
+                <label for="duration">Duration in days</label>
+            </div>
+            <div class="input-field col s12 m6">
+                <input id="goal" type="number" min="0.1" step="0.1"
+                       class="validate {{#if waitingForConfirmation}}disabled{{/if}}" required>
+                <label for="goal">Goal in ETH</label>
+            </div>
+        </div>
+    </form>
+    <br>
+    <div class="divider"></div>
+    <div class="row text-center">
+        <h5>Tell us more about your project!</h5>
+    </div>
+    <div class="row">
+        <div id="froala-editor">
+            <p>Here you can describe your project. You can also design this page as much you'd like.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s3"></div>
+        <div class="col s6 text-center">
+            <a class="js-start waves-effect waves-light btn">
+                <i class="material-icons left">launch</i>start campaign
+            </a>
+        </div>
+        <div class="col s3">
+            <!--<a class="js-next btn-flat right"><i class="material-icons right">navigate_next</i>next</a>-->
+        </div>
+    </div>
+</template>

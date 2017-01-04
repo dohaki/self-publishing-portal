@@ -1,36 +1,123 @@
-// libs
-@import '{ethereum:dapp-styles}/dapp-styles.less';
-
+// General
 @base: crimson;
 
-.dapp-aside {
-  background-color: white;
+header, main, footer {
+  padding-left: 300px;
 }
 
-.dapp-aside nav ul li a {
-  color: @base !important;
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
 }
 
-.dapp-aside nav ul li a:active {
-  color: @base;
-  font-weight: bold !important;
+.center-cropped {
+  object-fit: none; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+  height: 200px;
 }
 
-.dapp-content {
-  background-color: white;
+.scale {
+  max-width:100%;
+  max-height:100%;
 }
 
-.dapp-box {
-  background-color: white;
-  border: solid;
-  border-color: @base;
+.bold {
+  font-weight: bold;
 }
 
-.dapp-header {
-  background-image: none !important;
-  background-color: @base;
+.large-font {
+  font-size: 50px !important;
 }
 
-.dapp-header nav ul li a {
-  color: white !important;
+.no-padding {
+  padding: 0 0 0 0;
 }
+
+.no-margin {
+  margin: 0 0 0 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.add-button {
+  height: 100px !important;
+  width: 100% !important;
+  border: dashed !important;
+}
+
+.no-overflow {
+  overflow: hidden;
+}
+
+.loading {
+  position: fixed;
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+  padding-left: 0;
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: gray;
+  font-size: 30px;
+}
+
+.slick-next {
+  right: 5px;
+}
+
+.slick-prev {
+  left: 0px;
+}
+
+.vertical-align {
+  vertical-align: middle;
+}
+
+// WORKAROUND - START
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Thin), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Thin.eot");
+  src: url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Thin.eot?") format("embedded-opentype"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Thin.woff2") format("woff2"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Thin.woff") format("woff"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Thin.ttf") format("truetype");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Light), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Light.eot");
+  src: url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Light.eot?") format("embedded-opentype"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Light.woff2") format("woff2"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Light.woff") format("woff"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Light.ttf") format("truetype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Regular), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Regular.eot");
+  src: url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Regular.eot?") format("embedded-opentype"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Regular.woff") format("woff"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Medium.eot");
+  src: url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Medium.eot?") format("embedded-opentype"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Medium.woff") format("woff"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Bold.eot");
+  src: url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Bold.eot?") format("embedded-opentype"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Bold.woff") format("woff"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+// WORKAROUND - END

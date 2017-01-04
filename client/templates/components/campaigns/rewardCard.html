@@ -1,0 +1,33 @@
+<template name="components_rewardCard">
+    <div class="card-panel row col s12">
+        <div class="col s2">
+            <p class="bold">Reward Nr.</p>
+        </div>
+        <div class="col s10">
+            <div class="input-field col s12">
+                <input id="title" type="text" value="{{this.title}}">
+                <label for="title">Title</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="contribution" type="number" value="{{this.contribution}}">
+                <label for="contribution">Contribution</label>
+            </div>
+            <div class="input-field col s12">
+                <textarea id="description" class="materialize-textarea">{{this.description}}</textarea>
+                <label for="description">Description</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="estimatedShipment" type="date" class="datepicker" value="{{this.estimatedShipment}}">
+                <label for="estimatedShipment">Est. Shipment</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="restriction" type="number" value="{{this.restrictedReward}}">
+                <label for="restriction">Restriction</label>
+            </div>
+            <div class="row">
+                <a class="js-remove-reward waves-effect waves-light btn right"><i
+                        class="material-icons right">delete</i>delete</a>
+            </div>
+        </div>
+    </div>
+</template>

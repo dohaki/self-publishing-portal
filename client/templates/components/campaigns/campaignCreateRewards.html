@@ -1,0 +1,16 @@
+<template name="components_campaignCreateRewards">
+    <div class="section text-center">
+        <h5>Here you can define the rewards your backers get</h5>
+    </div>
+    {{#each reward in rewards}}
+        {{> components_rewardCard reward}}
+    {{/each}}
+    <a class="js-add-reward waves-effect waves-light btn add-button">
+        <i class="material-icons">add_circle_outline</i>add reward
+    </a>
+    <p></p>
+    <div class="row">
+        <a class="js-back waves-effect waves-light btn left"><i class="material-icons left">navigate_before</i>back</a>
+        <a class="js-next waves-effect waves-light btn right"><i class="material-icons right">navigate_next</i>next</a>
+    </div>
+</template>

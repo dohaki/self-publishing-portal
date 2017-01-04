@@ -21,12 +21,17 @@ shell-server@0.2.1            # Server-side component of the `meteor shell` comm
 autopublish@1.0.7             # Publish all data to the clients (for prototyping)
 insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
 ethereum:web3
-ethereum:dapp-styles
 ethereum:tools
 ethereum:elements
 ethereum:accounts
 ethereum:blocks
 frozeman:template-var
-frozeman:persistent-minimongo2
 less
-iron:router
+kadira:flow-router
+kadira:blaze-layout
+materialize:materialize
+session
+froala:editor
+frozeman:persistent-minimongo
+udondan:slick
+chart:chart

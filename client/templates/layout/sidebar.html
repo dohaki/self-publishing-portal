@@ -1,18 +1,19 @@
 <template name="layout_sidebar">
-    <aside class="dapp-aside">
-        <nav>
-            <ul>
-                <li>
-                    <a class="sidebar-item" href="#">
-                        <i class="icon-arrow-down3"></i>
-                        <span>Receive</span>
-                    </a>
-                    <a href="#">
-                        <i class="icon-arrow-up2"></i>
-                        <span>Send</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </aside>
+    <ul id="slide-out" class="side-nav fixed">
+        <li>
+            <div class="userView center">
+                <div class="background"></div>
+                <a><i class="material-icons large">account_circle</i></a>
+                <a><span class="name">{{getUserNameByAddress account.address}}</span></a>
+                <p class="no-margin">{{dapp_formatBalance account.balance '0.000' 'ether'}} ETH</p>
+                <span class="email truncate">{{account.address}}</span>
+            </div>
+        </li>
+        <li class="{{#if isActive 'home'}}active{{/if}}"><a href="/"><i class="material-icons left">home</i>Home</a></li>
+        <li class="{{#if isActive 'campaigns'}}active{{/if}}"><a href="/campaigns"><i class="material-icons left">apps</i>Campaigns</a></li>
+        <li class="{{#if isActive 'insertions'}}active{{/if}}"><a href="/insertions"><i class="material-icons left">assignments</i>Insertions</a></li>
+        <li class="{{#if isActive 'contracts'}}active{{/if}}"><a href="/contracts"><i class="material-icons left">insert_drive_file</i>Contracts</a></li>
+        <li class="{{#if isActive 'shop'}}active{{/if}}"><a href="/shop"><i class="material-icons left">shop</i>Shop</a></li>
+        <li class="{{#if isActive 'votings'}}active{{/if}}"><a href="/votings"><i class="material-icons left">poll</i>Votings</a></li>
+    </ul>
 </template>

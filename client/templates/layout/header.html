@@ -1,33 +1,16 @@
 <template name="layout_header">
-    <header class="dapp-header">
+    <header>
         <nav>
-            <ul>
-                <li>
-                    <a href="/">
-                        <span>Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/campaigns">
-                        <span>Campaigns</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/contracts">
-                        <span>Contracts</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/messages">
-                        <span>Messages</span>
-                    </a>
-                </li>
-                <li style="float: right">
-                    <a href="/profile">
-                        <span>Profile</span>
-                    </a>
-                </li>
-            </ul>
+            <div class="nav-wrapper">
+                <a data-activates="slide-out" class="button-collapse btn-flat">
+                    <i class="material-icons" style="color: white">view_headline</i>
+                </a>
+                <a href="#" class="brand-logo center">Self-Publishing-Portal</a>
+                <ul>
+                    <li style="float: right"><a><i class="material-icons">notifications</i></a></li>
+                    <li style="float: right"><a><i class="material-icons">settings</i></a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 </template>

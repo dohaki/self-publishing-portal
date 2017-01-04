@@ -1,0 +1,115 @@
+<template name="views_campaignDetails">
+    <div class="row">
+        <div class="col s1"></div>
+        <div class="col s10 text-center">
+            <h4 class="row">{{campaign.title}}</h4>
+            <h5 class="row">{{getUserNameByAddress campaign.beneficiary}}</h5>
+            <div class="row">
+                <div class="chip">
+                    {{campaign.category}}
+                </div>
+                <div class="chip">
+                    {{campaign.subCategory}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s8">
+                    <img class="scale" src="/images/default.png" alt="">
+                </div>
+                <div class="col s4">
+                    <h3 class="bold no-margin">{{campaign.numOfContributions}}</h3>
+                    <p class="no-margin">Contributions</p>
+                    <p></p>
+                    <h3 class="bold no-margin">{{dapp_formatBalance campaign.amountRaised}} ETH</h3>
+                    <p class="no-margin">of goal {{dapp_formatBalance campaign.fundingGoal}} ETH</p>
+                    <p></p>
+                    {{#if isContributor campaign}}
+                        <h3 class="bold no-margin">{{myContribution campaign}} ETH</h3>
+                        <p class="no-margin">contributed by you</p>
+                        <p></p>
+                    {{/if}}
+                    {{#if afterDeadline campaign}}
+                        <h3 class="bold no-margin">Deadline reached</h3>
+                        {{#if (campaign.fundingGoalReached)}}
+                            <p class="no-margin">Goal reached!</p>
+                        {{else}}
+                            <p class="no-margin">Goal not reached</p>
+                        {{/if}}
+                        <p></p>
+                        {{#if (campaign.campaignClosed)}}
+                            {{#if (campaign.fundingGoalReached)}}
+                                {{#if isBeneficiary campaign}}
+                                    {{#if (campaign.fundsReleased)}}
+                                        <a class="js-archive waves-effect waves-light btn" href="">archive</a>
+                                    {{else}}
+                                        <a class="js-get-funds waves-effect waves-light btn" href="">get funds</a>
+                                    {{/if}}
+                                {{/if}}
+                            {{else}}
+                                {{#if isContributor campaign}}
+                                    {{#if (campaign.fundsReleased)}}
+                                        <a class="js-archive waves-effect waves-light btn" href="">archive</a>
+                                    {{else}}
+                                        <a class="js-get-contribution-back waves-effect waves-light btn" href="">get contribution back</a>
+                                    {{/if}}
+                                {{/if}}
+                            {{/if}}
+                        {{else}}
+                            <a class="js-check-goal-reached waves-effect waves-light btn" href="">Check goal reached</a>
+                        {{/if}}
+                    {{else}}
+                        <h3 class="bold no-margin">{{getLeftDays campaign.deadline}}</h3>
+                        <p class="no-margin">left</p>
+                        <p></p>
+                        <a class="modal-trigger waves-effect waves-light btn" href="#contributeModal">Contribute</a>
+                        {{#if isBeneficiary campaign}}
+                            <p></p>
+                            <a class="modal-trigger waves-effect waves-light btn" href="#contributionsModal">See contributions</a>
+                        {{/if}}
+                    {{/if}}
+                    <!-- Contribute Modal-->
+                    <div id="contributeModal" class="modal">
+                        <div class="modal-content">
+                            <h4>Enter your contribution</h4>
+                            <div class="row">
+                                <div class="col s4"></div>
+                                <div class="input-field col s4">
+                                    <i class="material-icons prefix large-font">attach_money</i>
+                                    <input id="contribution" type="number" class="validate bold text-center large-font" step="0.1" min="0.1" max="{{dapp_formatBalance maxContribution}}">
+                                </div>
+                                <div class="col s4"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="js-contribute modal-close waves-effect waves-green btn right">Contribute</a>
+                            <a class="modal-action modal-close waves-effect waves-green btn-flat right">Cancel</a>
+                        </div>
+                    </div>
+                    <!-- See contributions modal-->
+                    <div id="contributionsModal" class="modal">
+                        <div class="modal-content">
+                            <h4>Contributions</h4>
+                            {{#each contribution in (campaign.contributions)}}
+                                <div class="col s6">
+                                    <p>{{getUserNameByAddress (contribution.contributor)}} - {{dapp_formatBalance (contribution.amount)}} ETH</p>
+                                </div>
+                            {{/each}}
+                        </div>
+                        <div class="modal-footer">
+                            <a class="modal-action modal-close waves-effect waves-green btn-flat right">close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="row">
+                <h5>{{campaign.description}}</h5>
+            </div>
+            <div class="divider"></div>
+            <div class="fr-view">
+                {{{campaign.html}}}
+            </div>
+        </div>
+        <div class="col s1"></div>
+    </div>
+</template>

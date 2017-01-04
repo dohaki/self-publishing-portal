@@ -1,0 +1,37 @@
+<template name="components_projectInsertionForm">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="title" type="text" class="validate">
+                <label for="title">Title</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="description" class="materialize-textarea"></textarea>
+                <label for="description">Description</label>
+            </div>
+        </div>
+        <div class="row">
+            <p class="col s12">Required skills for this project:</p>
+            <div class="input-field col s12">
+                <div type="text" id="skills" class="chips"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="budget" type="number" class="validate">
+                <label for="budget">Budget (ETH)</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s3"></div>
+            <div class="col s6 text-center">
+                <a class="js-start waves-effect waves-light btn">
+                    <i class="material-icons left">launch</i>publish
+                </a>
+            </div>
+            <div class="col s3"></div>
+        </div>
+    </form>
+</template>
