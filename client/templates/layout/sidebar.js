@@ -15,8 +15,12 @@ Template.layout_sidebar.helpers({
     },
     isActive: (route) => {
         FlowRouter.watchPathChange();
-        return (FlowRouter.current().route.group.name === route);
-    }
+        if (FlowRouter.current().route.group) {
+            return (FlowRouter.current().route.group.name === route);
+        } else {
+            return (FlowRouter.getRouteName() === route);
+        }
+    },
 });
 
 Template.layout_sidebar.events({});
