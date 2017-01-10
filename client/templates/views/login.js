@@ -8,29 +8,29 @@ import './login.html';
 // Routes
 FlowRouter.route('/login', {
     name: 'login',
-    triggersEnter: [function () {
-        UserRegisterContract.users(account, function (error, result) {
+    triggersEnter: [() => {
+        UserRegisterContract.users(account, (error, result) => {
             if (error) {
                 console.error('login.js - triggersEnter');
-            } else if (result) {
+            } else if (result[0] !== '' && result[1] !== '') {
                 FlowRouter.go('/');
             }
         });
     }],
-    action: function () {
+    action: () => {
         BlazeLayout.render('views_login');
     }
 });
 
-Template.views_login.onCreated(function () {
+Template.views_login.onCreated(() => {
     Session.set('creatingAccount', false);
 });
 
-Template.views_login.onRendered(function () {
+Template.views_login.onRendered(() => {
 });
 
 Template.views_login.helpers({
-    creatingAccount: function () {
+    creatingAccount: () => {
         return Session.get('creatingAccount');
     }
 });
@@ -38,7 +38,8 @@ Template.views_login.helpers({
 Template.views_login.events({
     'click .js-create'(event) {
         const username = $('#username').val();
-        joinToContract(username, () => {
+        const mailAddress = $('#email').val();
+        joinToContract(username, mailAddress, () => {
             Session.set('creatingAccount', false);
             FlowRouter.go('/');
         });

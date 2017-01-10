@@ -66,10 +66,13 @@ Template.views_insertionDetails.events({
     'click .js-cooperate' () {
         const id = parseInt(Session.get('insertionId'));
         const insertion = Insertions.findOne({_id: id});
+        const email = Users.findOne({userAddress: insertion.owner}).mailAddress;
+        const subject = 'Cooperation';
+        const emailBody = 'Hello! I am in interested cooperating with you.';
         if (insertion.owner === account) {
             Materialize.toast('You can not cooperate with yourself!', 3000);
         } else {
-            // TODO Kontakt über automatische Mail
+            document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
         }
     },
     'click .js-deactivate' () {

@@ -13,16 +13,18 @@ function checkValidAccount() {
     if (EthAccounts.find().fetch().length === 0) {
         FlowRouter.go('/error'); // falls kein Ethereum Account vorliegt, auf Hinweis-Seite (MIST, Metamask)
     } else {
-        UserRegisterContract.users(account, function (error, result) {
+        UserRegisterContract.users(account, (error, result) => {
             if (error) {
                 console.error('init.js - checkValidAccount');
-            } else if (!result) {
+            } else if (result[0] === '' && result[1] === '') {
                 FlowRouter.go('/login');
             } else {
-                let user = Users.findOne({userName: result, userAddress: account});
-                if (!user) {
-                    Users.insert({userName: result, userAddress: account});
-                }
+                const user = {
+                    userName: result[0],
+                    mailAddress: result[1],
+                    userAddress: account
+                };
+                Users.upsert({ userAddress: account }, user);
             }
         });
     }
