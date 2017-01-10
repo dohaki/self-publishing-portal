@@ -50,4 +50,21 @@ Template.components_insertionCard.onRendered(function () {
 });
 
 Template.components_insertionCard.helpers({
+    getProjectRate: (insertion) => {
+        // TODO Differenzierung zwischen % und ETH
+    },
+    getUnit: (insertion) => {
+        switch (insertion.valueType) {
+            case 1: {
+                return 'ETH/sold unit'
+            }
+            case 2: {
+                return 'ETH/like'
+            }
+            case 3: {
+                return 'ETH/share'
+            }
+        }
+
+    }
 });

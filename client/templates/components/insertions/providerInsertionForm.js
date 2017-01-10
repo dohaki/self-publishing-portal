@@ -7,7 +7,9 @@ import {publishInsertion} from '/client/lib/ethereum/contracts/insertionRegister
 import './providerInsertionForm.html';
 
 Template.components_providerInsertionForm.onRendered(function () {
-    $('.chips').material_chip();
+    $('.chips').material_chip({
+        data: []
+    });
 });
 
 Template.components_providerInsertionForm.events({
@@ -20,7 +22,7 @@ Template.components_providerInsertionForm.events({
         for (let i = 0; i < skills.length; i++) {
             skillsString += skills[i].tag + '#';
         }
-        publishInsertion(title, description, skillsString, false, hourlyRate, 0, () => {
+        publishInsertion(title, description, skillsString, false, hourlyRate, 0, 0, () => {
             FlowRouter.go('/insertions');
         });
     }
