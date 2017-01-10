@@ -3,18 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bd451105-1c62-49b8-9439-b45ee020164b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/lib/ethereum/contracts/insertionRegisterContractHelper.js" afterPath="$PROJECT_DIR$/client/lib/ethereum/contracts/insertionRegisterContractHelper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/components/campaigns/campaignCreateBasic.html" afterPath="$PROJECT_DIR$/client/templates/components/campaigns/campaignCreateBasic.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/components/campaigns/campaignCreateBasic.js" afterPath="$PROJECT_DIR$/client/templates/components/campaigns/campaignCreateBasic.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/components/insertions/insertionCard.html" afterPath="$PROJECT_DIR$/client/templates/components/insertions/insertionCard.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/components/insertions/insertionCard.js" afterPath="$PROJECT_DIR$/client/templates/components/insertions/insertionCard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/components/insertions/projectInsertionForm.html" afterPath="$PROJECT_DIR$/client/templates/components/insertions/projectInsertionForm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/components/insertions/projectInsertionForm.js" afterPath="$PROJECT_DIR$/client/templates/components/insertions/projectInsertionForm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/components/insertions/providerInsertionForm.js" afterPath="$PROJECT_DIR$/client/templates/components/insertions/providerInsertionForm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/layout/sidebar.js" afterPath="$PROJECT_DIR$/client/templates/layout/sidebar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/insertions/insertionCreate.html" afterPath="$PROJECT_DIR$/client/templates/views/insertions/insertionCreate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.html" afterPath="$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.js" afterPath="$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/campaigns/campaigns.html" afterPath="$PROJECT_DIR$/client/templates/views/campaigns/campaigns.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/insertions/insertions.html" afterPath="$PROJECT_DIR$/client/templates/views/insertions/insertions.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,170 +21,43 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.47487113">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="projectInsertionForm.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/components/insertions/projectInsertionForm.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="161">
-                  <caret line="25" column="24" lean-forward="true" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="insertionRegisterContractHelper.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/lib/ethereum/contracts/insertionRegisterContractHelper.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1000">
-                  <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-                  <folding>
-                    <element signature="e#0#39#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="insertionCard.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/components/insertions/insertionCard.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="680">
-                  <caret line="34" column="26" lean-forward="true" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="insertionDetails.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="500">
-                  <caret line="25" column="46" lean-forward="false" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="campaigns.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns/campaigns.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#43#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="sidebar.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/layout/sidebar.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="340">
-                  <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="templateHelper.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/lib/helpers/templateHelper.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-549">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#43#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="projectInsertionForm.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/components/insertions/projectInsertionForm.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="429">
-                  <caret line="22" column="3" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
-                  <folding>
-                    <element signature="e#0#43#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="insertionCard.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/components/insertions/insertionCard.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="429">
-                  <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="68" selection-end-column="5" />
-                  <folding>
-                    <element signature="e#0#43#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="insertionDetails.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="65" column="24" lean-forward="false" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
-                  <folding>
-                    <element signature="e#0#43#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="insertions.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertions.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="insertionCreate.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertionCreate.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="160">
-                  <caret line="8" column="15" lean-forward="true" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="providerInsertionForm.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/components/insertions/providerInsertionForm.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="560">
-                  <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
-                  <folding>
-                    <element signature="e#0#43#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="insertionCreate.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertionCreate.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="120">
-                  <caret line="10" column="55" lean-forward="false" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="insertions.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertions.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="179">
+              <caret line="49" column="29" lean-forward="true" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="campaigns.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns/campaigns.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="82" column="48" lean-forward="false" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="transactionCard.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/templates/components/transactionCard.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>slick-carousel</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -221,6 +84,8 @@
         <option value="$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.html" />
         <option value="$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.js" />
         <option value="$PROJECT_DIR$/client/templates/views/insertions/insertionCreate.html" />
+        <option value="$PROJECT_DIR$/client/templates/views/insertions/insertions.html" />
+        <option value="$PROJECT_DIR$/client/templates/views/campaigns/campaigns.html" />
       </list>
     </option>
   </component>
@@ -694,7 +559,7 @@
       <workItem from="1483879711662" duration="1580000" />
       <workItem from="1483894801083" duration="784000" />
       <workItem from="1483973955838" duration="614000" />
-      <workItem from="1484040378601" duration="8525000" />
+      <workItem from="1484040378601" duration="8782000" />
     </task>
     <task id="LOCAL-00001" summary="Anpassungen .gitignore">
       <created>1483527756445</created>
@@ -717,11 +582,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483628135297</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Bidding Möglichkeit bei Insertions entfernt&#10;ersetzt durch variable Vergütung">
+      <created>1484056050329</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1484056050329</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19020000" />
+    <option name="totallyTimeSpent" value="19277000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -750,7 +622,8 @@
     <MESSAGE value="Anpassungen .gitignore" />
     <MESSAGE value="Anpassungen README" />
     <MESSAGE value="Anpassungen sidebar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Anpassungen sidebar" />
+    <MESSAGE value="Bidding Möglichkeit bei Insertions entfernt&#10;ersetzt durch variable Vergütung" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bidding Möglichkeit bei Insertions entfernt&#10;ersetzt durch variable Vergütung" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -869,13 +742,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/components/transactionCard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/helpers/campaignCollectionHelper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-509">
@@ -903,34 +769,6 @@
         <state relative-caret-position="120">
           <caret line="10" column="55" lean-forward="false" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns/campaigns.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/layout/sidebar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/helpers/templateHelper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-549">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1008,14 +846,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/components/insertions/insertionCard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="34" column="26" lean-forward="true" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/components/insertions/insertionCard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
@@ -1023,14 +853,6 @@
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="25" column="46" lean-forward="false" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1052,11 +874,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertions.html">
+    <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="25" column="46" lean-forward="false" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/components/insertions/insertionCard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="34" column="26" lean-forward="true" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns/campaigns.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/layout/sidebar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/helpers/templateHelper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-549">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1064,6 +922,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="8" column="15" lean-forward="true" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/components/transactionCard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/views/insertions/insertions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="49" column="29" lean-forward="true" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/components/campaigns/campaignCard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/views/campaigns/campaigns.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="82" column="48" lean-forward="false" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
           <folding />
         </state>
       </provider>

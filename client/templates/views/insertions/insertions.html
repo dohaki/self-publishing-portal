@@ -34,7 +34,7 @@
                 <div class="row no-margin">
                     <h5 class="col bold">Pending Transactions</h5>
                 </div>
-                <div class="slick-carousel">
+                <div class="row">
                     {{#each transaction in pendingTransactions}}
                         {{> components_transactionCard transaction}}
                     {{/each}}
@@ -44,7 +44,7 @@
                 <div class="row no-margin">
                     <h5 class="col bold">My Live Insertions</h5>
                 </div>
-                <div class="slick-carousel">
+                <div class="row">
                     {{#each insertion in myLiveInsertions}}
                         {{> components_insertionCard insertion}}
                     {{/each}}
@@ -55,7 +55,7 @@
             <div class="row no-margin">
                 <h5 class="col bold">Project Insertions</h5>
             </div>
-            <div class="slick-carousel">
+            <div class="row">
                 {{#each insertion in projectInsertions}}
                     {{> components_insertionCard insertion}}
                 {{/each}}
@@ -65,7 +65,7 @@
             <div class="row no-margin">
                 <h5 class="col bold">Provider Insertions</h5>
             </div>
-            <div class="slick-carousel">
+            <div class="row">
                 {{#each insertion in providerInsertions}}
                     {{> components_insertionCard insertion}}
                 {{/each}}
