@@ -17,10 +17,11 @@ Template.views_contracts.events({
         const name = 'test';
         const description = 'test';
         const contractPartner = '0xcc2100bd716ff32c0fb99f1fd2db9feaafba22fe';
-        const reward = web3.toWei(1, 'ether');
-        const valueTypeId = 1;
-        const contractTypeIds = [1,2];
-        createIndividualContract(name, description, contractPartner, reward, valueTypeId, contractTypeIds, () => {
+        const varReward = web3.toWei(1, 'ether');
+        const fixReward = web3.toWei(2, 'ether');
+        const valueTypeId = 3;
+        const contractTypeIds = [1,2,3];
+        createIndividualContract(name, description, contractPartner, fixReward, varReward, valueTypeId, contractTypeIds, () => {
             console.log('CALLBACK');
         });
     }
