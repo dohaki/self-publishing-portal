@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bd451105-1c62-49b8-9439-b45ee020164b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/lib/collections.js" afterPath="$PROJECT_DIR$/client/lib/collections.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/lib/ethereum/contracts/contractRegisterHelper.js" afterPath="$PROJECT_DIR$/client/lib/ethereum/contracts/contractRegisterHelper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/lib/ethereum/contracts/individualContractHelper.js" afterPath="$PROJECT_DIR$/client/lib/ethereum/contracts/individualContractHelper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/views/contracts/contracts.js" afterPath="$PROJECT_DIR$/client/templates/views/contracts/contracts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/lib/helpers/contractCollectionHelper.js" afterPath="$PROJECT_DIR$/client/lib/helpers/contractCollectionHelper.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,8 +27,8 @@
           <file leaf-file-name="contractCollectionHelper.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/lib/helpers/contractCollectionHelper.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state relative-caret-position="80">
+                  <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
                   <folding />
                 </state>
               </provider>
@@ -39,9 +37,11 @@
           <file leaf-file-name="contractRegisterHelper.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/lib/ethereum/contracts/contractRegisterHelper.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="551">
-                  <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-                  <folding />
+                <state relative-caret-position="511">
+                  <caret line="73" column="26" lean-forward="true" selection-start-line="73" selection-start-column="26" selection-end-line="73" selection-end-column="26" />
+                  <folding>
+                    <element signature="e#0#92#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -65,11 +65,21 @@
           <file leaf-file-name="individualContractHelper.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/lib/ethereum/contracts/individualContractHelper.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="631">
-                  <caret line="162" column="68" lean-forward="false" selection-start-line="162" selection-start-column="53" selection-end-line="162" selection-end-column="68" />
+                <state relative-caret-position="691">
+                  <caret line="165" column="1" lean-forward="true" selection-start-line="165" selection-start-column="1" selection-end-line="165" selection-end-column="1" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="campaignCollectionHelper.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/lib/helpers/campaignCollectionHelper.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-240">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -132,7 +142,6 @@
         <option value="$PROJECT_DIR$/client/templates/views/login.html" />
         <option value="$PROJECT_DIR$/client/lib/init.js" />
         <option value="$PROJECT_DIR$/client/templates/views/insertions/insertionDetails.js" />
-        <option value="$PROJECT_DIR$/client/lib/helpers/contractCollectionHelper.js" />
         <option value="$PROJECT_DIR$/client/lib/ethereum/contracts/individualContract.sol" />
         <option value="$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js" />
         <option value="$PROJECT_DIR$/client/templates/views/contracts/contractCreate.html" />
@@ -140,6 +149,7 @@
         <option value="$PROJECT_DIR$/client/templates/views/contracts/contracts.js" />
         <option value="$PROJECT_DIR$/client/lib/ethereum/contracts/individualContractHelper.js" />
         <option value="$PROJECT_DIR$/client/lib/ethereum/contracts/contractRegisterHelper.js" />
+        <option value="$PROJECT_DIR$/client/lib/helpers/contractCollectionHelper.js" />
       </list>
     </option>
   </component>
@@ -559,7 +569,7 @@
       <workItem from="1483973955838" duration="614000" />
       <workItem from="1484040378601" duration="11703000" />
       <workItem from="1484142285995" duration="8348000" />
-      <workItem from="1484213162667" duration="12247000" />
+      <workItem from="1484213162667" duration="13950000" />
     </task>
     <task id="LOCAL-00001" summary="Anpassungen .gitignore">
       <created>1483527756445</created>
@@ -610,11 +620,18 @@
       <option name="project" value="LOCAL" />
       <updated>1484213667662</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="zweite Anpassunge für contract creation">
+      <created>1484241166445</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1484241166446</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42793000" />
+    <option name="totallyTimeSpent" value="44496000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -665,7 +682,8 @@
     <MESSAGE value="slick-carousel ersetzt durch row (VORERST)" />
     <MESSAGE value="user modell um email adresse erweitert + kontakt funktion über email möglich" />
     <MESSAGE value="erste Anpassunge für contract creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="erste Anpassunge für contract creation" />
+    <MESSAGE value="zweite Anpassunge für contract creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="zweite Anpassunge für contract creation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -901,7 +919,7 @@
         <state relative-caret-position="-540">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#43#0" expanded="true" />
+            <element signature="e#0#43#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1003,38 +1021,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/collections.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/helpers/campaignCollectionHelper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-389">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/lib/helpers/contractCollectionHelper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/ethereum/contracts/crowdFundingContractHelper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1740">
           <caret line="229" column="29" lean-forward="true" selection-start-line="229" selection-start-column="29" selection-end-line="229" selection-end-column="29" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1049,18 +1041,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/helpers/campaignCollectionHelper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-240">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/collections.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/helpers/contractCollectionHelper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/ethereum/contracts/contractRegisterHelper.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="511">
+          <caret line="73" column="26" lean-forward="true" selection-start-line="73" selection-start-column="26" selection-end-line="73" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#92#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/ethereum/contracts/individualContractHelper.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="631">
-          <caret line="162" column="68" lean-forward="false" selection-start-line="162" selection-start-column="53" selection-end-line="162" selection-end-column="68" />
+        <state relative-caret-position="691">
+          <caret line="165" column="1" lean-forward="true" selection-start-line="165" selection-start-column="1" selection-end-line="165" selection-end-column="1" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

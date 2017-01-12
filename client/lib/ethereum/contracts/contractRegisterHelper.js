@@ -1,4 +1,5 @@
 import {subscribeToContract} from '/client/lib/ethereum/contracts/individualContractHelper';
+import {insertNewContract} from '/client/lib/helpers/contractCollectionHelper';
 
 const abiArray = [{
     "constant": false,
@@ -50,7 +51,7 @@ const address = "0x5e54da5df1526711ee28d9c639890c08e169e4dd";
 
 ContractRegisterContract = web3.eth.contract(abiArray).at(address);
 
-const ContractCreatedEvent = ContractRegisterContract.ContractCreated({partner: web3.eth.accounts[0]}, {
+const ContractCreatedEvent = ContractRegisterContract.ContractCreated({}, {
     fromBlock: 0,
     toBlock: 'latest'
 });
@@ -58,7 +59,25 @@ const ContractCreatedEvent = ContractRegisterContract.ContractCreated({partner: 
 ContractCreatedEvent.watch((error, result) => {
     if (error) console.error(error);
     else {
-        console.log('Contract created!', result);
-        subscribeToContract(result.args.contractAddress);
+        const contract = {
+            contractAddress: result.args.contractAddress,
+            contractPartner: result.args.contractPartner,
+            contractTypes: result.args.contractTypes,
+            valueType: new BigNumber(result.args.valueTypeId).toNumber(),
+            creator: result.args.creator,
+            description: result.args.description,
+            name: result.args.name,
+            fixReward: new BigNumber(result.args.fixReward).toNumber(),
+            varReward: new BigNumber(result.args.varReward).toNumber(),
+            isAccepted: result.args.isAccepted,
+            isFullfilled: result.args.isFullfilled,
+            isActive: true
+        };
+        if (contract.creator === web3.eth.accounts[0] || contract.contractPartner === web3.eth.accounts[0]) {
+            console.log('Contract created!', contract);
+            insertNewContract(contract, () => {
+                subscribeToContract(result.args.contractAddress);
+            });
+        }
     }
 });
