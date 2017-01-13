@@ -158,9 +158,26 @@ export function createIndividualContract(name, description, contractPartner, fix
 }
 
 export function subscribeToContract(contractAddress) {
+    console.log('Subscribed to contract: ' + contractAddress);
     IndividualContractsSubscribedTo[contractAddress] = IndividualContractContract.at(contractAddress);
-    console.log(IndividualContractsSubscribedTo[contractAddress]);
-    IndividualContractsSubscribedTo[contractAddress].contractPartner((error, result) => {
-        console.log(result);
+    watchEvents(contractAddress);
+}
+
+export function watchEvents(contractAddress) {
+    IndividualContractsSubscribedTo[contractAddress].allEvents({
+        fromBlock: 0,
+        toBlock: 'latest'
+    }).watch((error, result) => {
+        if (error) console.error(error);
+        else {
+            console.log('event watcher', result);
+        }
     });
+}
+
+export function initializeActiveContracts() {
+    const activeContracts = Contracts.find({isActive: true}).fetch();
+    for (let i = 0; i < activeContracts.length; i++) {
+        subscribeToContract(activeContracts[i].contractAddress);
+    }
 }

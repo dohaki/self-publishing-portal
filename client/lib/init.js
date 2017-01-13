@@ -1,3 +1,7 @@
+import {initializeActiveContracts} from '/client/lib/ethereum/contracts/individualContractHelper';
+
+initializeActiveContracts();
+
 account = web3.eth.accounts[0];
 
 // initialize Ethereum Accounts
