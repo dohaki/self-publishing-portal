@@ -16,7 +16,7 @@ export function pendingTransaction (txHash, txData, cb) {
             if (error) {
                 console.error(error);
             } else if (result && counter < maxAttempts) {
-                console.log('successfully mined transaction: ' + txHash);
+                console.log('successfully mined transaction: ' + txHash, result);
                 removePendingTransaction(txHash);
                 if (txData.type === 'Campaigns') getAllCampaignsFromContract();
                 if (txData.type === 'Insertions') getAllInsertionFromContract();
