@@ -41,12 +41,23 @@ Template.views_contracts.events({
 
 Template.views_contracts.helpers({
     pendingTransactions: () => {
-        return Transactions.find({status: 'PENDING', type: 'Contract'}).fetch();
+        return Transactions.find({
+            status: 'PENDING',
+            type: 'Contract'
+        }).fetch();
     },
     pendingContracts: () => {
-
+        return Contracts.find({
+            isActive: true,
+            isAccepted: false,
+            isFullfilled: false
+        }).fetch();
     },
-    activeContracts: () => {
-
+    fullfilledContracts: () => {
+        return Contracts.find({
+            isActive: true,
+            isAccepted: true,
+            isFullfilled: true
+        }).fetch();
     }
 });
