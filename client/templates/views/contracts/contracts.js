@@ -13,17 +13,7 @@ Template.views_contracts.onRendered(() => {
 
 Template.views_contracts.events({
     'click .js-create-contract' () {
-        //FlowRouter.go('/contracts/create');
-        const name = 'Contract zwischen dhkim und ubuntu';
-        const description = 'bla bal bla';
-        const contractPartner = '0xf862a22835e7c3560af9498ea60f1425427aaee5';
-        const varReward = web3.toWei(2, 'ether');
-        const fixReward = web3.toWei(3, 'ether');
-        const valueTypeId = 1;
-        const contractTypeIds = [1,2,3];
-        createIndividualContract(name, description, contractPartner, fixReward, varReward, valueTypeId, contractTypeIds, () => {
-            console.log('CALLBACK');
-        });
+        FlowRouter.go('/contracts/create');
     },
     'click .js-change-contract' () {
         const contractAddress = '0xcdec70e622d0263ce404876166e2499561905237';
