@@ -42,44 +42,61 @@ Template.views_contractCreate.events({
     },
     'click .js-change-rate' () {
         const projectRateType = Template.instance().rateType.get() === 'PERCENTAGE' ? 'ETH' : 'PERCENTAGE';
-        console.log(projectRateType);
         Template.instance().rateType.set(projectRateType);
     },
     'click .js-create-contract' () {
+        const contractType = Template.instance().contractType.get();
+        const varType = Template.instance().varType.get();
         const name = $('#title').val();
         const description = $('#description').val();
         //const contractPartner = '0xf862a22835e7c3560af9498ea60f1425427aaee5';
         const contractPartner = $('#partner').val();
         let contractTypeIds = [];
         let valueTypeId, varReward, fixReward;
-        if ($('#fixed').checked()) {
+        if (contractType === 'fixed') {
             contractTypeIds.push(0);
             valueTypeId = 0;
             varReward = 0;
             fixReward = web3.toWei($('#fixedPrice').val(), 'ether');
-        } else if ($('#variable').checked()) {
+        } else if (contractType === 'variable') {
             fixReward = 0;
-            if ($('#piece').checked()) valueTypeId = 1;
-            else if ($('#hour').checked()) valueTypeId = 2;
-            else if ($('#like').checked()) valueTypeId = 3;
-            else if ($('#comment').checked()) valueTypeId = 4;
-            else if ($('#share').checked()) valueTypeId = 5;
+            if (varType === 'piece') valueTypeId = 1;
+            else if (varType === 'hour') valueTypeId = 2;
+            else if (varType === 'like') valueTypeId = 3;
+            else if (varType === 'comment' ) valueTypeId = 4;
+            else if (varType === 'share') valueTypeId = 5;
             if (Template.instance().rateType.get() === 'PERCENTAGE') {
                 contractTypeIds.push(2);
                 varReward = $('#percentageVarPrice').val();
-            } else if (Template.instance().rateType.get() === 'ETH' && $('#hour').checked()) {
+            } else if (Template.instance().rateType.get() === 'ETH' && varType === 'hour') {
                 contractTypeIds.push(1);
-                varReward = $('#absVarPrice').val();
+                varReward = web3.toWei($('#absVarPrice').val(), 'ether');
             } else {
                 contractTypeIds.push(3);
-                varReward = $('#absVarPrice').val();
+                varReward = web3.toWei($('#absVarPrice').val(), 'ether');
             }
         } else {
-            //TODO combination case
+            fixReward = web3.toWei($('#combiFixedPrice').val(), 'ether');
+            contractTypeIds.push(0);
+            if (varType === 'piece') valueTypeId = 1;
+            else if (varType === 'hour') valueTypeId = 2;
+            else if (varType === 'like') valueTypeId = 3;
+            else if (varType === 'comment' ) valueTypeId = 4;
+            else if (varType === 'share') valueTypeId = 5;
+            if (Template.instance().rateType.get() === 'PERCENTAGE') {
+                contractTypeIds.push(2);
+                varReward = $('#combiPercentageVarPrice').val();
+            } else if (Template.instance().rateType.get() === 'ETH' && varType === 'hour') {
+                contractTypeIds.push(1);
+                varReward = web3.toWei($('#combiAbsVarPrice').val(), 'ether');
+            } else {
+                contractTypeIds.push(3);
+                varReward = web3.toWei($('#combiAbsVarPrice').val(), 'ether');
+            }
         }
-        // createIndividualContract(name, description, contractPartner, fixReward, varReward, valueTypeId, contractTypeIds, () => {
-        //     FlowRouter.go('/contracts');
-        // });
+        createIndividualContract(name, description, contractPartner, fixReward, varReward, valueTypeId, contractTypeIds, () => {
+            FlowRouter.go('/contracts');
+        });
     }
 });
 
