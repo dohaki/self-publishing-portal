@@ -1,26 +1,7 @@
 import {subscribeToContract} from '/client/lib/ethereum/contracts/individualContractHelper';
-import {insertNewContract} from '/client/lib/helpers/contractCollectionHelper';
+import {insertNewContract, updateContract} from '/client/lib/helpers/contractCollectionHelper';
 
 const abiArray = [{
-    "constant": false,
-    "inputs": [{"name": "contractAddress", "type": "address"}, {
-        "name": "name",
-        "type": "string"
-    }, {"name": "description", "type": "string"}, {"name": "creator", "type": "address"}, {
-        "name": "contractPartner",
-        "type": "address"
-    }, {"name": "fixReward", "type": "uint256"}, {"name": "varReward", "type": "uint256"}, {
-        "name": "valueTypeId",
-        "type": "uint256"
-    }, {"name": "contractTypes", "type": "bool[4]"}, {"name": "isAccepted", "type": "bool"}, {
-        "name": "isFullfilled",
-        "type": "bool"
-    }],
-    "name": "contractChanged",
-    "outputs": [],
-    "payable": false,
-    "type": "function"
-}, {
     "constant": false,
     "inputs": [{"name": "contractAddress", "type": "address"}, {
         "name": "creator",
@@ -37,6 +18,22 @@ const abiArray = [{
         "type": "address"
     }, {"name": "contractPartner", "type": "address"}],
     "name": "contractFullfilled",
+    "outputs": [],
+    "payable": false,
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{"name": "contractAddress", "type": "address"}, {
+        "name": "name",
+        "type": "string"
+    }, {"name": "description", "type": "string"}, {"name": "creator", "type": "address"}, {
+        "name": "contractPartner",
+        "type": "address"
+    }, {"name": "fixReward", "type": "uint256"}, {"name": "varReward", "type": "uint256"}, {
+        "name": "valueTypeId",
+        "type": "uint256"
+    }, {"name": "contractTypes", "type": "bool[4]"}, {"name": "revision", "type": "uint256"}],
+    "name": "contractChanged",
     "outputs": [],
     "payable": false,
     "type": "function"
@@ -114,9 +111,9 @@ const abiArray = [{
         "type": "uint256"
     }, {"indexed": false, "name": "contractTypes", "type": "bool[4]"}, {
         "indexed": false,
-        "name": "isAccepted",
-        "type": "bool"
-    }, {"indexed": false, "name": "isFullfilled", "type": "bool"}],
+        "name": "revision",
+        "type": "uint256"
+    }],
     "name": "ContractChanged",
     "type": "event"
 }, {
@@ -148,7 +145,7 @@ const abiArray = [{
     "type": "event"
 }];
 
-const address = "0x68a49c40038e5c8dc5ac30c51a8f5d4e42b466ae";
+const address = "0x4ec2569729fadbd73709d840bdbbb3ff667627ca";
 
 ContractRegisterContract = web3.eth.contract(abiArray).at(address);
 
@@ -190,9 +187,10 @@ ContractCreatedEvent.watch((error, result) => {
             name: result.args.name,
             fixReward: new BigNumber(result.args.fixReward).toNumber(),
             varReward: new BigNumber(result.args.varReward).toNumber(),
-            isAccepted: result.args.isAccepted,
-            isFullfilled: result.args.isFullfilled,
-            isActive: true
+            isAccepted: false,
+            isFullfilled: false,
+            isActive: true,
+            revision: 0
         };
         console.log('Contract created!', contract);
         insertNewContract(contract, () => {
@@ -206,21 +204,18 @@ ContractChangedEvent.watch((error, result) => {
     if (error) console.error(error);
     else if (result.args.creator === web3.eth.accounts[0] || result.args.contractPartner === web3.eth.accounts[0]) {
         const contract = {
-            contractAddress: result.args.contractAddress,
-            contractPartner: result.args.contractPartner,
             contractTypes: result.args.contractTypes,
             valueType: new BigNumber(result.args.valueTypeId).toNumber(),
-            creator: result.args.creator,
             description: result.args.description,
             name: result.args.name,
             fixReward: new BigNumber(result.args.fixReward).toNumber(),
             varReward: new BigNumber(result.args.varReward).toNumber(),
-            isAccepted: result.args.isAccepted,
-            isFullfilled: result.args.isFullfilled,
-            isActive: true
+            revision: new BigNumber(result.args.revision).toNumber()
         };
         console.log('Contract changed!', contract);
-        // TODO update contract in db
+        updateContract(result.args.contractAddress, contract, () => {
+            console.log('Contract aktualisiert');
+        });
     }
 });
 

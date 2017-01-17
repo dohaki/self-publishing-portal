@@ -16,13 +16,13 @@ Template.views_contracts.events({
         FlowRouter.go('/contracts/create');
     },
     'click .js-change-contract' () {
-        const contractAddress = '0xcdec70e622d0263ce404876166e2499561905237';
-        const name = 'etwas kürzerer Tittle'; // max 50 Zeichen
-        const description = 'Noch mal Änderung es sdjaisd kdjcks dckdlsckndoe dfoejforpjf'; // max 150 Zeichen
+        const contractAddress = '0x19ec5ddb164be1a96e6f679aeff7a8949b2e7b8a';
+        const name = 'Veränderter Vertrag'; // max 50 Zeichen
+        const description = 'Veränderter Beschreibungstext'; // max 150 Zeichen
         const varReward = web3.toWei(2, 'ether');
         const fixReward = web3.toWei(3, 'ether');
         const valueTypeId = 1;
-        const contractTypeIds = [1,2,3];
+        const contractTypeIds = [1,2];
         changeContract(contractAddress, name, description, fixReward, varReward, valueTypeId, contractTypeIds, () => {
             console.log('CHANGE-CONTRACT CALLBACK');
         });
