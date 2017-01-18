@@ -43,6 +43,13 @@ Template.views_contracts.helpers({
             isFullfilled: false
         }).fetch();
     },
+    contractsToBeFullfilled: () => {
+        return Contracts.find({
+            isActive: true,
+            isAccepted: true,
+            isFullfilled: false
+        });
+    },
     fullfilledContracts: () => {
         return Contracts.find({
             isActive: true,

@@ -1,5 +1,5 @@
 import {subscribeToContract} from '/client/lib/ethereum/contracts/individualContractHelper';
-import {insertNewContract, updateContract} from '/client/lib/helpers/contractCollectionHelper';
+import {checkBlockNumber, insertNewContract, updateContract} from '/client/lib/helpers/contractCollectionHelper';
 
 const abiArray = [{
     "constant": false,
@@ -178,6 +178,7 @@ ContractCreatedEvent.watch((error, result) => {
     if (error) console.error(error);
     else if (result.args.creator === web3.eth.accounts[0] || result.args.contractPartner === web3.eth.accounts[0]) {
         const contract = {
+            // Attribute aus dem Contract //
             contractAddress: result.args.contractAddress,
             contractPartner: result.args.contractPartner,
             contractTypes: result.args.contractTypes,
@@ -189,10 +190,13 @@ ContractCreatedEvent.watch((error, result) => {
             varReward: new BigNumber(result.args.varReward).toNumber(),
             isAccepted: false,
             isFullfilled: false,
+            revision: 0,
+            // zusätzliche lokale Attribute  //
             isActive: true,
-            revision: 0
+            turnOf: result.args.contractPartner,
+            blockNumber: result.blockNumber
         };
-        console.log('Contract created!', contract);
+        console.log('Contract created!', result);
         insertNewContract(contract, () => {
             subscribeToContract(result.args.contractAddress);
         });
@@ -210,35 +214,66 @@ ContractChangedEvent.watch((error, result) => {
             name: result.args.name,
             fixReward: new BigNumber(result.args.fixReward).toNumber(),
             varReward: new BigNumber(result.args.varReward).toNumber(),
-            revision: new BigNumber(result.args.revision).toNumber()
+            revision: new BigNumber(result.args.revision).toNumber(),
+            turnOf: result.args.contractPartner,
+            blockNumber: result.blockNumber
         };
-        console.log('Contract changed!', contract);
-        updateContract(result.args.contractAddress, contract, () => {
-            console.log('Contract aktualisiert');
+        console.log('Contract changed!', result);
+        checkBlockNumber(result.args.contractAddress, result.blockNumber, () => {
+            updateContract(result.args.contractAddress, contract, () => {
+                console.log('Contract aktualisiert');
+            });
         });
     }
 });
 
+/**
+ *
+ */
 ContractAcceptedEvent.watch((error, result) => {
     if (error) console.error(error);
     else if (result.args.creator === web3.eth.accounts[0] || result.args.contractPartner === web3.eth.accounts[0]) {
+        const contract = {
+            isAccepted: true,
+            turnOf: result.args.creator
+        };
         console.log('Contract accepted!', result);
-        // TODO update contract in db
+        checkBlockNumber(result.args.contractAddress, result.blockNumber, () => {
+            updateContract(result.args.contractAddress, contract, () => {
+                console.log('Contract akzeptiert!');
+            });
+        });
     }
 });
 
 ContractDeclinedEvent.watch((error, result) => {
     if (error) console.error(error);
     else if (result.args.creator === web3.eth.accounts[0] || result.args.contractPartner === web3.eth.accounts[0]) {
+        const contract = {
+            isAccepted: false,
+            turnOf: result.args.creator
+        };
         console.log('Contract declined!', result);
-        // TODO update contract in db
+        checkBlockNumber(result.args.contractAddress, result.blockNumber, () => {
+            updateContract(result.args.contractAddress, contract, () => {
+                console.log('Contract akzeptiert!');
+            });
+        });
     }
 });
 
 ContractFullfilledEvent.watch((error, result) => {
     if (error) console.error(error);
     else if (result.args.creator === web3.eth.accounts[0] || result.args.contractPartner === web3.eth.accounts[0]) {
+        const contract = {
+            isFullfilled: true,
+            turnOf: result.args.creator
+        };
         console.log('Contract changed!', result);
-        // TODO update contract in db
+        checkBlockNumber(result.args.contractAddress, result.blockNumber, () => {
+            updateContract(result.args.contractAddress, contract, () => {
+                console.log('Contract akzeptiert!');
+            });
+        });
     }
 });
