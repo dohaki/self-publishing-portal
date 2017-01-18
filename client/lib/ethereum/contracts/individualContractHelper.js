@@ -221,9 +221,10 @@ export function changeContract(contractAddress, name, description, fixReward, va
     });
 }
 
-export function acceptContract(contractAddress) {
+export function acceptContract(contractAddress, cb) {
     Session.set('waitingForConfirmation', true);
     IndividualContractsSubscribedTo[contractAddress].acceptContract((error, result) => {
+        Session.set('waitingForConfirmation', false);
         if (error) {
             console.error(error);
             Materialize.toast('You have to accept the transaction!', 3000);
@@ -240,9 +241,10 @@ export function acceptContract(contractAddress) {
     });
 }
 
-export function declineContract(contractAddress) {
+export function declineContract(contractAddress, cb) {
     Session.set('waitingForConfirmation', true);
     IndividualContractsSubscribedTo[contractAddress].declineContract((error, result) => {
+        Session.set('waitingForConfirmation', false);
         if (error) {
             console.error(error);
             Materialize.toast('You have to accept the transaction!', 3000);
@@ -259,9 +261,10 @@ export function declineContract(contractAddress) {
     });
 }
 
-export function fullfillContract(contractAddress) {
+export function fullfillContract(contractAddress, cb) {
     Session.set('waitingForConfirmation', true);
     IndividualContractsSubscribedTo[contractAddress].fullfillContract((error, result) => {
+        Session.set('waitingForConfirmation', false);
         if (error) {
             console.error(error);
             Materialize.toast('You have to accept the transaction!', 3000);

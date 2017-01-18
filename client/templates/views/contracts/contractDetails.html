@@ -1,0 +1,47 @@
+<template name="views_contractDetails">
+    <div class="row">
+        <div class="col s1"></div>
+        <div class="col s10 text-center">
+            <h4 class="row">{{contract.name}}</h4>
+            <p class="row">
+                Contract between
+                <span class="bold">{{getUserNameByAddress contract.creator}}</span>
+                and
+                <span class="bold">{{getUserNameByAddress contract.contractPartner}}</span>
+                 -
+                <span class="bold">{{getContractType contract}}</span>
+            </p>
+            <div class="row">
+                <div class="col s8">
+                    <p style="text-align: justify">{{contract.description}}</p>
+                </div>
+                <div class="col s4">
+                    <p></p>
+                    {{#unless isStringEqual (getContractType contract) 'Variable payment'}}
+                        <h3 class="bold no-margin">{{dapp_formatBalance contract.fixReward}} ETH</h3>
+                        <p class="no-margin">Fixed payment</p>
+                        <p></p>
+                    {{/unless}}
+                    {{#unless isStringEqual (getContractType contract) 'Fixed payment'}}
+                        <h3 class="bold no-margin">{{dapp_formatBalance contract.varReward}} ETH</h3>
+                        <p class="no-margin">Variable payment {{getValueTypeById contract.valueType}}</p>
+                        <p></p>
+                    {{/unless}}
+                    <div class="row">
+                        <div class="chip">
+                            {{getStatus contract}}
+                        </div>
+                    </div>
+                    {{#if isStringEqual (getStatus contract) 'You have to accept or decline'}}
+                        <div class="row">
+                            <a class="js-accept col s5 waves-effect waves-light btn" href="">accept</a>
+                            <div class="col s2"></div>
+                            <a class="js-decline col s5 waves-effect waves-light btn" href="">decline</a>
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        <div class="col s1"></div>
+    </div>
+</template>

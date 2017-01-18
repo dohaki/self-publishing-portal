@@ -7,13 +7,13 @@ Template.components_contractCard.onRendered(() => {
 });
 
 Template.components_contractCard.helpers({
-    'getStatus'(contract) {
+    getStatus: (contract) => {
         const {isAccepted, isFullfilled, creator, contractPartner, turnOf} = contract;
-        if (turnOf === account === creator) {
+        if ((turnOf === account) && (account === creator)) {
             if (!isAccepted && !isFullfilled) return 'Declined';
             else if (isAccepted && !isFullfilled) return 'Accepted';
             else if (isAccepted && isFullfilled) return 'Fullfilled';
-        } else if (turnOf === account === contractPartner) {
+        } else if ((turnOf === account) && (account === contractPartner)) {
             if (!isAccepted && !isFullfilled) return 'You have to accept or decline';
             else if (isAccepted && !isFullfilled) return 'Accepted / To be fullfilled';
             else if (isAccepted && isFullfilled) return 'Fullfilled';
@@ -27,5 +27,4 @@ Template.components_contractCard.helpers({
             else if (isAccepted && isFullfilled) return 'Fullfilled';
         }
     }
-
 });

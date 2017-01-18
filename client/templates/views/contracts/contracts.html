@@ -32,13 +32,23 @@
                     {{/each}}
                 </div>
             {{/unless}}
-            {{#unless isArrayEmpty pendingTransactions}}
+            {{#unless isArrayEmpty contractsToBeFullfilled}}
                 <div class="row no-margin">
-                    <h5 class="col bold">Pending Transactions</h5>
+                    <h5 class="col bold">Contracts to be fullfilled</h5>
                 </div>
                 <div class="row">
-                    {{#each transaction in pendingTransactions}}
-                        {{> components_transactionCard transaction}}
+                    {{#each contract in contractsToBeFullfilled}}
+                        {{> components_contractCard contract}}
+                    {{/each}}
+                </div>
+            {{/unless}}
+            {{#unless isArrayEmpty fullfilledContracts}}
+                <div class="row no-margin">
+                    <h5 class="col bold">Fullfilled Contracts</h5>
+                </div>
+                <div class="row">
+                    {{#each contract in fullfilledContracts}}
+                        {{> components_contractCard contract}}
                     {{/each}}
                 </div>
             {{/unless}}
