@@ -61,6 +61,8 @@ Template.views_contractDetails.events({
     },
     'click .js-change'() {
         // TODO Weiterleitung auf Formular für Ändern von Daten
+        const id = Session.get('contractId');
+        FlowRouter.go('/contracts/edit/' + id);
     },
     'click .js-fullfill'() {
         const id = Session.get('contractId');

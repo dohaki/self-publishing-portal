@@ -39,3 +39,15 @@ contractRoutes.route('/:id', {
         });
     }
 });
+
+// behandelt /contracts/create Route
+contractRoutes.route('/edit/:id', {
+    action: (params, queryParams) => {
+        Session.set('contractId', params.id);
+        BlazeLayout.render('layout_main', {
+            header: 'layout_header',
+            main: 'views_contractEdit',
+            sidebar: 'layout_sidebar'
+        });
+    }
+});
