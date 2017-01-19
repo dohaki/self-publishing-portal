@@ -32,11 +32,26 @@
                             {{getStatus contract}}
                         </div>
                     </div>
+                    <div class="row">
+                        <a class="js-contact waves-effect waves-light btn" href="">
+                            <i class="material-icons left">contact_mail</i>
+                            contact
+                        </a>
+                    </div>
+                    <p></p>
                     {{#if isStringEqual (getStatus contract) 'You have to accept or decline'}}
                         <div class="row">
                             <a class="js-accept col s5 waves-effect waves-light btn" href="">accept</a>
                             <div class="col s2"></div>
                             <a class="js-decline col s5 waves-effect waves-light btn" href="">decline</a>
+                        </div>
+                    {{/if}}
+                    {{#if isStringEqual (getStatus contract) 'Partner declined'}}
+                        <div class="row">
+                            <a class="js-change waves-effect waves-light btn" href="">
+                                <i class="material-icons left">edit</i>
+                                change
+                            </a>
                         </div>
                     {{/if}}
                 </div>

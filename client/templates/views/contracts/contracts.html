@@ -32,26 +32,36 @@
                     {{/each}}
                 </div>
             {{/unless}}
-            {{#unless isArrayEmpty contractsToBeFullfilled}}
+            {{#unless isArrayEmpty acceptedContracts}}
                 <div class="row no-margin">
-                    <h5 class="col bold">Contracts to be fullfilled</h5>
+                    <h5 class="col bold">Accepted Contracts</h5>
                 </div>
                 <div class="row">
-                    {{#each contract in contractsToBeFullfilled}}
+                    {{#each contract in acceptedContracts}}
                         {{> components_contractCard contract}}
                     {{/each}}
                 </div>
             {{/unless}}
-            {{#unless isArrayEmpty fullfilledContracts}}
-                <div class="row no-margin">
-                    <h5 class="col bold">Fullfilled Contracts</h5>
-                </div>
-                <div class="row">
-                    {{#each contract in fullfilledContracts}}
-                        {{> components_contractCard contract}}
-                    {{/each}}
-                </div>
-            {{/unless}}
+            <!--{{#unless isArrayEmpty contractsToBeFullfilled}}-->
+                <!--<div class="row no-margin">-->
+                    <!--<h5 class="col bold">Contracts to be fullfilled</h5>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--{{#each contract in contractsToBeFullfilled}}-->
+                        <!--{{> components_contractCard contract}}-->
+                    <!--{{/each}}-->
+                <!--</div>-->
+            <!--{{/unless}}-->
+            <!--{{#unless isArrayEmpty fullfilledContracts}}-->
+                <!--<div class="row no-margin">-->
+                    <!--<h5 class="col bold">Fullfilled Contracts</h5>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--{{#each contract in fullfilledContracts}}-->
+                        <!--{{> components_contractCard contract}}-->
+                    <!--{{/each}}-->
+                <!--</div>-->
+            <!--{{/unless}}-->
         </div>
     </div>
 </template>

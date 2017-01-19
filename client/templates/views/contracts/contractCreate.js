@@ -7,12 +7,13 @@ import {createIndividualContract} from '../../../lib/ethereum/contracts/individu
 import './contractCreate.html';
 
 Template.views_contractCreate.onCreated(() => {
-    Template.instance().contractType = new ReactiveVar();
+    Template.instance().contractType = new ReactiveVar('variable');
     Template.instance().varType = new ReactiveVar();
     Template.instance().rateType = new ReactiveVar('ETH');
 });
 
 Template.views_contractCreate.onRendered(() => {
+    $('select').material_select();
 });
 
 Template.views_contractCreate.events({

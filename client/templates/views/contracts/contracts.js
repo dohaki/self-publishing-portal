@@ -44,20 +44,27 @@ Template.views_contracts.helpers({
             $or: [{contractPartner: account}, {creator: account}]
         }).fetch();
     },
-    contractsToBeFullfilled: () => {
+    acceptedContracts: () => {
         return Contracts.find({
             isActive: true,
             isAccepted: true,
-            isFullfilled: false,
-            $or: [{contractPartner: account}, {creator: account}]
-        });
-    },
-    fullfilledContracts: () => {
-        return Contracts.find({
-            isActive: true,
-            isAccepted: true,
-            isFullfilled: true,
             $or: [{contractPartner: account}, {creator: account}]
         }).fetch();
     }
+    // contractsToBeFullfilled: () => {
+    //     return Contracts.find({
+    //         isActive: true,
+    //         isAccepted: true,
+    //         isFullfilled: false,
+    //         $or: [{contractPartner: account}, {creator: account}]
+    //     });
+    // },
+    // fullfilledContracts: () => {
+    //     return Contracts.find({
+    //         isActive: true,
+    //         isAccepted: true,
+    //         isFullfilled: true,
+    //         $or: [{contractPartner: account}, {creator: account}]
+    //     }).fetch();
+    // }
 });
