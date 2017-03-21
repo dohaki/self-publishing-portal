@@ -1,4 +1,4 @@
-# Self-Publishing-Portal
+# Creative Cooperation Portal
 ## DApp einrichten
 ### 1. MetaMask-Plugin herunterladen
 Damit die DApp verwendet werden kann, wird ein DApp-Browser bzw. DApp-Plugin benötigt. Die Anwendung ist optimiert auf das **MetaMask-Plugin** (https://metamask.io/) für den Google-Chrome-Browser.
