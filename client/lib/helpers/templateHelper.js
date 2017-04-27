@@ -2,6 +2,7 @@ import {Template} from 'meteor/templating';
 import {Session} from 'meteor/session';
 
 import {getUserNameByAddressFromContract} from '/client/lib/ethereum/contracts/userRegisterContractHelper';
+import {VALUE_TYPE, CONTRACT_TYPE} from '/client/lib/constants';
 
 /**
  * Berechnet prozentualen Anteil
@@ -35,11 +36,7 @@ Template.registerHelper('getLeftDays', function (deadline) {
 Template.registerHelper('isOver', function (deadline) {
     let deadlineDate = new Date(deadline);
     let differenceInSeconds = Math.floor((deadlineDate - Date.now()) / 1000);
-    if (differenceInSeconds < 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return (differenceInSeconds < 0);
 });
 
 Template.registerHelper('mining', function () {
@@ -78,4 +75,40 @@ Template.registerHelper('isTrue', function (boolean1, boolean2) {
 
 Template.registerHelper('isStringEqual', function (string1, string2) {
     return (string1 === string2);
+});
+
+Template.registerHelper('getValueTypeById', (id) => {
+    switch (id) {
+        case VALUE_TYPE.NONE: return '';
+        case VALUE_TYPE.PIECE: return 'per piece';
+        case VALUE_TYPE.HOUR: return 'per hour';
+        case VALUE_TYPE.FACEBOOK_LIKES: return 'per like';
+        case VALUE_TYPE.FACEBOOK_COMMENTS: return 'per comment';
+        case VALUE_TYPE.FACEBOOK_SHARES: return 'per share';
+    }
+});
+
+Template.registerHelper('getContractTypesById', (ids) => {
+    let contractTypes = [];
+    for (let i = 0; i < ids.length; i++) {
+        switch (ids[i]) {
+            case CONTRACT_TYPE.FIXED_PRICE: {
+                contractTypes.push('fixed price');
+                break;
+            }
+            case CONTRACT_TYPE.HOURLY_RATE: {
+                contractTypes.push('hourly rate');
+                break;
+            }
+            case CONTRACT_TYPE.ROYALTY: {
+                contractTypes.push('royalty');
+                break;
+            }
+            case CONTRACT_TYPE.VALUE_RATE: {
+                contractTypes.push('value-based rate');
+                break;
+            }
+        }
+    }
+    return contractTypes;
 });

@@ -40,7 +40,7 @@ Template.components_campaignCreateBasic.events({
     },
     'change .js-category'() {
         const category = $('#category').val();
-        for (var i = 0; i < campaignCategories.length; i++) {
+        for (let i = 0; i < campaignCategories.length; i++) {
             if (category === campaignCategories[i].category) {
                 Template.instance().subCategories.set(campaignCategories[i].subCategories);
                 break;

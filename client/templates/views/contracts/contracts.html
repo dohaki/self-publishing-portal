@@ -12,12 +12,52 @@
                 <div class="row no-margin">
                     <h5 class="col bold">Pending Transactions</h5>
                 </div>
-                <div class="slick-carousel">
+                <div class="row">
                     {{#each transaction in pendingTransactions}}
                         {{> components_transactionCard transaction}}
                     {{/each}}
                 </div>
             {{/unless}}
+            {{#unless isArrayEmpty pendingContracts}}
+                <div class="row no-margin">
+                    <h5 class="col bold">Pending Contracts</h5>
+                </div>
+                <div class="row">
+                    {{#each contract in pendingContracts}}
+                        {{> components_contractCard contract}}
+                    {{/each}}
+                </div>
+            {{/unless}}
+            {{#unless isArrayEmpty acceptedContracts}}
+                <div class="row no-margin">
+                    <h5 class="col bold">Accepted Contracts</h5>
+                </div>
+                <div class="row">
+                    {{#each contract in acceptedContracts}}
+                        {{> components_contractCard contract}}
+                    {{/each}}
+                </div>
+            {{/unless}}
+            <!--{{#unless isArrayEmpty contractsToBeFullfilled}}-->
+                <!--<div class="row no-margin">-->
+                    <!--<h5 class="col bold">Contracts to be fullfilled</h5>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--{{#each contract in contractsToBeFullfilled}}-->
+                        <!--{{> components_contractCard contract}}-->
+                    <!--{{/each}}-->
+                <!--</div>-->
+            <!--{{/unless}}-->
+            <!--{{#unless isArrayEmpty fullfilledContracts}}-->
+                <!--<div class="row no-margin">-->
+                    <!--<h5 class="col bold">Fullfilled Contracts</h5>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--{{#each contract in fullfilledContracts}}-->
+                        <!--{{> components_contractCard contract}}-->
+                    <!--{{/each}}-->
+                <!--</div>-->
+            <!--{{/unless}}-->
         </div>
     </div>
 </template>

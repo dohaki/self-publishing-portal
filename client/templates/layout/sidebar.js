@@ -3,7 +3,6 @@ import {Template} from 'meteor/templating';
 import './sidebar.html';
 
 Template.layout_sidebar.onRendered(() => {
-    console.log(FlowRouter.current().route);
 });
 
 Template.layout_sidebar.helpers({
@@ -15,8 +14,12 @@ Template.layout_sidebar.helpers({
     },
     isActive: (route) => {
         FlowRouter.watchPathChange();
-        return (FlowRouter.current().route.group.name === route);
-    }
+        if (FlowRouter.current().route.group) {
+            return (FlowRouter.current().route.group.name === route);
+        } else {
+            return (FlowRouter.getRouteName() === route);
+        }
+    },
 });
 
 Template.layout_sidebar.events({});

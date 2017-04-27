@@ -2,21 +2,29 @@ import {Template} from 'meteor/templating';
 import {Session} from 'meteor/session';
 import {ReactiveVar} from 'meteor/reactive-var';
 
-import {createIndividualContract} from '../../../lib/ethereum/contracts/individualContractHelper';
+import {changeContract} from '../../../lib/ethereum/contracts/individualContractHelper';
 
-import './contractCreate.html';
+import './contractEdit.html';
 
-Template.views_contractCreate.onCreated(() => {
+Template.views_contractEdit.onCreated(() => {
     Template.instance().contractType = new ReactiveVar('variable');
     Template.instance().varType = new ReactiveVar();
     Template.instance().rateType = new ReactiveVar('ETH');
 });
 
-Template.views_contractCreate.onRendered(() => {
-    $('select').material_select();
+Template.views_contractEdit.onRendered(() => {
+    const contract = Contracts.findOne({_id: Session.get('contractId')});
+    let defaultValueType;
+    if (contract.valueType === 1) defaultValueType = 'piece';
+    else if (contract.valueType === 2) defaultValueType = 'hour';
+    else if (contract.valueType === 3) defaultValueType = 'like';
+    else if (contract.valueType ===  4) defaultValueType = 'comment';
+    else if (contract.valueType === 5) defaultValueType = 'share';
+    Template.instance().varType.set(defaultValueType);
+    document.getElementById(defaultValueType).checked = true;
 });
 
-Template.views_contractCreate.events({
+Template.views_contractEdit.events({
     'click .js-choose-fix'() {
         Template.instance().contractType.set('fixed');
     },
@@ -45,7 +53,9 @@ Template.views_contractCreate.events({
         const projectRateType = Template.instance().rateType.get() === 'PERCENTAGE' ? 'ETH' : 'PERCENTAGE';
         Template.instance().rateType.set(projectRateType);
     },
-    'click .js-create-contract' () {
+    'click .js-change-contract' () {
+        const contract = Contracts.findOne({_id: Session.get('contractId')});
+        const contractAddress = contract.contractAddress;
         const contractType = Template.instance().contractType.get();
         const varType = Template.instance().varType.get();
         const name = $('#title').val();
@@ -95,13 +105,24 @@ Template.views_contractCreate.events({
                 varReward = web3.toWei($('#combiAbsVarPrice').val(), 'ether');
             }
         }
-        createIndividualContract(name, description, contractPartner, fixReward, varReward, valueTypeId, contractTypeIds, () => {
+        changeContract(contractAddress, name, description, fixReward, varReward, valueTypeId, contractTypeIds, () => {
             FlowRouter.go('/contracts');
         });
     }
 });
 
-Template.views_contractCreate.helpers({
+Template.views_contractEdit.helpers({
+    contract: () => {
+        const id = Session.get('contractId');
+        return Contracts.findOne({_id: id});
+    },
+    convertWeiInEth:(wei) => {
+        return web3.fromWei(wei, 'ether');
+    },
+    radioCheck: (type) => {
+        const valueType = Template.instance().varType.get();
+        return type === valueType;
+    },
     getContractType: () => {
         return Template.instance().contractType.get();
     },

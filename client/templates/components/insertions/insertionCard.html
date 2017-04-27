@@ -19,10 +19,10 @@
                     <div class="row">
                         {{#if (this.isProject)}}
                             <div class="col s6">
-                                <p>Budget:</p>
+                                <p>Rate:</p>
                             </div>
                             <div class="col s6">
-                                <p class="bold">{{dapp_formatBalance this.budget}} ETH</p>
+                                <p class="bold">{{dapp_formatBalance this.projectRate}} {{getUnit this}}</p>
                             </div>
                         {{else}}
                             <div class="col s6">

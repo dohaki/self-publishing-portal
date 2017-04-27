@@ -19,15 +19,35 @@
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12">
-                <input id="budget" type="number" class="validate">
-                <label for="budget">Budget (ETH)</label>
+            <div class="input-field col s6">
+                {{#if isPercentage}}
+                    <a class="js-change-rate prefix" href="">
+                        <i class="material-icons">%</i>
+                    </a>
+                    <input id="percentRate" type="number" min="0" max="100" step="1" class="validate">
+                    <label for="percentRate">Rate (%)</label>
+                {{else}}
+                    <a class="js-change-rate prefix" href="">
+                        <i class="material-icons">attach_money</i>
+                    </a>
+                    <input id="etherRate" type="number" min="0" class="validate">
+                    <label for="etherRate">Rate (ETH)</label>
+                {{/if}}
+            </div>
+            <div class="input-field col s6">
+                <select id="unit">
+                    <option value="" disabled selected>Choose a unit</option>
+                    <option value="1">per sold unit</option>
+                    <option value="2">per like</option>
+                    <option value="3">per share</option>
+                </select>
+                <label for="unit">Unit</label>
             </div>
         </div>
         <div class="row">
             <div class="col s3"></div>
             <div class="col s6 text-center">
-                <a class="js-start waves-effect waves-light btn">
+                <a class="js-publish waves-effect waves-light btn">
                     <i class="material-icons left">launch</i>publish
                 </a>
             </div>

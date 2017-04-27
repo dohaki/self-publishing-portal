@@ -1,0 +1,72 @@
+<template name="views_contractEdit">
+    <div class="section text-center">
+        <h5>Here you can change parameters of contract:</h5>
+        <h5>{{contract.contractAddress}}</h5>
+    </div>
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="partner" type="text" class="validate disabled" value={{contract.contractPartner}}>
+                    <label for="partner">Address of contract partner</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="title" type="text" class="validate" length="50" value={{contract.name}}>
+                    <label for="title">Title</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="description" class="materialize-textarea" maxlength="150" length="150" value={{contract.description}}></textarea>
+                    <label for="description">Description</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    {{#if isPercentage}}
+                        <a class="js-change-rate prefix" href="">
+                            <i class="material-icons">%</i>
+                        </a>
+                        <input id="percentageVarPrice" type="number" class="validate">
+                        <label for="percentageVarPrice">Variable payment (%/{{getVarType}})</label>
+                    {{else}}
+                        <a class="js-change-rate prefix" href="">
+                            <i class="material-icons">attach_money</i>
+                        </a>
+                        <input id="absVarPrice" type="number" class="validate" value={{convertWeiInEth contract.varReward}}>
+                        <label for="absVarPrice">Variable payment (ETH/{{getVarType}})</label>
+                    {{/if}}
+                </div>
+                <div class="row">
+                    <p class="col s2">
+                        <input class="js-choose-piece" name="sub" type="radio" id="piece"/>
+                        <label for="piece">per sold unit</label>
+                    </p>
+                    <p class="col s2">
+                        <input class="js-choose-like" name="sub" type="radio" id="like"/>
+                        <label for="like">per like</label>
+                    </p>
+                    <p class="col s2">
+                        <input class="js-choose-comment" name="sub" type="radio" id="comment"/>
+                        <label for="comment">per comment</label>
+                    </p>
+                    <p class="col s2">
+                        <input class="js-choose-share" name="sub" type="radio" id="share"/>
+                        <label for="share">per share</label>
+                    </p>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col s3"></div>
+            <div class="col s6 text-center">
+                <a class="js-change-contract waves-effect waves-light btn">
+                    <i class="material-icons left">launch</i>change contract
+                </a>
+            </div>
+            <div class="col s3"></div>
+        </div>
+    </div>
+</template>

@@ -169,11 +169,8 @@ export function getCampaignFromContract(index) {
             else {
                 campaign.contributions = existingCampaign.contributions;
                 campaign.html = existingCampaign.html;
-                if (existingCampaign.archive) campaign.archive = true;
-                else campaign.archive = false;
+                campaign.archive = existingCampaign.archive;
                 if (campaign.campaignClosed) campaign.contributions = [];
-                if (campaign.fundsReleased) campaign.fundsReleased = true;
-                else campaign.fundsReleased = false;
             }
             upsertCampaign(campaign._id, campaign, function () {
                 if (!existingCampaign) {

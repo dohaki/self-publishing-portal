@@ -1,0 +1,24 @@
+<template name="components_contractCard">
+    <div class="col s12 m6 l4">
+        <div class="card">
+            <div class="card-content" style="padding-bottom: 0">
+                <div class="section" style="padding-top: 0 !important;">
+                    <p class="bold truncate">{{this.name}}</p>
+                </div>
+                <p style="height: 100px; overflow: auto;">{{this.description}}</p>
+                <div class="section" style="padding-bottom: 0">
+                    <div class="row">
+                        <div class="chip">
+                            {{getStatus this}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-action">
+                <a href=""><i class="material-icons">share</i></a>
+                <a href=""><i class="material-icons">favorite_border</i></a>
+                <a class="js-details right" href="/contracts/{{this._id}}"><i class="material-icons">description</i></a>
+            </div>
+        </div>
+    </div>
+</template>

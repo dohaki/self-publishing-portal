@@ -41,7 +41,7 @@
                 <div class="row no-margin">
                     <h5 class="col bold">Pending Transactions</h5>
                 </div>
-                <div class="slick-carousel">
+                <div class="row">
                     {{#each transaction in pendingTransactions}}
                         {{> components_transactionCard transaction}}
                     {{/each}}
@@ -51,7 +51,7 @@
                 <div class="row no-margin">
                     <h5 class="col bold">My Live Campaigns</h5>
                 </div>
-                <div class="slick-carousel">
+                <div class="row">
                     {{#each campaign in myLiveCampaigns}}
                         {{> components_campaignCard campaign}}
                     {{/each}}
@@ -61,7 +61,7 @@
                 <div class="row no-margin">
                     <h5 class="col bold">Contributed Campaigns</h5>
                 </div>
-                <div class="slick-carousel">
+                <div class="row">
                     {{#each campaign in contributedCampaigns}}
                         {{> components_campaignCard campaign}}
                     {{/each}}
@@ -69,6 +69,9 @@
             {{/unless}}
         </div>
         <div id="popular" class="col s12">
+            <div class="row no-margin">
+                <h5 class="col bold">Most Popular</h5>
+            </div>
             <div class="row">
                 {{#each campaign in mostPopularCampaigns}}
                     {{> components_campaignCard campaign}}
@@ -76,6 +79,9 @@
             </div>
         </div>
         <div id="recent" class="col s12">
+            <div class="row no-margin">
+                <h5 class="col bold">Most Recent</h5>
+            </div>
             <div class="row">
                 {{#each campaign in mostRecentCampaigns}}
                     {{> components_campaignCard campaign}}
@@ -101,7 +107,7 @@
                     <div class="row no-margin">
                         <h5 class="col bold">{{category}}</h5>
                     </div>
-                    <div class="slick-carousel">
+                    <div class="row">
                         {{#each campaign in getFilteredCampaigns category}}
                             {{> components_campaignCard campaign}}
                         {{/each}}

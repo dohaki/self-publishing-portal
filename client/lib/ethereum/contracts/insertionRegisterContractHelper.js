@@ -11,6 +11,19 @@ const abiArray = [{
     "payable": false,
     "type": "function"
 }, {
+    "constant": false,
+    "inputs": [{"name": "title", "type": "string"}, {"name": "description", "type": "string"}, {
+        "name": "skills",
+        "type": "string"
+    }, {"name": "isProject", "type": "bool"}, {"name": "hourlyRate", "type": "uint256"}, {
+        "name": "projectRate",
+        "type": "uint256"
+    }, {"name": "valueTypeId", "type": "uint256"}],
+    "name": "publishInsertion",
+    "outputs": [],
+    "payable": false,
+    "type": "function"
+}, {
     "constant": true,
     "inputs": [{"name": "", "type": "uint256"}],
     "name": "insertions",
@@ -20,43 +33,16 @@ const abiArray = [{
     }, {"name": "owner", "type": "address"}, {"name": "skills", "type": "string"}, {
         "name": "isProject",
         "type": "bool"
-    }, {"name": "hourlyRate", "type": "uint256"}, {"name": "budget", "type": "uint256"}, {
-        "name": "numOfBids",
-        "type": "uint256"
+    }, {"name": "hourlyRate", "type": "uint256"}, {"name": "projectRate", "type": "uint256"}, {
+        "name": "valueType",
+        "type": "uint8"
     }, {"name": "isActive", "type": "bool"}],
-    "payable": false,
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [{"name": "", "type": "uint256"}, {"name": "", "type": "uint256"}],
-    "name": "bids",
-    "outputs": [{"name": "bidder", "type": "address"}, {"name": "amount", "type": "uint256"}],
-    "payable": false,
-    "type": "function"
-}, {
-    "constant": false,
-    "inputs": [{"name": "title", "type": "string"}, {"name": "description", "type": "string"}, {
-        "name": "skills",
-        "type": "string"
-    }, {"name": "isProject", "type": "bool"}, {"name": "hourlyRate", "type": "uint256"}, {
-        "name": "budget",
-        "type": "uint256"
-    }],
-    "name": "publishInsertion",
-    "outputs": [],
     "payable": false,
     "type": "function"
 }, {
     "constant": false,
     "inputs": [{"name": "_id", "type": "uint256"}],
     "name": "deactivateInsertion",
-    "outputs": [],
-    "payable": false,
-    "type": "function"
-}, {
-    "constant": false,
-    "inputs": [{"name": "_id", "type": "uint256"}, {"name": "amount", "type": "uint256"}],
-    "name": "bidToProject",
     "outputs": [],
     "payable": false,
     "type": "function"
@@ -78,37 +64,14 @@ const abiArray = [{
     "type": "event"
 }, {
     "anonymous": false,
-    "inputs": [{"indexed": false, "name": "bidder", "type": "address"}, {
-        "indexed": false,
-        "name": "_id",
-        "type": "uint256"
-    }],
-    "name": "BidToProject",
-    "type": "event"
-}, {
-    "anonymous": false,
     "inputs": [{"indexed": false, "name": "_id", "type": "uint256"}],
     "name": "InsertionDeactivated",
     "type": "event"
 }];
 
-const address = "0x2fa6017c7a3e87ce550fd80ca895febd3ad99bd8";
+const address = "0xbd713c2580a16de3b344ec2575e9ec8610f81043";
 
 InsertionRegisterContract = web3.eth.contract(abiArray).at(address);
-
-export function getBidFromContract(insertionId, bidId) {
-    InsertionRegisterContract.bids(insertionId, bidId, (error, result) => {
-        if (error) console.error(error);
-        else {
-            const bid = {
-                bidder: result[0],
-                amount: new BigNumber(result[1]).toNumber()
-            }
-            const changes = {$push: {bids: bid}};
-            updateInsertion(insertionId, changes);
-        }
-    });
-}
 
 export function getInsertionFromContract(insertionId) {
     InsertionRegisterContract.insertions(insertionId, (error, result) => {
@@ -127,16 +90,11 @@ export function getInsertionFromContract(insertionId) {
                 skills: skills,
                 isProject: result[5],
                 hourlyRate: new BigNumber(result[6]).toNumber(),
-                budget: new BigNumber(result[7]).toNumber(),
-                numOfBids: new BigNumber(result[8]).toNumber(),
-                isActive: result[9],
-                bids: []
-            }
-            upsertInsertion(insertionId, insertion, () => {
-                for (let i = 0; i < insertion.numOfBids; i++) {
-                    getBidFromContract(insertionId, i);
-                }
-            });
+                projectRate: new BigNumber(result[7]).toNumber(),
+                valueType: new BigNumber(result[8]).toNumber(),
+                isActive: result[9]
+            };
+            upsertInsertion(insertionId, insertion);
         }
     });
 }
@@ -153,9 +111,9 @@ export function getAllInsertionFromContract() {
     });
 }
 
-export function publishInsertion(title, description, skills, isProject, hourlyRate, budget, cb) {
+export function publishInsertion(title, description, skills, isProject, hourlyRate, projectRate, valueType, cb) {
     Session.set('waitingForConfirmation', true);
-    InsertionRegisterContract.publishInsertion(title, description, skills, isProject, hourlyRate, budget, (error, result) => {
+    InsertionRegisterContract.publishInsertion(title, description, skills, isProject, hourlyRate, projectRate, valueType, (error, result) => {
         Session.set('waitingForConfirmation', false);
         if (error) {
             console.error(error);
@@ -182,43 +140,23 @@ export function publishInsertion(title, description, skills, isProject, hourlyRa
     });
 }
 
-export function bidToProject(projectId, amount, cb) {
+export function deactivateInsertion(insertionId, cb) {
     Session.set('waitingForConfirmation', true);
-    InsertionRegisterContract.bidToProject(projectId, amount, (error, result) => {
+    InsertionRegisterContract.deactivateInsertion(insertionId, (error, result) => {
         Session.set('waitingForConfirmation', false);
         if (error) {
             console.error(error);
             Materialize.toast('You have to accept the transaction', 3000);
         } else {
-            const bidTx = {
+            const deactivationTx = {
                 type: 'Insertions',
-                title: 'You bid to a project',
-                description: 'You bid to a project'
-            }
-            pendingTransaction(result, bidTx, () => {
+                title: 'Deactivation of insertion',
+                description: 'You deactivated an insertion.'
+            };
+            pendingTransaction(result, deactivationTx, () => {
                 if (cb) cb();
-            })
+            });
         }
-    });
-}
-
-export function deactivateInsertion(insertionId, cb) {
-    Session.set('waitingForConfirmation', true);
-    InsertionRegisterContract.deactivateInsertion(insertionId, (error, result) => {
-       Session.set('waitingForConfirmation', false);
-       if (error) {
-           console.error(error);
-           Materialize.toast('You have to accept the transaction', 3000);
-       } else {
-           const deactivationTx = {
-               type: 'Insertions',
-               title: 'Deactivation of insertion',
-               description: 'You deactivated an insertion.'
-           }
-           pendingTransaction(result, deactivationTx, () => {
-              if (cb) cb();
-           });
-       }
     });
 }
 
@@ -230,16 +168,6 @@ InsertionRegisterContract.InsertionPublished().watch(function (error, result) {
         console.error(error);
     } else {
         console.log('event InsertionPublished fired!');
-        console.log(result);
-        getInsertionFromContract(new BigNumber(result.args._id));
-    }
-});
-
-InsertionRegisterContract.BidToProject().watch(function (error, result) {
-    if (error) {
-        console.error(error);
-    } else {
-        console.log('event BidToProject fired!');
         console.log(result);
         getInsertionFromContract(new BigNumber(result.args._id));
     }

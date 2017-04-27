@@ -1,5 +1,186 @@
 <template name="views_contractCreate">
-    isProject: {{hiredBid.isProject}},
-    amount: {{hiredBid.amount}},
-    bidder: {{hiredBid.bidder}}
+    <div class="section text-center">
+        <h4>Create smart contract</h4>
+        <h5>Here you can create a self-executing smart contract</h5>
+    </div>
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="partner" type="text" class="validate">
+                    <label for="partner">Address of contract partner</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="title" type="text" class="validate" length="50">
+                    <label for="title">Title</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="description" class="materialize-textarea" maxlength="150" length="150"></textarea>
+                    <label for="description">Description</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    {{#if isPercentage}}
+                        <a class="js-change-rate prefix" href="">
+                            <i class="material-icons">%</i>
+                        </a>
+                        <input id="percentageVarPrice" type="number" class="validate">
+                        <label for="percentageVarPrice">Variable payment (%/{{getVarType}})</label>
+                    {{else}}
+                        <a class="js-change-rate prefix" href="">
+                            <i class="material-icons">attach_money</i>
+                        </a>
+                        <input id="absVarPrice" type="number" class="validate">
+                        <label for="absVarPrice">Variable payment (ETH/{{getVarType}})</label>
+                    {{/if}}
+                </div>
+                <div class="row">
+                    <p class="col s2">
+                        <input class="js-choose-piece" name="sub" type="radio" id="piece" />
+                        <label for="piece">per sold unit</label>
+                    </p>
+                    <p class="col s2">
+                        <input class="js-choose-like" name="sub" type="radio" id="like" />
+                        <label for="like">per like</label>
+                    </p>
+                    <p class="col s2">
+                        <input class="js-choose-comment" name="sub" type="radio" id="comment" />
+                        <label for="comment">per comment</label>
+                    </p>
+                    <p class="col s2">
+                        <input class="js-choose-share" name="sub" type="radio" id="share" />
+                        <label for="share">per share</label>
+                    </p>
+                </div>
+            </div>
+            <!--<div class="row">-->
+                <!--<p class="col s3">-->
+                    <!--<input class="js-choose-fix" name="group" type="radio" id="fixed" />-->
+                    <!--<label for="fixed">Fixed payment</label>-->
+                <!--</p>-->
+                <!--<p class="col s3">-->
+                    <!--<input class="js-choose-var" name="group" type="radio" id="variable" />-->
+                    <!--<label for="variable">Variable payment</label>-->
+                <!--</p>-->
+                <!--<p class="col s3">-->
+                    <!--<input class="js-choose-combination" name="group" type="radio" id="combination" />-->
+                    <!--<label for="combination">Combined payment</label>-->
+                <!--</p>-->
+            <!--</div>-->
+            <!--{{#if isStringEqual getContractType 'fixed'}}-->
+                <!--<div class="row">-->
+                    <!--<div class="input-field col s12">-->
+                        <!--<input id="fixedPrice" type="number" class="validate" min="0">-->
+                        <!--<label for="fixedPrice">Fixed payment (ETH)</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--{{/if}}-->
+            <!--{{#if isStringEqual getContractType 'variable'}}-->
+                <!--<div class="row">-->
+                    <!--<p class="col s2">-->
+                        <!--<input class="js-choose-piece" name="sub" type="radio" id="piece" />-->
+                        <!--<label for="piece">per piece</label>-->
+                    <!--</p>-->
+                    <!--{{#unless isPercentage}}-->
+                        <!--<p class="col s2">-->
+                            <!--<input class="js-choose-hour" name="sub" type="radio" id="hour" />-->
+                            <!--<label for="hour">per hour</label>-->
+                        <!--</p>-->
+                    <!--{{/unless}}-->
+                    <!--<p class="col s2">-->
+                        <!--<input class="js-choose-like" name="sub" type="radio" id="like" />-->
+                        <!--<label for="like">per like</label>-->
+                    <!--</p>-->
+                    <!--<p class="col s2">-->
+                        <!--<input class="js-choose-comment" name="sub" type="radio" id="comment" />-->
+                        <!--<label for="comment">per comment</label>-->
+                    <!--</p>-->
+                    <!--<p class="col s2">-->
+                        <!--<input class="js-choose-share" name="sub" type="radio" id="share" />-->
+                        <!--<label for="share">per share</label>-->
+                    <!--</p>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="input-field col s12">-->
+                        <!--{{#if isPercentage}}-->
+                            <!--<a class="js-change-rate prefix" href="">-->
+                                <!--<i class="material-icons">%</i>-->
+                            <!--</a>-->
+                            <!--<input id="percentageVarPrice" type="number" class="validate">-->
+                            <!--<label for="percentageVarPrice">Variable payment (%/{{getVarType}})</label>-->
+                        <!--{{else}}-->
+                            <!--<a class="js-change-rate prefix" href="">-->
+                                <!--<i class="material-icons">attach_money</i>-->
+                            <!--</a>-->
+                            <!--<input id="absVarPrice" type="number" class="validate">-->
+                            <!--<label for="absVarPrice">Variable payment (ETH/{{getVarType}})</label>-->
+                        <!--{{/if}}-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--{{/if}}-->
+            <!--{{#if isStringEqual getContractType 'combination'}}-->
+                <!--<div class="row">-->
+                    <!--<div class="input-field col s12">-->
+                        <!--<input id="combiFixedPrice" type="number" class="validate">-->
+                        <!--<label for="combiFixedPrice">Fixed payment (ETH)</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<p class="col s2">-->
+                        <!--<input class="js-choose-piece" name="sub" type="radio" id="piece" />-->
+                        <!--<label for="piece">per piece</label>-->
+                    <!--</p>-->
+                    <!--{{#unless isPercentage}}-->
+                        <!--<p class="col s2">-->
+                            <!--<input class="js-choose-hour" name="sub" type="radio" id="hour" />-->
+                            <!--<label for="hour">per hour</label>-->
+                        <!--</p>-->
+                    <!--{{/unless}}-->
+                    <!--<p class="col s2">-->
+                        <!--<input class="js-choose-like" name="sub" type="radio" id="like" />-->
+                        <!--<label for="like">per like</label>-->
+                    <!--</p>-->
+                    <!--<p class="col s2">-->
+                        <!--<input class="js-choose-comment" name="sub" type="radio" id="comment" />-->
+                        <!--<label for="comment">per comment</label>-->
+                    <!--</p>-->
+                    <!--<p class="col s2">-->
+                        <!--<input class="js-choose-share" name="sub" type="radio" id="share" />-->
+                        <!--<label for="share">per share</label>-->
+                    <!--</p>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="input-field col s12">-->
+                        <!--{{#if isPercentage}}-->
+                            <!--<a class="js-change-rate prefix" href="">-->
+                                <!--<i class="material-icons">%</i>-->
+                            <!--</a>-->
+                            <!--<input id="combiPercentageVarPrice" type="number" class="validate">-->
+                            <!--<label for="combiPercentageVarPrice">Variable payment (%/{{getVarType}})</label>-->
+                        <!--{{else}}-->
+                            <!--<a class="js-change-rate prefix" href="">-->
+                                <!--<i class="material-icons">attach_money</i>-->
+                            <!--</a>-->
+                            <!--<input id="combiAbsVarPrice" type="number" class="validate">-->
+                            <!--<label for="combiAbsVarPrice">Variable payment (ETH/{{getVarType}})</label>-->
+                        <!--{{/if}}-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--{{/if}}-->
+        </form>
+        <div class="row">
+            <div class="col s3"></div>
+            <div class="col s6 text-center">
+                <a class="js-create-contract waves-effect waves-light btn">
+                    <i class="material-icons left">launch</i>create contract
+                </a>
+            </div>
+            <div class="col s3"></div>
+        </div>
+    </div>
 </template>

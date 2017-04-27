@@ -33,6 +33,20 @@ Template.views_insertionDetails.helpers({
     },
     isOwner: (insertion) => {
         return (account === insertion.owner);
+    },
+    getUnit: (insertion) => {
+        switch (insertion.valueType) {
+            case 1: {
+                return 'per sold unit'
+            }
+            case 2: {
+                return 'per like'
+            }
+            case 3: {
+                return 'per share'
+            }
+        }
+
     }
 });
 
@@ -49,27 +63,17 @@ Template.views_insertionDetails.events({
             });
         }
     },
-    'click .js-hire-provider' () {
+    'click .js-cooperate' () {
         const id = parseInt(Session.get('insertionId'));
         const insertion = Insertions.findOne({_id: id});
+        const email = Users.findOne({userAddress: insertion.owner}).mailAddress;
+        const subject = 'Cooperation';
+        const emailBody = 'Hello! I am in interested cooperating with you.';
         if (insertion.owner === account) {
-            Materialize.toast('You can not hire yourself!', 3000);
+            Materialize.toast('You can not cooperate with yourself!', 3000);
         } else {
-            Session.set('hiredBid', {
-                isProject: false,
-                amount: insertion.hourlyRate,
-                bidder: insertion.owner
-            });
-            FlowRouter.go('/contracts/create');
+            document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
         }
-    },
-    'click .js-hire-project' (event) {
-        Session.set('hiredBid', {
-            isProject: true,
-            amount: parseInt(event.target.dataset.amount),
-            bidder: bidderAddress = event.target.dataset.bidder
-        });
-        FlowRouter.go('/contracts/create');
     },
     'click .js-deactivate' () {
         const id = parseInt(Session.get('insertionId'));
